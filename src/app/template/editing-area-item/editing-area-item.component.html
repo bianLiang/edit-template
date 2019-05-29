@@ -1,0 +1,14 @@
+<div #boxTemplate *ngIf="item.type == 'div'"
+     [ngStyle]='item.style'>
+    <bl-editing-area-item *ngFor="let childItem of item.children;let _index=index;"
+                       [item]="childItem" >
+    </bl-editing-area-item>
+</div>
+<div class="box" *ngIf="item.type =='txt'">
+  <p [innerHTML]="item.content" [ngStyle]="item.style" attr.contenteditable='{{item.isEdit}}' (click)="onItemFocus(item)" (blur)="onItemBlur(item)"></p>
+  <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure" (clickBtns)="clickBtns($event)"></bl-content-editor-tool>
+</div>
+<div class="box" *ngIf="item.type == 'button'" >
+  <button attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item)" (blur)="onItemBlur(item)"></button>
+  <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure" (clickBtns)="clickBtns($event)"></bl-content-editor-tool>
+</div>
