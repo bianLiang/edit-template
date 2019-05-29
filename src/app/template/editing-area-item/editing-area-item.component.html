@@ -1,7 +1,7 @@
 <div #boxTemplate *ngIf="item.type == 'div'"
-     [ngStyle]='item.style'>
+     [ngStyle]='item.style' >
     <bl-editing-area-item *ngFor="let childItem of item.children;let _index=index;"
-                       [item]="childItem" >
+                       [item]="childItem" (click)='onBoxBlur(item)'>
     </bl-editing-area-item>
 </div>
 <div class="box" *ngIf="item.type =='txt'">

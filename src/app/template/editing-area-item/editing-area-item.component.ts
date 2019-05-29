@@ -19,7 +19,6 @@ export class EditingAreaItemComponent implements OnInit {
     // }
   }
   savedRange: any;
-  dom: any;
 
   constructor(
     public editingAreaItemService: EditingAreaItemService
@@ -27,10 +26,15 @@ export class EditingAreaItemComponent implements OnInit {
 
   ngOnInit() {
   }
-  onItemFocus(e: any) {
+  // 获得焦点，设置插入标志位
+  onBoxBlur(e: any) {
     console.log(e);
-    this.editingAreaItemService.dom = e;
+    this.editingAreaItemService.boxDom = e;
+    this.editingAreaItemService.insertIndex = e.index;
+  }
+  onItemFocus(e: any) {
     if (e.isEdit) {
+      this.editingAreaItemService.itemDom = e;
       e.isShowEditorTool = true;
     }
   }

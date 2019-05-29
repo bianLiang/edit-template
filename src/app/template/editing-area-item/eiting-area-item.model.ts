@@ -1,9 +1,10 @@
 export class EeitingAreaItem {
   public name?: string;
+  public index?: number;
   public type: string;
   public style?: any;
   public content?: string;
-  public toolConfigure?: [];
+  public toolConfigure?: any;
   public params?: any;
   public key?: string;
   public isEdit?: boolean;

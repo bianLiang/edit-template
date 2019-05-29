@@ -1,3 +1,30 @@
-<p>
-  这是编辑栏
-</p>
+<div style="width: 100%;padding: 5px;">
+  <div>
+    <h4 style="text-align: center;color: #888;">文本样式</h4>
+    <div class='currency'>字体：
+      <select *ngIf="isShowTypefaces" [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
+        <option *ngFor="let item of typefaces" [value]="item.code">{{item.name}}</option>
+      </select>
+    </div>
+    <div class='currency'>颜色：
+      <select *ngIf="isFontColor" [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
+        <option *ngFor="let item of fontColor" [value]="item">{{item}}</option>
+      </select>
+      <span
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': fontBackgroundColor}"></span>
+    </div>
+    <div>
+      <div class="User_ratings User_grade" >
+        <div class="ratings_bars" style="display: flex;align-items: center;">
+            大小：
+          <div class="scale" id="bar0">
+            <div></div>
+            <span id="btn0"></span>
+          </div>
+          <span style="margin-left: 5px; font-size: 13px;">{{fontSize}}</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

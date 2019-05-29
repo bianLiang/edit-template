@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EditingAreaItemService {
-dom: any;
+boxDom: any;
+itemDom: any;
+insertIndex: number;
 constructor() { }
 
 }

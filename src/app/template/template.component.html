@@ -1,3 +1,5 @@
-<bl-edit-bar></bl-edit-bar>
+<div style="width: 400px;background: #ccc;">
+  <bl-edit-bar [editBarConfigure]="editBarConfigure"></bl-edit-bar>
+</div>
 <bl-editing-area [items]="items" [insertDataTmp]="insertDataTmp"></bl-editing-area>
 <bl-toolbar (selectTmp)="selectTmp($event)"></bl-toolbar>

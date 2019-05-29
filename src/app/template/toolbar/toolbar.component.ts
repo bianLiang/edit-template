@@ -13,17 +13,19 @@ export class ToolbarComponent implements OnInit {
   }
   onClickText() {
     const data = {
+      type: 'div',
+      index: null,
       children: [
         {
-          type: 'button',
+          type: 'txt',
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
             'background': '#fff',
-            // tslint:disable-next-line:object-literal-key-quotes
-            'border': '1px solid #ccc',
-            'color': 'red'
+            'color': 'red',
+            'margin': 0,
+            'line-height': '35px'
           },
-          content: '立即点击',
+          content: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['bold', 'italic', 'slideLine']

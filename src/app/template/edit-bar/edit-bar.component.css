@@ -1,0 +1,9 @@
+.currency {
+  display: flex;
+  margin: 5px 0;
+}
+/* 拉动滑块 */
+.User_ratings .ratings_bars .scale{width:110px;height:13px;position:relative;background:url(../../../assets/img/progress02.png) 0 0 no-repeat;}
+.User_ratings .ratings_bars .scale div{width:0px;position:absolute;width:0;left:0;height:13px;bottom:0;background:url(../../../assets/img/progress02.png) 0 -14px no-repeat;}
+.User_ratings .ratings_bars .scale span{width:10px;height:26px;position:absolute;left:-2px;top:-7px;cursor:pointer;background:url(../../../assets/img/j.png) no-repeat;}
+
