@@ -41,6 +41,7 @@ export class EditingAreaItemComponent implements OnInit {
     if (e.isEdit) {
       e.isShowEditorTool = true;
     }
+    return false;
   }
   onItemBlur(e: any) {
     this.getCursortPosition();

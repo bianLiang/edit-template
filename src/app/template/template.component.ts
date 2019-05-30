@@ -75,7 +75,7 @@ export class TemplateComponent implements OnInit {
             // 'border-radius': '5px'
 
           },
-          isEdit: true,
+          isEdit: false,
           url: '../../../assets/img/bglogin.png',
           href: 'http://www.baidu.com',
 
