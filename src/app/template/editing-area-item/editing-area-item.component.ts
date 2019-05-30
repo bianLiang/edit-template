@@ -28,13 +28,17 @@ export class EditingAreaItemComponent implements OnInit {
   }
   // 获得焦点，设置插入标志位
   onBoxBlur(e: any) {
-    console.log(e);
+    // console.log(e);
     this.editingAreaItemService.boxDom = e;
     this.editingAreaItemService.insertIndex = e.index;
   }
   onItemFocus(e: any) {
+    // console.log(e);
+    this.editingAreaItemService.elem = document.getElementById(e.id);
+    this.editingAreaItemService.type = e.type;
+    this.editingAreaItemService.imgUrl = e.url;
+    this.editingAreaItemService.itemDom = e;
     if (e.isEdit) {
-      this.editingAreaItemService.itemDom = e;
       e.isShowEditorTool = true;
     }
   }
@@ -42,10 +46,9 @@ export class EditingAreaItemComponent implements OnInit {
     this.getCursortPosition();
     setTimeout( () => {
       e.isShowEditorTool = false;
-    }, 500);
+    }, 200);
   }
   clickBtns(e: any) {
-    console.log(e);
     this.setCaretPosition();
   }
   // 获得光标信息

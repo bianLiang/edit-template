@@ -23,14 +23,16 @@ export class TemplateComponent implements OnInit {
       children: [
         {
           type: 'txt',
+          id: 'txt0',
           style: {
             'margin': 0,
-            'line-height': '35px'
+            'line-height': '35px',
+            'outline-color': 'blue'
           },
           content: '小时不识月， 呼作白玉盘。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor']
         }
       ]
     },
@@ -40,6 +42,7 @@ export class TemplateComponent implements OnInit {
       children: [
         {
           type: 'button',
+          id: 'button1',
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
             'background': '#fff',
@@ -48,7 +51,8 @@ export class TemplateComponent implements OnInit {
             'color': 'red',
             'padding': '5px',
             'margin': '2px 0',
-            'border-radius': '5px'
+            'border-radius': '5px',
+            'outline-color': 'blue'
           },
           content: '立即点击',
           isEdit: true,
@@ -56,7 +60,52 @@ export class TemplateComponent implements OnInit {
           toolConfigure: ['bold', 'italic', 'slideLine']
         }
       ]
-    }
+    },
+    {
+      type: 'div',
+      index: 2,
+      children: [
+        {
+          type: 'img',
+          id: 'img2',
+          style: {
+            'width': '400px',
+            // 'padding': '5px',
+            // 'margin': '2px 0',
+            // 'border-radius': '5px'
+
+          },
+          isEdit: true,
+          url: '../../../assets/img/bglogin.png',
+          href: 'http://www.baidu.com',
+
+        }
+      ]
+    },
+    {
+      type: 'div',
+      index: 3,
+      style: {
+        // 'width': '100%',
+        // 'background-color': '#fff',
+        // 'text-align': 'center',
+      },
+      children: [
+        {
+          type: 'txt',
+          id: 'txt3',
+          style: {
+            'margin': 0,
+            'line-height': '35px',
+            'outline-color': 'blue'
+          },
+          content: '小时不识月， 呼作白玉盘。',
+          isEdit: true,
+          isShowEditorTool: false,
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor']
+        }
+      ]
+    },
   ];
   editBarConfigure = [
     {
@@ -80,6 +129,14 @@ export class TemplateComponent implements OnInit {
         'width': '150px',
         'height': '30px'
       }
+    },
+    {
+      name: 'fontSize',
+      isShow: true,
+      fontSizeStyle: {
+        'width': '110px',
+       },
+      maximumInterval: 30,
     }
   ];
   constructor(

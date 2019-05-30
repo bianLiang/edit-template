@@ -2,8 +2,11 @@ export class EeitingAreaItem {
   public name?: string;
   public index?: number;
   public type: string;
+  public id?: string;
   public style?: any;
   public content?: string;
+  public url?: string;
+  public href?: string;
   public toolConfigure?: any;
   public params?: any;
   public key?: string;

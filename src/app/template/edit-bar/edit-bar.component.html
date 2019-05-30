@@ -1,30 +1,119 @@
 <div style="width: 100%;padding: 5px;">
-  <div>
+  <div [ngStyle]="{'display': editingAreaItemService.type === 'txt' || editingAreaItemService.type === 'button'  ? 'block': 'none'}">
     <h4 style="text-align: center;color: #888;">文本样式</h4>
-    <div class='currency'>字体：
-      <select *ngIf="isShowTypefaces" [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
+    <div *ngIf="isShowTypefaces" class='currency'>字体：
+      <select [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
         <option *ngFor="let item of typefaces" [value]="item.code">{{item.name}}</option>
       </select>
     </div>
-    <div class='currency'>颜色：
-      <select *ngIf="isFontColor" [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
-        <option *ngFor="let item of fontColor" [value]="item">{{item}}</option>
+    <div *ngIf="isFontColor" class='currency'>颜色：
+      <select [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
+        <option *ngFor="let item of fontColor" [ngStyle]="{'background': item}" [value]="item"></option>
       </select>
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': fontBackgroundColor}"></span>
     </div>
-    <div>
-      <div class="User_ratings User_grade" >
+    <div [ngStyle]="{'display': isFontSize? 'block': 'none', 'margin': '10px 0'}">
+      <div class="User_ratings User_grade">
         <div class="ratings_bars" style="display: flex;align-items: center;">
-            大小：
-          <div class="scale" id="bar0">
+          大小：
+          <div class="scale" [ngStyle]="fontSizeStyle" id="font-size-bar">
             <div></div>
-            <span id="btn0"></span>
+            <span id="font-size-btn"></span>
           </div>
           <span style="margin-left: 5px; font-size: 13px;">{{fontSize}}</span>
-
         </div>
       </div>
+    </div>
+    <div [ngStyle]="{'display': isLineHeight ? 'block': 'none', 'margin': '10px 0'}">
+      <div class="User_ratings User_grade">
+        <div class="ratings_bars" style="display: flex;align-items: center;">
+          行距：
+          <div class="scale" [ngStyle]="fontSizeStyle" id="line-height-bar">
+            <div></div>
+            <span id="line-height-btn"></span>
+          </div>
+          <span style="margin-left: 5px; font-size: 13px;">{{lineHeight}}</span>
+        </div>
+      </div>
+    </div>
+    <div [ngStyle]="{'display': isLetterSpacing  ? 'block': 'none', 'margin': '10px 0'}">
+      <div class="User_ratings User_grade">
+        <div class="ratings_bars" style="display: flex;align-items: center;">
+          间距：
+          <div class="scale" [ngStyle]="letterSpacingStyle" id="letter-spacing-bar">
+            <div></div>
+            <span id="letter-spacing-btn"></span>
+          </div>
+          <span style="margin-left: 5px; font-size: 13px;">{{letterSpacing}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isTextStyle">样式：
+      <span>
+        <i class='fa fa-bold text-icon' (click)="changeTextStyle('font-weight')" title="加粗"></i>
+        <i class='fa fa-italic text-icon' (click)="changeTextStyle('font-style')" title="斜体"></i>
+      </span>
+      <span style="margin-left: 10px;">
+        <i class='fa fa-align-left text-icon' (click)="changeTextStyle('left')" title="居左"></i>
+        <i class='fa fa-align-center text-icon' (click)="changeTextStyle('center')" title="居中"></i>
+        <i class='fa fa-align-right text-icon' (click)="changeTextStyle('right')" title="居右"></i>
+        <i class='fa fa-align-justify text-icon' (click)="changeTextStyle('justify')" title="平铺"></i>
+      </span>
+    </div>
+    <div *ngIf="isBackgroundColor" class='currency'>背景：
+      <select [ngStyle]='backgroundColorStyle' (change)="setBackgroundColorStyle($event.target.value)">
+        <option *ngFor="let item of backgroundColorList" [ngStyle]="{'background': item}" [value]="item"></option>
+      </select>
+      <span
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': backgroundColor}"></span>
+    </div>
+    <div *ngIf="isBorder">边框：
+      <select [ngStyle]='borderStyle' (change)="setBorderStyle($event.target.value)">
+        <option *ngFor="let item of borderStyleList" [value]="item.value">{{item.text}}</option>
+      </select>
+    </div>
+    <div [ngStyle]="{'display': isBorder  ? 'block': 'none', 'margin': '10px 0 0 45px'}">
+      <div class="User_ratings User_grade">
+        <div class="ratings_bars" style="display: flex;align-items: center;">
+          <div class="scale" [ngStyle]="borderLineStyle" id="border-line-bar">
+            <div></div>
+            <span id="border-line-btn"></span>
+          </div>
+          <span style="margin-left: 5px; font-size: 13px;">{{borderLine}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isBorder" class='currency'>
+      <select [ngStyle]='borderColorStyle' (change)="setborderColorStyle($event.target.value)">
+        <option *ngFor="let item of borderColorList" [ngStyle]="{'background': item}" [value]="item"></option>
+      </select>
+      <span
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': borderColor}"></span>
+    </div>
+  </div>
+  <div [ngStyle]="{'display': editingAreaItemService.type === 'img'  ? 'block': 'none'}">
+    <h4 style="text-align: center;color: #888;">图片</h4>
+    <div style="position: relative;border-bottom: 1px solid #111;width: 394px;display: flex;">
+      <div>
+        <img [ngStyle]="{'background-image':'url(' + editingAreaItemService.imgUrl + ')', 'width': '105px', 'height': '80px', 'background-repeat': 'no-repeat', 'background-size': 'cover'}" alt="">
+      </div>
+      <div>
+        <a href="javascript:;" class="file">选择图片
+            <input type="file" (change)="onChangePicture($event.target)">
+          </a>
+        <input type="text" style="margin-left: 10px;
+        height: 25px;
+        width: 230px;
+        border-radius: 5px;
+        padding: 0 5px;
+        outline: none;
+        border: none;" placeholder="请以http://或者https://开头"
+        (change)="onChangeUrl($event.target.value)">
+      </div>
+    </div>
+    <div>
+      <p>建议尺寸：宽400px</p>
     </div>
   </div>
 </div>

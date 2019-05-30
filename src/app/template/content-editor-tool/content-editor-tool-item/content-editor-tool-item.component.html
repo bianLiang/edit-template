@@ -1,3 +1,26 @@
-<button *ngIf="toolItem === 'bold'" (click)='bold()' class='btn btn-info btn-info-chara'><i class="fa fa-bold" title="加粗"></i></button>
-<button *ngIf="toolItem === 'italic'" (click)='italic()' class='btn btn-info btn-info-chara'><i class="fa fa-italic" title="斜体"></i></button>
-<button *ngIf="toolItem === 'slideLine'" (click)='slideLine()' class='btn btn-info btn-info-chara'><i class="fa fa-underline" title="下划线"></i></button>
+<button *ngIf="toolItem === 'bold'" (click)='bold()' ><i class="fa fa-bold" title="加粗"></i></button>
+<button *ngIf="toolItem === 'italic'" (click)='italic()' ><i class="fa fa-italic" title="斜体"></i></button>
+<button *ngIf="toolItem === 'slideLine'" (click)='slideLine()' ><i class="fa fa-underline" title="下划线"></i></button>
+<button *ngIf="toolItem === 'link'" (click)='addLink()' ><i class="fa fa-chain" title="超链接"></i></button>
+<button *ngIf="toolItem === 'unlink'" (click)='removeHyperlinks()' ><i class="fa fa-chain-broken" title="取消超链接"></i></button>
+<button *ngIf="toolItem === 'fontColor'" (mouseenter)="isFontColorDiv = true;">
+  <i class="fa fa-paint-brush" style="position: relative;" >
+    <div *ngIf="isFontColorDiv" style="position: absolute;
+    bottom: 23px;
+    left: -8px;
+    width: 152px;
+    background: #fff;
+    text-align: left;">
+      <button *ngFor="let item of fontColor" [ngStyle]="{'background': item}" style=" display: inline-block;
+      height: 15px;
+      border: none;
+      padding: 0;
+      width: 15px;" (click)="setfontColor(item)"></button>
+    </div>
+  </i>
+</button>
+<!-- <select *ngIf="toolItem === 'fontColor'" style="width: 50px;height: 30px;" (change)="setfontColor($event.target.value)">
+  <option *ngFor="let item of fontColor" [ngStyle]="{'background': item}" [value]="item"></option>
+</select> -->
+
+

@@ -7,6 +7,9 @@ export class EditingAreaItemService {
 boxDom: any;
 itemDom: any;
 insertIndex: number;
+type = 'txt';
+imgUrl: any;
+elem: any;
 constructor() { }
 
 }
