@@ -10,6 +10,7 @@ insertIndex: number;
 type = 'txt';
 imgUrl: any;
 elem: any;
+divDom = document.getElementById('editing-area');
 constructor() { }
 
 }

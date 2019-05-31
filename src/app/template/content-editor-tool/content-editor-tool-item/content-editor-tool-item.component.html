@@ -3,9 +3,9 @@
 <button *ngIf="toolItem === 'slideLine'" (click)='slideLine()' ><i class="fa fa-underline" title="下划线"></i></button>
 <button *ngIf="toolItem === 'link'" (click)='addLink()' ><i class="fa fa-chain" title="超链接"></i></button>
 <button *ngIf="toolItem === 'unlink'" (click)='removeHyperlinks()' ><i class="fa fa-chain-broken" title="取消超链接"></i></button>
-<button *ngIf="toolItem === 'fontColor'" (mouseenter)="isFontColorDiv = true;">
-  <i class="fa fa-paint-brush" style="position: relative;" >
-    <div *ngIf="isFontColorDiv" style="position: absolute;
+<button *ngIf="toolItem === 'fontColor'"  title='字体颜色'>
+  <i (click)="showIsFontColorDiv($event)" class="fa fa-paint-brush" style="position: relative;" >
+    <div  *ngIf="contentEditorToolItemService.isFontColorDiv" style="position: absolute;
     bottom: 23px;
     left: -8px;
     width: 152px;
@@ -15,12 +15,43 @@
       height: 15px;
       border: none;
       padding: 0;
-      width: 15px;" (click)="setfontColor(item)"></button>
+      width: 15px;" (click)="setfontColor(item, $event)"></button>
     </div>
   </i>
 </button>
-<!-- <select *ngIf="toolItem === 'fontColor'" style="width: 50px;height: 30px;" (change)="setfontColor($event.target.value)">
-  <option *ngFor="let item of fontColor" [ngStyle]="{'background': item}" [value]="item"></option>
-</select> -->
+<button *ngIf="toolItem === 'backgroundColor'" (click)="showIsBackgroundColorDiv($event)" title='背景颜色'>
+  <i class="fa fa-pencil-square" style="position: relative;" >
+    <div *ngIf="contentEditorToolItemService.isBackgroundColorDiv" style="position: absolute;
+    bottom: 23px;
+    left: -8px;
+    width: 152px;
+    background: #fff;
+    text-align: left;">
+      <button *ngFor="let item of fontColor" [ngStyle]="{'background': item}" style=" display: inline-block;
+      height: 15px;
+      border: none;
+      padding: 0;
+      width: 15px;" (click)="setBackgroundColor(item, $event)"></button>
+    </div>
+  </i>
+</button>
+<button *ngIf="toolItem === 'fontSize'" (click)="showIsFontSizeDiv($event)" title='字号'>
+  <i class="fa fa-font" style="position: relative;" >
+    <div *ngIf="contentEditorToolItemService.isFontSizeDiv" style="position: absolute;
+    bottom: 23px;
+    left: -8px;
+    width: 152px;
+    background: #fff;
+    text-align: center;">
+      <p style="font-size: 10px;margin: 10px 0;" (click)="setFontSize('1', $event)">字体大小</p>
+      <p style="font-size: 11px;margin: 10px 0;" (click)="setFontSize('2', $event)">字体大小</p>
+      <p style="font-size: 12px;margin: 10px 0;" (click)="setFontSize('3', $event)">字体大小</p>
+      <p style="font-size: 14px;margin: 10px 0;" (click)="setFontSize('4', $event)">字体大小</p>
+      <p style="font-size: 16px;margin: 10px 0;" (click)="setFontSize('5', $event)">字体大小</p>
+      <p style="font-size: 24px;margin: 10px 0;" (click)="setFontSize('6', $event)">字体大小</p>
+      <p style="font-size: 30px;margin: 10px 0;" (click)="setFontSize('7', $event)">字体大小</p>
+    </div>
+  </i>
+</button>
 
 

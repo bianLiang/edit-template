@@ -9,7 +9,6 @@ import { typefaces, fontColor } from './edit-bar-data';
 export class EditBarComponent implements OnInit {
   @Input()
   set editBarConfigure(value: any) {
-    console.log(value);
     if (value) {
       this.setValue(value);
     }

@@ -1,5 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EeitingAreaItem } from './eiting-area-item.model';
 import { EditingAreaItemService } from './editing-area-item.service';
 
@@ -18,6 +18,8 @@ export class EditingAreaItemComponent implements OnInit {
     //   console.log(this.editingAreaItemService.dom);
     // }
   }
+  @Output() public selectEditItem: EventEmitter<any> = new EventEmitter();
+  @Output() public selectEditAreaBoxItem: EventEmitter<any> = new EventEmitter();
   savedRange: any;
 
   constructor(
@@ -25,6 +27,7 @@ export class EditingAreaItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
   // 获得焦点，设置插入标志位
   onBoxBlur(e: any) {
@@ -33,29 +36,32 @@ export class EditingAreaItemComponent implements OnInit {
     this.editingAreaItemService.insertIndex = e.index;
   }
   onItemFocus(e: any) {
-    // console.log(e);
     this.editingAreaItemService.elem = document.getElementById(e.id);
     this.editingAreaItemService.type = e.type;
     this.editingAreaItemService.imgUrl = e.url;
     this.editingAreaItemService.itemDom = e;
+    this.selectEditItem.emit(true);
     if (e.isEdit) {
       e.isShowEditorTool = true;
     }
     return false;
   }
+  selectEditBoxItem(value: any) {
+    this.selectEditAreaBoxItem.emit(value);
+  }
   onItemBlur(e: any) {
-    this.getCursortPosition();
-    setTimeout( () => {
-      e.isShowEditorTool = false;
-    }, 200);
+    // this.getCursortPosition();
+    // setTimeout( () => {
+    //   e.isShowEditorTool = false;
+    // }, 200);
   }
   clickBtns(e: any) {
-    this.setCaretPosition();
+    // this.setCaretPosition();
   }
   // 获得光标信息
   getCursortPosition() {
     if (window.getSelection) {
-        this.savedRange = window.getSelection().getRangeAt(0);
+      this.savedRange = window.getSelection().getRangeAt(0);
     }
   }
   // 设置光标

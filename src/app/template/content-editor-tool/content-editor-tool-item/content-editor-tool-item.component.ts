@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { typefaces, fontColor } from '../../edit-bar/edit-bar-data';
+import { ContentEditorToolItemService } from './content-editor-tool-item.service';
 @Component({
   selector: 'bl-content-editor-tool-item',
   templateUrl: './content-editor-tool-item.component.html',
@@ -10,7 +11,11 @@ export class ContentEditorToolItemComponent implements OnInit {
   @Output() public clickBtn: EventEmitter<any> = new EventEmitter();
   fontColor =  fontColor;
   isFontColorDiv = false;
-  constructor() { }
+  isBackgroundColorDiv = false;
+  isFontSizeDiv = false;
+  constructor(
+    public contentEditorToolItemService: ContentEditorToolItemService
+  ) { }
 
   ngOnInit() {
   }
@@ -45,7 +50,11 @@ export class ContentEditorToolItemComponent implements OnInit {
           sText.anchorNode.parentElement.title = linkURL;
           sText.anchorNode.parentElement['target'] = '_blank';
         } else {
-          alert('请输入http或https开头的链接');
+          if (linkURL) {
+            alert('请输入http或https开头的链接');
+          } else {
+            return false;
+          }
         }
       }
     } else {
@@ -58,7 +67,11 @@ export class ContentEditorToolItemComponent implements OnInit {
         sText.anchorNode.parentElement.title = linkURL;
         sText.anchorNode.parentElement['target'] = '_blank';
       } else {
-        alert('请输入http或https开头的链接');
+        if (linkURL) {
+          alert('请输入http或https开头的链接');
+        } else {
+          return false;
+        }
       }
     }
   }
@@ -70,9 +83,35 @@ export class ContentEditorToolItemComponent implements OnInit {
       alert('请选择解除超链接的位置');
     }
   }
-  setfontColor(color: string) {
+  setfontColor(color: string, event: any) {
+    event.stopPropagation();
     document.execCommand('ForeColor', true, color);
-    this.isFontColorDiv = false;
+    this.contentEditorToolItemService.isFontColorDiv = false;
+  }
+  setBackgroundColor(color: string, event: any) {
+    event.stopPropagation();
+    document.execCommand('backColor', true, color);
+    this.contentEditorToolItemService.isBackgroundColorDiv = false;
+  }
+  setFontSize(value: string, event: any) {
+    event.stopPropagation();
+    document.execCommand('FontSize', false, value);
+    this.contentEditorToolItemService.isFontSizeDiv = false;
+  }
+  showIsFontColorDiv(event: any) {
+    this.contentEditorToolItemService.isBackgroundColorDiv = false;
+    this.contentEditorToolItemService.isFontSizeDiv = false;
+    this.contentEditorToolItemService.isFontColorDiv = true;
+  }
+  showIsBackgroundColorDiv(event: any) {
+    this.contentEditorToolItemService.isBackgroundColorDiv = true;
+    this.contentEditorToolItemService.isFontColorDiv = false;
+    this.contentEditorToolItemService.isFontSizeDiv = false;
+  }
+  showIsFontSizeDiv(event: any) {
+    this.contentEditorToolItemService.isFontSizeDiv = true;
+    this.contentEditorToolItemService.isBackgroundColorDiv = false;
+    this.contentEditorToolItemService.isFontColorDiv = false;
   }
 
 }

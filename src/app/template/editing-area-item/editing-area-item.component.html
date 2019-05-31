@@ -1,7 +1,7 @@
 <div #boxTemplate *ngIf="item.type === 'div'"
      [ngStyle]='item.style' >
     <bl-editing-area-item *ngFor="let childItem of item.children;let _index=index;"
-                       [item]="childItem" (click)='onBoxBlur(item)'>
+                       [item]="childItem" (click)='onBoxBlur(item)' (selectEditItem)="selectEditBoxItem($event)">
     </bl-editing-area-item>
 </div>
 <div class="box" *ngIf="item.type ==='txt'">
@@ -9,11 +9,11 @@
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure" (clickBtns)="clickBtns($event)"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'button'">
-  <button attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item)" (blur)="onItemBlur(item)"></button>
+  <button [id]='item.id' attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item)" (blur)="onItemBlur(item)"></button>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure" (clickBtns)="clickBtns($event)"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'img'">
-  <a  (click)="onItemFocus(item)" attr.contenteditable='{{item.isEdit}}' style="outline-color: blue;" [href]="item.href" target="_blank">
-    <img [src]="item.url"  [ngStyle]="item.style"  alt="">
+  <a  (click)="onItemFocus(item)" attr.contenteditable='{{item.isEdit}}'  [href]="item.href" target="_blank">
+    <img [id]='item.id' [src]="item.url" contenteditable style="outline-color: blue;" [ngStyle]="item.style"  alt="">
   </a>
 </div>

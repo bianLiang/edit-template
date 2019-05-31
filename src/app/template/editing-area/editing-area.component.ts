@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EeitingAreaItem } from '../editing-area-item/eiting-area-item.model';
 
 
@@ -10,10 +10,14 @@ import { EeitingAreaItem } from '../editing-area-item/eiting-area-item.model';
 export class EditingAreaComponent implements OnInit {
   @Input() public items: EeitingAreaItem[];
   @Input() public insertDataTmp: any;
+  @Output() public selectItem: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+  selectEditAreaBoxItem(value: any) {
+    this.selectItem.emit(value);
   }
 
 }

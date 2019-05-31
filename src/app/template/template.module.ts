@@ -8,6 +8,7 @@ import { EditingAreaItemComponent } from './editing-area-item/editing-area-item.
 import { ContentEditorToolComponent } from './content-editor-tool/content-editor-tool.component';
 import { ContentEditorToolItemComponent } from './content-editor-tool/content-editor-tool-item/content-editor-tool-item.component';
 import { EditingAreaItemService } from './editing-area-item/editing-area-item.service';
+import { ContentEditorToolItemService } from './content-editor-tool/content-editor-tool-item/content-editor-tool-item.service';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { EditingAreaItemService } from './editing-area-item/editing-area-item.se
     ContentEditorToolItemComponent,
   ],
   providers: [
-    EditingAreaItemService
+    EditingAreaItemService,
+    ContentEditorToolItemService
   ]
 })
 export class TemplateModule { }

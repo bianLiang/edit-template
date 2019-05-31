@@ -11,6 +11,7 @@ import { EditingAreaItemService } from './editing-area-item/editing-area-item.se
 export class TemplateComponent implements OnInit {
   insertDataTmp: any;
   base = 0;
+  fn: any;
   items: EeitingAreaItem[] = [
     {
       type: 'div',
@@ -32,7 +33,7 @@ export class TemplateComponent implements OnInit {
           content: '小时不识月， 呼作白玉盘。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize']
         }
       ]
     },
@@ -57,7 +58,7 @@ export class TemplateComponent implements OnInit {
           content: '立即点击',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'fontColor', 'backgroundColor', 'fontSize']
         }
       ]
     },
@@ -102,7 +103,7 @@ export class TemplateComponent implements OnInit {
           content: '小时不识月， 呼作白玉盘。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize']
         }
       ]
     },
@@ -145,7 +146,35 @@ export class TemplateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initialCyclel(this.items);
+    const that = this;
+    that.initialCyclel(that.items);
+    // that.fn = (event: any) => {
+    //   const div = document.getElementById('editing-area');
+    //   const e = event || window.event;
+    //   const y1 = div.offsetTop;
+    //   const y2 = y1 + div.offsetHeight;
+    //   const x1 = div.offsetLeft;
+    //   const x2 = x1 + div.offsetWidth;
+    //   const x = e.clientX;
+    //   const y = e.clientY;
+    //   if ( x < x1 || x > x2 || y < y1 || y > y2) {
+    //     that.sortIsShowEditorTool(that.items);
+    //   }
+    // };
+    // document.addEventListener('click', that.fn, true);
+
+    // document.addEventListener('click', (event: any) => {
+    //   const e = event || window.event;
+    //   const y1 = div.offsetTop;
+    //   const y2 = y1 + div.offsetHeight;
+    //   const x1 = div.offsetLeft;
+    //   const x2 = x1 + div.offsetWidth;
+    //   const x = e.clientX;
+    //   const y = e.clientY;
+    //   if ( x < x1 || x > x2 || y < y1 || y > y2) {
+    //     that.sortIsShowEditorTool(that.items);
+    //   }
+    // }, false);
   }
   trustHtml(str: string) {
     return this.sanitizer.bypassSecurityTrustHtml(str);
@@ -178,30 +207,46 @@ export class TemplateComponent implements OnInit {
             obj[i][key] = that.base;
             that.base++;
           }
+          if (key === 'id') {
+            obj[i][key] = that.base;
+          }
         }
       }
     }
   }
   selectTmp(dataTmp: any) {
-    this.base = 0;
-    console.log(this.editingAreaItemService.insertIndex);
-    if (this.editingAreaItemService.insertIndex !== undefined) {
-      const index = this.editingAreaItemService.insertIndex;
+    const that = this;
+    that.base = 0;
+    if (that.editingAreaItemService.insertIndex !== undefined) {
+      const index = that.editingAreaItemService.insertIndex;
       const htmlData = dataTmp;
-      this.initialCyclel(htmlData);
-      this.items.splice(index + 1, 0, htmlData);
-      this.editingAreaItemService.insertIndex = null;
-      this.sortIndex(this.items);
-      console.log(this.items);
+      that.initialCyclel(htmlData);
+      that.items.splice(index + 1, 0, htmlData);
+      that.editingAreaItemService.insertIndex = null;
+      that.sortIndex(that.items);
     } else {
       alert('请选择插入位置');
     }
+  }
+  sortIsShowEditorTool(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.sortIsShowEditorTool(obj[i][key]);
+        } else {
 
-    // if (window.getSelection().toString() === '') {
-    //
-    // } else {
-    //   this.insertDataTmp = dataTmp;
-    // }
+          if (key === 'isShowEditorTool') {
+            obj[i][key] = false;
+          }
+        }
+      }
+    }
+  }
+  selectItem(value: any) {
+    const that = this;
+    this.sortIsShowEditorTool(this.items);
   }
 
 }
