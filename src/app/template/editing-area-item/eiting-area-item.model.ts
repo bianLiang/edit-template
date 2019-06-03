@@ -5,6 +5,7 @@ export class EeitingAreaItem {
   public id?: string;
   public style?: any;
   public content?: string;
+  public imgSize?: string;
   public url?: string;
   public href?: string;
   public toolConfigure?: any;

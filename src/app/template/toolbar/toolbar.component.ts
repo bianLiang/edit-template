@@ -27,7 +27,7 @@ export class ToolbarComponent implements OnInit {
           content: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'delete']
         }
       ]
     };
@@ -50,7 +50,7 @@ export class ToolbarComponent implements OnInit {
           content: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'delete']
         }
       ]
     };
@@ -72,6 +72,8 @@ export class ToolbarComponent implements OnInit {
 
           },
           isEdit: false,
+          isShowEditorTool: false,
+          toolConfigure: ['delete'],
           url: '../../../assets/img/bglogin.png',
           href: 'http://www.baidu.com',
 
@@ -93,23 +95,28 @@ export class ToolbarComponent implements OnInit {
           type: 'img',
           id: 'img',
           style: {
-            'width': '400px',
+            'width': '250px',
           },
-          isEdit: false,
+          isEdit: true,
+          isShowEditorTool: false,
+          toolConfigure: ['delete'],
           url: '../../../assets/img/bglogin.png',
           href: 'http://www.baidu.com',
+          imgSize: '200px'
 
         },
         {
           type: 'img',
           id: 'img',
           style: {
-            'width': '400px',
+            'width': '250px',
           },
-          isEdit: false,
+          isEdit: true,
+          isShowEditorTool: false,
+          toolConfigure: ['delete'],
           url: '../../../assets/img/login1.png',
           href: 'http://www.baidu.com',
-
+          imgSize: '200px'
         },
       ]
     };

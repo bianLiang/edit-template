@@ -9,6 +9,7 @@ import { ContentEditorToolItemService } from './content-editor-tool-item.service
 export class ContentEditorToolItemComponent implements OnInit {
   @Input() public toolItem: any;
   @Output() public clickBtn: EventEmitter<any> = new EventEmitter();
+  @Output() public deleteTem: EventEmitter<any> = new EventEmitter();
   fontColor =  fontColor;
   isFontColorDiv = false;
   isBackgroundColorDiv = false;
@@ -112,6 +113,9 @@ export class ContentEditorToolItemComponent implements OnInit {
     this.contentEditorToolItemService.isFontSizeDiv = true;
     this.contentEditorToolItemService.isBackgroundColorDiv = false;
     this.contentEditorToolItemService.isFontColorDiv = false;
+  }
+  delete() {
+    this.deleteTem.emit();
   }
 
 }

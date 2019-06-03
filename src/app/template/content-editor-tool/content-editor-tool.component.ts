@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ContentEditorToolComponent implements OnInit {
   @Input() public toolConfigure: any;
   @Output() public clickBtns: EventEmitter<any> = new EventEmitter();
+  @Output() public deleteTems: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -15,5 +16,8 @@ export class ContentEditorToolComponent implements OnInit {
   }
   clickBtn(e: any) {
     this.clickBtns.emit(e);
+  }
+  deleteTem() {
+    this.deleteTems.emit();
   }
 }

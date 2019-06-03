@@ -20,6 +20,8 @@ export class EditingAreaItemComponent implements OnInit {
   }
   @Output() public selectEditItem: EventEmitter<any> = new EventEmitter();
   @Output() public selectEditAreaBoxItem: EventEmitter<any> = new EventEmitter();
+  @Output() public deleteTem: EventEmitter<any> = new EventEmitter();
+  @Output() public deleteTemp: EventEmitter<any> = new EventEmitter();
   savedRange: any;
 
   constructor(
@@ -36,15 +38,20 @@ export class EditingAreaItemComponent implements OnInit {
     this.editingAreaItemService.insertIndex = e.index;
   }
   onItemFocus(e: any) {
+    // console.log(e);
     this.editingAreaItemService.elem = document.getElementById(e.id);
     this.editingAreaItemService.type = e.type;
     this.editingAreaItemService.imgUrl = e.url;
+    this.editingAreaItemService.imgSize = e.imgSize;
     this.editingAreaItemService.itemDom = e;
     this.selectEditItem.emit(true);
+    // e.isShowEditorTool = true;
     if (e.isEdit) {
       e.isShowEditorTool = true;
+      return false;
+    } else {
+      return true;
     }
-    return false;
   }
   selectEditBoxItem(value: any) {
     this.selectEditAreaBoxItem.emit(value);
@@ -57,6 +64,12 @@ export class EditingAreaItemComponent implements OnInit {
   }
   clickBtns(e: any) {
     // this.setCaretPosition();
+  }
+  deleteTems() {
+    this.deleteTem.emit();
+  }
+  deleteTemps() {
+    this.deleteTemp.emit();
   }
   // 获得光标信息
   getCursortPosition() {

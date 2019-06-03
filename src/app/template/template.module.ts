@@ -31,7 +31,7 @@ import { ContentEditorToolItemService } from './content-editor-tool/content-edit
     EditBarComponent,
     EditingAreaItemComponent,
     ContentEditorToolComponent,
-    ContentEditorToolItemComponent,
+    ContentEditorToolItemComponent
   ],
   providers: [
     EditingAreaItemService,

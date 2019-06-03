@@ -108,12 +108,12 @@
         border-radius: 5px;
         padding: 0 5px;
         outline: none;
-        border: none;" placeholder="请以http://或者https://开头"
+        border: 1px solid #ccc;" placeholder="请以http://或者https://开头"
         (change)="onChangeUrl($event.target.value)">
       </div>
     </div>
     <div>
-      <p>建议尺寸：宽400px</p>
+      <p>建议尺寸：宽{{editingAreaItemService.imgSize}}</p>
     </div>
   </div>
 </div>

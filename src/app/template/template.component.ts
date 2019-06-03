@@ -28,12 +28,13 @@ export class TemplateComponent implements OnInit {
           style: {
             'margin': 0,
             'line-height': '35px',
-            'outline-color': 'blue'
+            'outline-color': 'blue',
+            'font-weight': 400
           },
-          content: '小时不识月， 呼作白玉盘。',
+          content: '小时不识月，呼作白玉盘。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'delete']
         }
       ]
     },
@@ -58,7 +59,7 @@ export class TemplateComponent implements OnInit {
           content: '立即点击',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'fontColor', 'backgroundColor', 'fontSize']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'fontColor', 'backgroundColor', 'fontSize', 'delete']
         }
       ]
     },
@@ -71,14 +72,15 @@ export class TemplateComponent implements OnInit {
           id: 'img2',
           style: {
             'width': '400px',
-            // 'padding': '5px',
-            // 'margin': '2px 0',
-            // 'border-radius': '5px'
+            'outline-color': 'blue'
 
           },
-          isEdit: false,
+          isEdit: true,
+          isShowEditorTool: false,
+          toolConfigure: ['delete'],
           url: '../../../assets/img/bglogin.png',
           href: 'http://www.baidu.com',
+          imgSize: '400px'
 
         }
       ]
@@ -98,12 +100,13 @@ export class TemplateComponent implements OnInit {
           style: {
             'margin': 0,
             'line-height': '35px',
-            'outline-color': 'blue'
+            'outline-color': 'blue',
+            'font-weight': 400
           },
           content: '小时不识月， 呼作白玉盘。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'delete']
         }
       ]
     },
@@ -228,6 +231,13 @@ export class TemplateComponent implements OnInit {
       alert('请选择插入位置');
     }
   }
+  deleteTemps() {
+    this.base = 0;
+    const index = this.editingAreaItemService.insertIndex;
+    this.items.splice(index, 1);
+    this.editingAreaItemService.insertIndex = null;
+    this.sortIndex(this.items);
+  }
   sortIsShowEditorTool(obj: any) {
     const that = this;
     // tslint:disable-next-line:prefer-for-of
@@ -245,7 +255,6 @@ export class TemplateComponent implements OnInit {
     }
   }
   selectItem(value: any) {
-    const that = this;
     this.sortIsShowEditorTool(this.items);
   }
 
