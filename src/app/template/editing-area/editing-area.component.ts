@@ -12,6 +12,7 @@ export class EditingAreaComponent implements OnInit {
   @Input() public insertDataTmp: any;
   @Output() public selectItem: EventEmitter<any> = new EventEmitter();
   @Output() public deleteTemps: EventEmitter<any> = new EventEmitter();
+  @Output() public setContent: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -22,5 +23,8 @@ export class EditingAreaComponent implements OnInit {
   }
   deleteTemp() {
     this.deleteTemps.emit();
+  }
+  setContentTmp(content: any) {
+    this.setContent.emit(content);
   }
 }

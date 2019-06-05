@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { EeitingAreaItem } from './editing-area-item/eiting-area-item.model';
 import { EditingAreaItemService } from './editing-area-item/editing-area-item.service';
 
@@ -11,105 +10,107 @@ import { EditingAreaItemService } from './editing-area-item/editing-area-item.se
 export class TemplateComponent implements OnInit {
   insertDataTmp: any;
   base = 0;
+  idBase = 0;
   fn: any;
   items: EeitingAreaItem[] = [
-    {
-      type: 'div',
-      index: 0,
-      style: {
-        // 'width': '100%',
-        // 'background-color': '#fff',
-        // 'text-align': 'center',
-      },
-      children: [
-        {
-          type: 'txt',
-          id: 'txt0',
-          style: {
-            'margin': 0,
-            'line-height': '35px',
-            'outline-color': 'blue',
-            'font-weight': 400
-          },
-          content: '小时不识月，呼作白玉盘。',
-          isEdit: true,
-          isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'delete']
-        }
-      ]
-    },
-    {
-      type: 'div',
-      index: 1,
-      children: [
-        {
-          type: 'button',
-          id: 'button1',
-          style: {
-            // tslint:disable-next-line:object-literal-key-quotes
-            'background': '#fff',
-            // tslint:disable-next-line:object-literal-key-quotes
-            'border': '1px solid #ccc',
-            'color': 'red',
-            'padding': '5px',
-            'margin': '2px 0',
-            'border-radius': '5px',
-            'outline-color': 'blue'
-          },
-          content: '立即点击',
-          isEdit: true,
-          isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'fontColor', 'backgroundColor', 'fontSize', 'delete']
-        }
-      ]
-    },
-    {
-      type: 'div',
-      index: 2,
-      children: [
-        {
-          type: 'img',
-          id: 'img2',
-          style: {
-            'width': '400px',
-            'outline-color': 'blue'
+    // {
+    //   type: 'div',
+    //   index: 0,
+    //   style: {
+    //     // 'width': '100%',
+    //     // 'background-color': '#fff',
+    //     // 'text-align': 'center',
+    //   },
+    //   children: [
+    //     {
+    //       type: 'txt',
+    //       id: 'txt0',
+    //       style: {
+    //         'margin': 0,
+    //         'color': 'blue',
+    //         'line-height': '35px',
+    //         'outline-color': 'blue',
+    //         'font-weight': 400
+    //       },
+    //       content: '小时不识月，呼作白玉盘。',
+    //       isEdit: true,
+    //       isShowEditorTool: false,
+    //       toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'delete']
+    //     }
+    //   ]
+    // },
+    // {
+    //   type: 'div',
+    //   index: 1,
+    //   children: [
+    //     {
+    //       type: 'button',
+    //       id: 'button1',
+    //       style: {
+    //         // tslint:disable-next-line:object-literal-key-quotes
+    //         'background': '#fff',
+    //         // tslint:disable-next-line:object-literal-key-quotes
+    //         'border': '1px solid #ccc',
+    //         'color': 'red',
+    //         'padding': '5px',
+    //         'margin': '2px 0',
+    //         'border-radius': '5px',
+    //         'outline-color': 'blue'
+    //       },
+    //       content: '立即点击',
+    //       isEdit: true,
+    //       isShowEditorTool: false,
+    //       toolConfigure: ['bold', 'italic', 'slideLine', 'fontColor', 'backgroundColor', 'fontSize', 'delete']
+    //     }
+    //   ]
+    // },
+    // {
+    //   type: 'div',
+    //   index: 2,
+    //   children: [
+    //     {
+    //       type: 'img',
+    //       id: 'img2',
+    //       style: {
+    //         'width': '400px',
+    //         'outline-color': 'blue'
 
-          },
-          isEdit: true,
-          isShowEditorTool: false,
-          toolConfigure: ['delete'],
-          url: '../../../assets/img/bglogin.png',
-          href: 'http://www.baidu.com',
-          imgSize: '400px'
+    //       },
+    //       isEdit: true,
+    //       isShowEditorTool: false,
+    //       toolConfigure: ['delete'],
+    //       url: '../../../assets/img/bglogin.png',
+    //       href: 'http://www.baidu.com',
+    //       imgSize: '400px'
 
-        }
-      ]
-    },
-    {
-      type: 'div',
-      index: 3,
-      style: {
-        // 'width': '100%',
-        // 'background-color': '#fff',
-        // 'text-align': 'center',
-      },
-      children: [
-        {
-          type: 'txt',
-          id: 'txt3',
-          style: {
-            'margin': 0,
-            'line-height': '35px',
-            'outline-color': 'blue',
-            'font-weight': 400
-          },
-          content: '小时不识月， 呼作白玉盘。',
-          isEdit: true,
-          isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'delete']
-        }
-      ]
-    },
+    //     }
+    //   ]
+    // },
+    // {
+    //   type: 'div',
+    //   index: 3,
+    //   style: {
+    //     // 'width': '100%',
+    //     // 'background-color': '#fff',
+    //     // 'text-align': 'center',
+    //   },
+    //   children: [
+    //     {
+    //       type: 'txt',
+    //       id: 'txt3',
+    //       style: {
+    //         'margin': 0,
+    //         'line-height': '35px',
+    //         'outline-color': 'blue',
+    //         'font-weight': 400
+    //       },
+    //       content: '小时不识月， 呼作白玉盘。',
+    //       isEdit: true,
+    //       isShowEditorTool: false,
+    //       toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'delete']
+    //     }
+    //   ]
+    // },
   ];
   editBarConfigure = [
     {
@@ -144,13 +145,15 @@ export class TemplateComponent implements OnInit {
     }
   ];
   constructor(
-    private sanitizer: DomSanitizer,
     private editingAreaItemService: EditingAreaItemService
   ) { }
 
   ngOnInit() {
     const that = this;
     that.initialCyclel(that.items);
+    that.base = 0;
+    that.idBase = 0;
+    that.sortIndex(that.items);
     // that.fn = (event: any) => {
     //   const div = document.getElementById('editing-area');
     //   const e = event || window.event;
@@ -179,9 +182,6 @@ export class TemplateComponent implements OnInit {
     //   }
     // }, false);
   }
-  trustHtml(str: string) {
-    return this.sanitizer.bypassSecurityTrustHtml(str);
-  }
   initialCyclel(obj: any) {
     const that = this;
     // tslint:disable-next-line:prefer-for-of
@@ -191,11 +191,29 @@ export class TemplateComponent implements OnInit {
           that.initialCyclel(obj[i][key]);
         } else {
           if (key === 'content') {
-            obj[i][key] = that.trustHtml(obj[i][key]);
+            obj[i][key] = that.editingAreaItemService.trustHtml(obj[i][key]);
           }
         }
       }
     }
+  }
+  initialCyclels(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.initialCyclels(obj[i][key]);
+        } else {
+          if (key === 'content') {
+            obj[i][key] = that.editingAreaItemService.transformationString(obj[i][key]);
+          }
+        }
+      }
+    }
+  }
+  save() {
+    this.initialCyclels(this.items);
   }
   sortIndex(obj: any) {
     const that = this;
@@ -211,7 +229,8 @@ export class TemplateComponent implements OnInit {
             that.base++;
           }
           if (key === 'id') {
-            obj[i][key] = that.base;
+            obj[i][key] = that.idBase;
+            that.idBase++;
           }
         }
       }
@@ -220,22 +239,20 @@ export class TemplateComponent implements OnInit {
   selectTmp(dataTmp: any) {
     const that = this;
     that.base = 0;
-    if (that.editingAreaItemService.insertIndex !== undefined) {
-      const index = that.editingAreaItemService.insertIndex;
-      const htmlData = dataTmp;
-      that.initialCyclel(htmlData);
-      that.items.splice(index + 1, 0, htmlData);
-      that.editingAreaItemService.insertIndex = null;
-      that.sortIndex(that.items);
-    } else {
-      alert('请选择插入位置');
-    }
+    that.idBase = 0;
+    const index = that.editingAreaItemService.insertIndex;
+    const htmlData = dataTmp;
+    that.initialCyclel(htmlData);
+    that.items.splice(index + 1, 0, htmlData);
+    that.editingAreaItemService.insertIndex++;
+    that.sortIndex(that.items);
   }
   deleteTemps() {
     this.base = 0;
+    this.idBase = 0;
     const index = this.editingAreaItemService.insertIndex;
     this.items.splice(index, 1);
-    this.editingAreaItemService.insertIndex = null;
+    this.editingAreaItemService.insertIndex--;
     this.sortIndex(this.items);
   }
   sortIsShowEditorTool(obj: any) {
@@ -256,6 +273,24 @@ export class TemplateComponent implements OnInit {
   }
   selectItem(value: any) {
     this.sortIsShowEditorTool(this.items);
+  }
+  setContents(obj: any, id: any, content: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.setContents(obj[i][key], id, content);
+        } else {
+          if (obj[i].id === id) {
+            obj[i].content = that.editingAreaItemService.trustHtml(content);
+          }
+        }
+      }
+    }
+  }
+  setContent(content: any) {
+    this.setContents(this.items, this.editingAreaItemService.itemDom.id, content);
   }
 
 }

@@ -9,6 +9,7 @@ export class ContentEditorToolComponent implements OnInit {
   @Input() public toolConfigure: any;
   @Output() public clickBtns: EventEmitter<any> = new EventEmitter();
   @Output() public deleteTems: EventEmitter<any> = new EventEmitter();
+  @Output() public setContents: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -19,5 +20,8 @@ export class ContentEditorToolComponent implements OnInit {
   }
   deleteTem() {
     this.deleteTems.emit();
+  }
+  setContent(content: any) {
+    this.setContents.emit(content);
   }
 }

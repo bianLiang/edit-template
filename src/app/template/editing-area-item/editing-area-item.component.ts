@@ -22,6 +22,8 @@ export class EditingAreaItemComponent implements OnInit {
   @Output() public selectEditAreaBoxItem: EventEmitter<any> = new EventEmitter();
   @Output() public deleteTem: EventEmitter<any> = new EventEmitter();
   @Output() public deleteTemp: EventEmitter<any> = new EventEmitter();
+  @Output() public setContent: EventEmitter<any> = new EventEmitter();
+  @Output() public setContentTmp: EventEmitter<any> = new EventEmitter();
   savedRange: any;
 
   constructor(
@@ -43,6 +45,7 @@ export class EditingAreaItemComponent implements OnInit {
     this.editingAreaItemService.type = e.type;
     this.editingAreaItemService.imgUrl = e.url;
     this.editingAreaItemService.imgSize = e.imgSize;
+    this.editingAreaItemService.imgHref = e.href;
     this.editingAreaItemService.itemDom = e;
     this.selectEditItem.emit(true);
     // e.isShowEditorTool = true;
@@ -70,6 +73,12 @@ export class EditingAreaItemComponent implements OnInit {
   }
   deleteTemps() {
     this.deleteTemp.emit();
+  }
+  setContents(content: any) {
+    this.setContent.emit(content);
+  }
+  setContentes(content: any) {
+    this.setContentTmp.emit(content);
   }
   // 获得光标信息
   getCursortPosition() {

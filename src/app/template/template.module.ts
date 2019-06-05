@@ -9,10 +9,11 @@ import { ContentEditorToolComponent } from './content-editor-tool/content-editor
 import { ContentEditorToolItemComponent } from './content-editor-tool/content-editor-tool-item/content-editor-tool-item.component';
 import { EditingAreaItemService } from './editing-area-item/editing-area-item.service';
 import { ContentEditorToolItemService } from './content-editor-tool/content-editor-tool-item/content-editor-tool-item.service';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     TemplateComponent,

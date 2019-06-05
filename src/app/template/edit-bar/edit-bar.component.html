@@ -11,7 +11,7 @@
         <option *ngFor="let item of fontColor" [ngStyle]="{'background': item}" [value]="item"></option>
       </select>
       <span
-        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': fontBackgroundColor}"></span>
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': fontBackgroundColor,'border': '1px solid #ccc'}"></span>
     </div>
     <div [ngStyle]="{'display': isFontSize? 'block': 'none', 'margin': '10px 0'}">
       <div class="User_ratings User_grade">
@@ -66,7 +66,7 @@
         <option *ngFor="let item of backgroundColorList" [ngStyle]="{'background': item}" [value]="item"></option>
       </select>
       <span
-        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': backgroundColor}"></span>
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': backgroundColor,'border': '1px solid #ccc'}"></span>
     </div>
     <div *ngIf="isBorder">边框：
       <select [ngStyle]='borderStyle' (change)="setBorderStyle($event.target.value)">
@@ -108,7 +108,7 @@
         border-radius: 5px;
         padding: 0 5px;
         outline: none;
-        border: 1px solid #ccc;" placeholder="请以http://或者https://开头"
+        border: 1px solid #ccc;" [(ngModel)]="editingAreaItemService.imgHref" placeholder="请以http://或者https://开头"
         (change)="onChangeUrl($event.target.value)">
       </div>
     </div>

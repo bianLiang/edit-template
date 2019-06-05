@@ -18,6 +18,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'txt',
+          id: 'txt',
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
             'color': 'red',
@@ -40,6 +41,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'txt',
+          id: 'txt',
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
             'background': 'red',
@@ -59,7 +61,7 @@ export class ToolbarComponent implements OnInit {
   onClickImg() {
     const data = {
       type: 'div',
-      index: 2,
+      index: null,
       children: [
         {
           type: 'img',
@@ -71,12 +73,12 @@ export class ToolbarComponent implements OnInit {
             // 'border-radius': '5px'
 
           },
-          isEdit: false,
+          isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['delete'],
           url: '../../../assets/img/bglogin.png',
           href: 'http://www.baidu.com',
-
+          imgSize: '400px'
         }
       ]
     };
@@ -85,7 +87,7 @@ export class ToolbarComponent implements OnInit {
   onClickImgGroup() {
     const data = {
       type: 'div',
-      index: 2,
+      index: null,
       style: {
         'display': 'flex',
         'justify-content': 'space-evenly'
@@ -125,7 +127,7 @@ export class ToolbarComponent implements OnInit {
   onClickButton() {
     const data = {
       type: 'div',
-      index: 1,
+      index: null,
       children: [
         {
           type: 'button',
@@ -144,7 +146,7 @@ export class ToolbarComponent implements OnInit {
           content: '立即点击',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'delete']
         }
       ]
     };
