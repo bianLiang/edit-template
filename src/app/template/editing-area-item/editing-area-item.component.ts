@@ -10,20 +10,6 @@ import { EditingAreaItemService } from './editing-area-item.service';
 })
 export class EditingAreaItemComponent implements OnInit {
   @Input() public item: EeitingAreaItem;
-  @Input()
-  set insertDataTmp(item: any) {
-    // console.log(item);
-    // if (item && this.editingAreaItemService.dom) {
-    //   this.editingAreaItemService.dom.children = item.children;
-    //   console.log(this.editingAreaItemService.dom);
-    // }
-  }
-  @Output() public selectEditItem: EventEmitter<any> = new EventEmitter();
-  @Output() public selectEditAreaBoxItem: EventEmitter<any> = new EventEmitter();
-  @Output() public deleteTem: EventEmitter<any> = new EventEmitter();
-  @Output() public deleteTemp: EventEmitter<any> = new EventEmitter();
-  @Output() public setContent: EventEmitter<any> = new EventEmitter();
-  @Output() public setContentTmp: EventEmitter<any> = new EventEmitter();
   savedRange: any;
 
   constructor(
@@ -34,51 +20,33 @@ export class EditingAreaItemComponent implements OnInit {
 
   }
   // 获得焦点，设置插入标志位
-  onBoxBlur(e: any) {
-    // console.log(e);
+  onBoxFocus(e: any) {
     this.editingAreaItemService.boxDom = e;
     this.editingAreaItemService.insertIndex = e.index;
   }
   onItemFocus(e: any) {
     // console.log(e);
-    this.editingAreaItemService.elem = document.getElementById(e.id);
-    this.editingAreaItemService.type = e.type;
-    this.editingAreaItemService.imgUrl = e.url;
-    this.editingAreaItemService.imgSize = e.imgSize;
-    this.editingAreaItemService.imgHref = e.href;
-    this.editingAreaItemService.itemDom = e;
-    this.selectEditItem.emit(true);
-    // e.isShowEditorTool = true;
-    if (e.isEdit) {
-      e.isShowEditorTool = true;
-      return false;
-    } else {
-      return true;
-    }
-  }
-  selectEditBoxItem(value: any) {
-    this.selectEditAreaBoxItem.emit(value);
+      this.editingAreaItemService.elem = document.getElementById(e.id);
+      if (this.editingAreaItemService.isClick) {
+        this.editingAreaItemService.type = e.type;
+      }
+      this.editingAreaItemService.imgUrl = e.url;
+      this.editingAreaItemService.imgSize = e.imgSize;
+      this.editingAreaItemService.imgHref = e.href;
+      this.editingAreaItemService.itemDom = e;
+      this.editingAreaItemService.hideEditorTool(this.editingAreaItemService.items);
+      if (e.isEdit) {
+        e.isShowEditorTool = true;
+        return false;
+      } else {
+        return true;
+      }
   }
   onItemBlur(e: any) {
     // this.getCursortPosition();
     // setTimeout( () => {
     //   e.isShowEditorTool = false;
     // }, 200);
-  }
-  clickBtns(e: any) {
-    // this.setCaretPosition();
-  }
-  deleteTems() {
-    this.deleteTem.emit();
-  }
-  deleteTemps() {
-    this.deleteTemp.emit();
-  }
-  setContents(content: any) {
-    this.setContent.emit(content);
-  }
-  setContentes(content: any) {
-    this.setContentTmp.emit(content);
   }
   // 获得光标信息
   getCursortPosition() {

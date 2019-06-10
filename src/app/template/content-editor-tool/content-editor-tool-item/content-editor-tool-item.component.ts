@@ -9,9 +9,6 @@ import { EditingAreaItemService } from '../../editing-area-item/editing-area-ite
 })
 export class ContentEditorToolItemComponent implements OnInit {
   @Input() public toolItem: any;
-  @Output() public clickBtn: EventEmitter<any> = new EventEmitter();
-  @Output() public deleteTem: EventEmitter<any> = new EventEmitter();
-  @Output() public setContent: EventEmitter<any> = new EventEmitter();
   fontColor =  fontColor;
   isFontColorDiv = false;
   isBackgroundColorDiv = false;
@@ -29,19 +26,19 @@ export class ContentEditorToolItemComponent implements OnInit {
 
   bold() {
     document.execCommand('Bold', true);
-    this.clickBtn.emit(true);
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   italic() {
     document.execCommand('Italic', true);
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   slideLine() {
     document.execCommand('Underline', false);
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+
   }
   addLink() {
     const userSelection = window.getSelection();
@@ -89,13 +86,13 @@ export class ContentEditorToolItemComponent implements OnInit {
       }
     }
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   removeHyperlinks() {
     if (window.getSelection().toString().length > 0) {
       document.execCommand('Unlink', true);
       const content = this.getDom(this.editingAreaItemService.itemDom.id);
-      this.setContent.emit(content);
+      this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
       // alert('超链接解除成功');
     } else {
       alert('请选择解除超链接的位置');
@@ -105,21 +102,21 @@ export class ContentEditorToolItemComponent implements OnInit {
     event.stopPropagation();
     document.execCommand('ForeColor', true, color);
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isFontColorDiv = false;
   }
   setBackgroundColor(color: string, event: any) {
     event.stopPropagation();
     document.execCommand('backColor', true, color);
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isBackgroundColorDiv = false;
   }
   setFontSize(value: string, event: any) {
     event.stopPropagation();
     document.execCommand('FontSize', false, value);
     const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.setContent.emit(content);
+    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isFontSizeDiv = false;
   }
   showIsFontColorDiv(event: any) {
@@ -138,7 +135,36 @@ export class ContentEditorToolItemComponent implements OnInit {
     this.contentEditorToolItemService.isFontColorDiv = false;
   }
   delete() {
-    this.deleteTem.emit();
+    this.editingAreaItemService.deleteTemplate();
   }
-
+  onMoveUp() {
+    if (this.editingAreaItemService.insertIndex !== 0) {
+      // tslint:disable-next-line:max-line-length
+      this.editingAreaItemService.items[this.editingAreaItemService.insertIndex] = this.editingAreaItemService.items.splice(this.editingAreaItemService.insertIndex - 1, 1, this.editingAreaItemService.items[this.editingAreaItemService.insertIndex])[0];
+      for (let i = 0; i < this.editingAreaItemService.items.length; i++) {
+        this.editingAreaItemService.items[i][this.editingAreaItemService.insertIndex] = i;
+      }
+      this.editingAreaItemService.insertIndex--;
+      this.editingAreaItemService.base = 0;
+      this.editingAreaItemService.idBase = 0;
+      this.editingAreaItemService.sortIndex(this.editingAreaItemService.items);
+    } else {
+      alert('已经是第一位！');
+    }
+  }
+  onMoveDown() {
+    if (this.editingAreaItemService.insertIndex !== this.editingAreaItemService.items.length - 1) {
+      // tslint:disable-next-line:max-line-length
+      this.editingAreaItemService.items[this.editingAreaItemService.insertIndex] = this.editingAreaItemService.items.splice(this.editingAreaItemService.insertIndex + 1, 1, this.editingAreaItemService.items[this.editingAreaItemService.insertIndex])[0];
+      for (let i = 0; i < this.editingAreaItemService.items.length; i++) {
+        this.editingAreaItemService.items[i][this.editingAreaItemService.insertIndex] = i;
+      }
+      this.editingAreaItemService.insertIndex++;
+      this.editingAreaItemService.base = 0;
+      this.editingAreaItemService.idBase = 0;
+      this.editingAreaItemService.sortIndex(this.editingAreaItemService.items);
+    } else {
+      alert('已经是最后一位！');
+    }
+  }
 }

@@ -1,3 +1,11 @@
 i {
   font-size: 20px;
 }
+.my-button {
+  background: #e6f7ff;
+  border: none;
+  /* margin: 0 3px; */
+}
+.my-icon {
+  margin: 0 3px;
+}

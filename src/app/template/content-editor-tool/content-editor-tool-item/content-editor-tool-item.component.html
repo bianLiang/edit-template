@@ -1,10 +1,10 @@
-<button *ngIf="toolItem === 'bold'" (click)='bold()' ><i class="fa fa-bold" title="加粗"></i></button>
-<button *ngIf="toolItem === 'italic'" (click)='italic()' ><i class="fa fa-italic" title="斜体"></i></button>
-<button *ngIf="toolItem === 'slideLine'" (click)='slideLine()' ><i class="fa fa-underline" title="下划线"></i></button>
-<button *ngIf="toolItem === 'link'" (click)='addLink()' ><i class="fa fa-chain" title="超链接"></i></button>
-<button *ngIf="toolItem === 'unlink'" (click)='removeHyperlinks()' ><i class="fa fa-chain-broken" title="取消超链接"></i></button>
-<button *ngIf="toolItem === 'fontColor'"  title='字体颜色'>
-  <i (click)="showIsFontColorDiv($event)" class="fa fa-paint-brush" style="position: relative;" >
+<button class="my-button" *ngIf="toolItem === 'bold'" (click)='bold()' ><i class="fa fa-bold my-icon" title="加粗"></i></button>
+<button class="my-button" *ngIf="toolItem === 'italic'" (click)='italic()' ><i class="fa fa-italic my-icon" title="斜体"></i></button>
+<button class="my-button" *ngIf="toolItem === 'slideLine'" (click)='slideLine()' ><i class="fa fa-underline my-icon" title="下划线"></i></button>
+<button class="my-button" *ngIf="toolItem === 'link'" (click)='addLink()' ><i class="fa fa-chain my-icon" title="超链接"></i></button>
+<button class="my-button" *ngIf="toolItem === 'unlink'" (click)='removeHyperlinks()' ><i class="fa fa-chain-broken my-icon" title="取消超链接"></i></button>
+<button class="my-button" *ngIf="toolItem === 'fontColor'"  title='字体颜色'>
+  <i (click)="showIsFontColorDiv($event)" class="fa fa-paint-brush my-icon" style="position: relative;" >
     <div  *ngIf="contentEditorToolItemService.isFontColorDiv" style="position: absolute;
     bottom: 23px;
     left: -8px;
@@ -19,8 +19,8 @@
     </div>
   </i>
 </button>
-<button *ngIf="toolItem === 'backgroundColor'" (click)="showIsBackgroundColorDiv($event)" title='背景颜色'>
-  <i class="fa fa-pencil-square" style="position: relative;" >
+<button class="my-button" *ngIf="toolItem === 'backgroundColor'" (click)="showIsBackgroundColorDiv($event)" title='背景颜色'>
+  <i class="fa fa-pencil-square my-icon" style="position: relative;" >
     <div *ngIf="contentEditorToolItemService.isBackgroundColorDiv" style="position: absolute;
     bottom: 23px;
     left: -8px;
@@ -35,8 +35,8 @@
     </div>
   </i>
 </button>
-<button *ngIf="toolItem === 'fontSize'" (click)="showIsFontSizeDiv($event)" title='字号'>
-  <i class="fa fa-font" style="position: relative;" >
+<button class="my-button" *ngIf="toolItem === 'fontSize'" (click)="showIsFontSizeDiv($event)" title='字号'>
+  <i class="fa fa-font my-icon" style="position: relative;" >
     <div *ngIf="contentEditorToolItemService.isFontSizeDiv" style="position: absolute;
     bottom: 23px;
     left: -8px;
@@ -53,6 +53,8 @@
     </div>
   </i>
 </button>
-<button *ngIf="toolItem === 'delete'" (click)='delete()' ><i class="fa fa-trash-o" title="删除此块"></i></button>
+<button class="my-button" *ngIf="toolItem === 'delete'" (click)='delete()' ><i class="fa fa-trash-o my-icon" title="删除此块"></i></button>
+<button class="my-button" *ngIf="toolItem === 'moveUp'" (click)='onMoveUp()' ><i class="fa fa-long-arrow-up my-icon" title="上移"></i></button>
+<button class="my-button" *ngIf="toolItem === 'moveDown'" (click)='onMoveDown()' ><i class="fa  fa-long-arrow-down my-icon" title="下移"></i></button>
 
 

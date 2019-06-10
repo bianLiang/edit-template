@@ -1,4 +1,9 @@
-<div  style="position: absolute;left: 0;top: -27px;">
-  <bl-content-editor-tool-item *ngFor="let item of toolConfigure" [toolItem]="item" (deleteTem)="deleteTem()" (setContent)="setContent($event)" (clickBtn)="clickBtn($event)">
+<div  style="position: absolute;
+left: 0;
+top: -30px;
+background: #e6f7ff;
+height: 30px;
+line-height: 30px;">
+  <bl-content-editor-tool-item *ngFor="let item of toolConfigure" [toolItem]="item">
   </bl-content-editor-tool-item>
 </div>
