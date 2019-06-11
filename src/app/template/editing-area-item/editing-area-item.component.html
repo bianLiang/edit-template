@@ -18,6 +18,10 @@
   </a>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
+<div class="box" *ngIf="item.type === 'code'">
+  <img  (click)="onItemFocus(item)" attr.contenteditable='{{item.isEdit}}' [id]='item.id' [src]="item.url" contenteditable [ngStyle]="item.style"  alt="">
+  <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
+</div>
 <!-- <div class="box" *ngIf="item.type === 'hr'">
   <hr [id]='item.id' [ngStyle]="item.style" attr.contenteditable='{{item.isEdit}}' (click)="onItemFocus(item)" (blur)="onItemBlur(item)">
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>

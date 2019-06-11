@@ -280,7 +280,6 @@ export class EditBarComponent implements OnInit {
     reader.onload = function() {
       that.editingAreaItemService.imgUrl = this.result;
       that.editingAreaItemService.itemDom.url = this.result;
-      // that.problemList[index].option[i].imgUrl = this.result;
     };
   }
   onChangeUrl(value: any) {

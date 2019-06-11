@@ -44,6 +44,8 @@ export class TemplateComponent implements OnInit {
       maximumInterval: 30,
     }
   ];
+  // tslint:disable-next-line:max-line-length
+  toolBarConfigure = ['text', 'backgroundText', 'img', 'imgGroup', 'imgText', 'backgroundImgText', 'code', 'button', 'line', 'head', 'foot', 'share'];
   constructor(
     public editingAreaItemService: EditingAreaItemService,
   ) { }

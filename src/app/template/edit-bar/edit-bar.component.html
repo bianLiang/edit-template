@@ -1,6 +1,10 @@
 <div style="width: 100%;padding: 5px;">
   <div [ngStyle]="{'display': editingAreaItemService.type === 'txt' || editingAreaItemService.type === 'button'  ? 'block': 'none'}">
-    <h4 style="text-align: center;color: #888;">文本样式</h4>
+    <h4 style="text-align: center;
+    color: #888;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-weight: 400;">文本样式</h4>
     <div *ngIf="isShowTypefaces" class='currency'>字体：
       <select [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
         <option *ngFor="let item of typefaces" [value]="item.code">{{item.name}}</option>
@@ -93,8 +97,12 @@
     </div>
   </div>
   <div [ngStyle]="{'display': editingAreaItemService.type === 'img'  ? 'block': 'none'}">
-    <h4 style="text-align: center;color: #888;">图片</h4>
-    <div style="position: relative;border-bottom: 1px solid #111;width: 394px;display: flex;">
+    <h4 style="text-align: center;
+    color: #888;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-weight: 400;">图片</h4>
+    <div style="position: relative;border-bottom: 1px solid #111;width: 98%;display: flex;">
       <div>
         <img [ngStyle]="{'background-image':'url(' + editingAreaItemService.imgUrl + ')', 'width': '105px', 'height': '80px', 'background-repeat': 'no-repeat', 'background-size': 'cover'}" alt="">
       </div>
@@ -102,18 +110,39 @@
         <a href="javascript:;" class="file">选择图片
             <input type="file" (change)="onChangePicture($event.target)">
           </a>
-        <input type="text" style="margin-left: 10px;
+
+      </div>
+    </div>
+    <div>
+      <p>建议尺寸：{{editingAreaItemService.imgSize}}</p>
+      <P>图片跳转：<input type="text" style="margin-left: 10px;
         height: 25px;
-        width: 230px;
+        width: 178px;
         border-radius: 5px;
         padding: 0 5px;
         outline: none;
         border: 1px solid #ccc;" [(ngModel)]="editingAreaItemService.imgHref" placeholder="请以http://或者https://开头"
-        (change)="onChangeUrl($event.target.value)">
+        (change)="onChangeUrl($event.target.value)"></P>
+    </div>
+  </div>
+  <div [ngStyle]="{'display': editingAreaItemService.type === 'code'  ? 'block': 'none'}">
+    <h4 style="text-align: center;
+    color: #888;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-weight: 400;">二维码</h4>
+    <div style="position: relative;border-bottom: 1px solid #111;width: 394px;display: flex;">
+      <div>
+        <img [ngStyle]="{'background-image':'url(' + editingAreaItemService.imgUrl + ')', 'width': '105px', 'height': '105px', 'background-repeat': 'no-repeat', 'background-size': 'cover'}" alt="">
+      </div>
+      <div>
+        <a href="javascript:;" class="file">选择图片
+          <input type="file" (change)="onChangePicture($event.target)">
+        </a>
       </div>
     </div>
     <div>
-      <p>建议尺寸：宽{{editingAreaItemService.imgSize}}</p>
+      <p>建议尺寸：{{editingAreaItemService.imgSize}}</p>
     </div>
   </div>
 </div>

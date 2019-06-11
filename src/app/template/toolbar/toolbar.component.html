@@ -1,6 +1,55 @@
-<p>
-  <button class="my-button" (click)="onClickText()">文本</button>
-  <button class="my-button" (click)="onClickBackgroundText()">背景文本</button>
+<div style="display: flex;flex-wrap:wrap;width: 100%;">
+  <div class="box" (click)="onClickText()">
+    <span class="my-button iconfont">&#xe663;</span>
+    <span class="txt">文本</span>
+  </div>
+  <div class="box" (click)="onClickBackgroundText()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">背景文本</span>
+  </div>
+  <div class="box" (click)="onClickImg()">
+    <span class="my-button iconfont">&#xe669;</span>
+    <span class="txt">图片</span>
+  </div>
+  <div class="box" (click)="onClickImgGroup()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">图片组</span>
+  </div>
+  <div class="box">
+    <span class="my-button iconfont" (click)="onClickImgText()">&#xe7e7;</span>
+    <span class="txt">图文</span>
+  </div>
+  <div class="box" (click)="onClickBackgroundImgText()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">背景图文</span>
+  </div>
+  <div class="box" (click)="onClickCode()">
+    <span class="my-button iconfont">&#xe60f;</span>
+    <span class="txt">二维码</span>
+  </div>
+  <div class="box" (click)="onClickButton()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">按钮</span>
+  </div>
+  <div class="box" (click)="onClickLine()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">分割线</span>
+  </div>
+  <div class="box" (click)="onClickhead()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">邮件顶部</span>
+  </div>
+  <div class="box" (click)="onClickfoot()">
+    <span class="my-button iconfont">&#xe620;</span>
+    <span class="txt">邮件底部</span>
+  </div>
+  <div class="box" (click)="onClickShare()">
+    <span class="my-button iconfont">&#xe637;</span>
+    <span class="txt">分享</span>
+  </div>
+
+
+  <!-- <button class="my-button" (click)="onClickBackgroundText()">背景文本</button>
   <button class="my-button" (click)="onClickImg()">图片</button>
   <button class="my-button" (click)="onClickButton()">按钮</button>
   <button class="my-button" (click)="onClickImgGroup()">图片组</button>
@@ -8,6 +57,5 @@
   <button class="my-button" (click)="onClickBackgroundImgText()">背景图文</button>
   <button class="my-button" (click)="onClickLine()">分割线</button>
   <button class="my-button" (click)="onClickhead()">顶部</button>
-  <button class="my-button" (click)="onClickfoot()">底部</button>
-
-</p>
+  <button class="my-button" (click)="onClickfoot()">底部</button> -->
+</div>

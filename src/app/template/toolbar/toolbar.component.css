@@ -1,8 +1,46 @@
-.my-button {
+/* .my-button {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 3px;
   height: 30px;
   margin: 0 7px;
   cursor: pointer;
+} */
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 54px;
+  height: 68px;
+  border: 1px solid #ccc;
+  justify-content: center;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
+  /* padding: 3px; */
+  cursor: pointer;
+}
+.my-button {
+  background: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0;
+  font-size: 30px;
+  color: #595959;
+}
+.txt {
+  font-size: 13px;
+  color: #8c8c8c;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 657153 */
+  src: url('//at.alicdn.com/t/font_657153_9aac392t5lp.eot');
+  src: url('//at.alicdn.com/t/font_657153_9aac392t5lp.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_657153_9aac392t5lp.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_657153_9aac392t5lp.woff') format('woff'),
+  url('//at.alicdn.com/t/font_657153_9aac392t5lp.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_657153_9aac392t5lp.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
 }

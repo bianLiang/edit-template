@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { EditingAreaItemService } from '../editing-area-item/editing-area-item.service';
 
 @Component({
@@ -7,6 +7,11 @@ import { EditingAreaItemService } from '../editing-area-item/editing-area-item.s
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+  @Input()
+  set toolBarConfigure(value: any) {
+    if (value) {
+    }
+  }
   constructor(
     private editingAreaItemService: EditingAreaItemService,
   ) { }
@@ -38,6 +43,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
   onClickBackgroundText() {
     const data = {
@@ -65,6 +71,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
   onClickImg() {
     const data = {
@@ -87,12 +94,13 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: '../../../assets/img/bglogin.png',
-          href: 'http://www.baidu.com',
-          imgSize: '650px'
+          href: '',
+          imgSize: '宽650px'
         }
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'img';
   }
   onClickImgGroup() {
     const data = {
@@ -115,8 +123,8 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: '../../../assets/img/bglogin.png',
-          href: 'http://www.baidu.com',
-          imgSize: '250px'
+          href: '',
+          imgSize: '宽250px'
 
         },
         {
@@ -130,19 +138,21 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: '../../../assets/img/login1.png',
-          href: 'http://www.baidu.com',
-          imgSize: '250px'
+          href: '',
+          imgSize: '宽250px'
         },
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'img';
   }
   onClickButton() {
     const data = {
       type: 'div',
       index: null,
       style: {
-        'margin': '5px 0'
+        'margin': '5px 0',
+        'text-align': 'center'
       },
       children: [
         {
@@ -167,6 +177,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
   onClickImgText() {
     const data = {
@@ -189,8 +200,8 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: '../../../assets/img/bglogin.png',
-          href: 'http://www.baidu.com',
-          imgSize: '250px'
+          href: '',
+          imgSize: '宽250px'
 
         },
         {
@@ -211,6 +222,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
 
   onClickBackgroundImgText() {
@@ -234,8 +246,8 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: '../../../assets/img/bglogin.png',
-          href: 'http://www.baidu.com',
-          imgSize: '250px'
+          href: '',
+          imgSize: '宽250px'
 
         },
         {
@@ -255,6 +267,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
   onClickLine() {
     const data = {
@@ -282,6 +295,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
   onClickhead() {
     const data = {
@@ -307,6 +321,7 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
   onClickfoot() {
     const data = {
@@ -335,6 +350,56 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.type = 'txt';
   }
+  onClickCode() {
+    const data = {
+      type: 'div',
+      index: null,
+      style: {
+        'display': 'flex',
+        'justify-content': 'center',
+        'margin': '5px 0',
+        'flex-direction': 'column',
+        'text-align': 'center'
+      },
+      children: [
+        {
+          type: 'code',
+          id: 'code',
+          style: {
+            'width': '200px',
+            'outline-color': 'blue',
+          },
+          isEdit: true,
+          isShowEditorTool: false,
+          toolConfigure: ['moveUp', 'moveDown', 'delete'],
+          url: '../../../assets/img/code.jpg',
+          imgSize: '宽200px * 长200px'
 
+        },
+        {
+          type: 'txt',
+          id: 'txt',
+          style: {
+            'outline-color': 'blue',
+            'color': 'red',
+            'margin': 0,
+            'margin-left': '10px',
+            'line-height': '35px'
+          },
+          content: '扫码关注',
+          isEdit: true,
+          isShowEditorTool: false,
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+        }
+      ]
+    };
+    this.editingAreaItemService.insertTemplate(data);
+    // this.editingAreaItemService.imgUrl = '../../../assets/img/code.jpg';
+    // this.editingAreaItemService.type = 'code';
+  }
+  onClickShare() {
+    alert('暂时不支持添加此模块！');
+  }
 }
