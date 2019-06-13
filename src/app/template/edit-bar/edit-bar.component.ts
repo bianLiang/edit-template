@@ -7,6 +7,7 @@ import { typefaces, fontColor } from './edit-bar-data';
   styleUrls: ['./edit-bar.component.css']
 })
 export class EditBarComponent implements OnInit {
+
   @Input()
   set editBarConfigure(value: any) {
     if (value) {
@@ -122,7 +123,6 @@ export class EditBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.editingAreaItemService.type = 'txt';
     // tslint:disable-next-line:max-line-length
     this.scale(this.fontSizeBtn, this.fontSizeBar, this.fontSizeStep, 'font-size-btn', 'font-size-bar', 'fontSize', this.fontSizeMaximumInterval);
     // tslint:disable-next-line:max-line-length

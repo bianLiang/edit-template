@@ -12,7 +12,7 @@ export class EditingAreaItemService {
   boxDom: any;
   itemDom: any;
   insertIndex = 0;
-  type = 'txt';
+  type: string;
   imgUrl: any;
   imgSize: any;
   imgHref: any;

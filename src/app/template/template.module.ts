@@ -10,10 +10,16 @@ import { ContentEditorToolItemComponent } from './content-editor-tool/content-ed
 import { EditingAreaItemService } from './editing-area-item/editing-area-item.service';
 import { ContentEditorToolItemService } from './content-editor-tool/content-editor-tool-item/content-editor-tool-item.service';
 import { FormsModule } from '@angular/forms';
+import { NzModalModule} from 'ng-zorro-antd';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    NzModalModule,
+    // NgZorroAntdModule
   ],
   declarations: [
     TemplateComponent,
@@ -36,7 +42,7 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     EditingAreaItemService,
-    ContentEditorToolItemService
+    ContentEditorToolItemService,
   ]
 })
 export class TemplateModule { }

@@ -1,50 +1,50 @@
 <div style="display: flex;flex-wrap:wrap;width: 100%;">
-  <div class="box" (click)="onClickText()">
+  <div *ngIf="isText" class="box" (click)="onClickText()">
     <span class="my-button iconfont">&#xe663;</span>
     <span class="txt">文本</span>
   </div>
-  <div class="box" (click)="onClickBackgroundText()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isBackgroundText" class="box" (click)="onClickBackgroundText()">
+    <span class="my-button iconfont">&#xe63b;</span>
     <span class="txt">背景文本</span>
   </div>
-  <div class="box" (click)="onClickImg()">
-    <span class="my-button iconfont">&#xe669;</span>
+  <div *ngIf="isImg" class="box" (click)="onClickImg()">
+    <span class="my-button iconfont">&#xe63c;</span>
     <span class="txt">图片</span>
   </div>
-  <div class="box" (click)="onClickImgGroup()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isImgGroup" class="box" (click)="onClickImgGroup()">
+    <span class="my-button iconfont">&#xe639;</span>
     <span class="txt">图片组</span>
   </div>
-  <div class="box">
-    <span class="my-button iconfont" (click)="onClickImgText()">&#xe7e7;</span>
+  <div *ngIf="isImgText" class="box">
+    <span class="my-button iconfont" (click)="onClickImgText()">&#xe636;</span>
     <span class="txt">图文</span>
   </div>
-  <div class="box" (click)="onClickBackgroundImgText()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isBackgroundImgText" class="box" (click)="onClickBackgroundImgText()">
+    <span class="my-button iconfont">&#xe642;</span>
     <span class="txt">背景图文</span>
   </div>
-  <div class="box" (click)="onClickCode()">
+  <div *ngIf="isCode" class="box" (click)="onClickCode()">
     <span class="my-button iconfont">&#xe60f;</span>
     <span class="txt">二维码</span>
   </div>
-  <div class="box" (click)="onClickButton()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isButton" class="box" (click)="onClickButton()">
+    <span class="my-button iconfont">&#xe643;</span>
     <span class="txt">按钮</span>
   </div>
-  <div class="box" (click)="onClickLine()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isLine" class="box" (click)="onClickLine()">
+    <span class="my-button iconfont">&#xe63f;</span>
     <span class="txt">分割线</span>
   </div>
-  <div class="box" (click)="onClickhead()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isHead" class="box" (click)="onClickhead()">
+    <span class="my-button iconfont">&#xe641;</span>
     <span class="txt">邮件顶部</span>
   </div>
-  <div class="box" (click)="onClickfoot()">
-    <span class="my-button iconfont">&#xe620;</span>
+  <div *ngIf="isFoot" class="box" (click)="onClickfoot()">
+    <span class="my-button iconfont">&#xe640;</span>
     <span class="txt">邮件底部</span>
   </div>
-  <div class="box" (click)="onClickShare()">
-    <span class="my-button iconfont">&#xe637;</span>
+  <div *ngIf="isShare" class="box" (click)="onClickShare()">
+    <span class="my-button iconfont">&#xe63e;</span>
     <span class="txt">分享</span>
   </div>
 

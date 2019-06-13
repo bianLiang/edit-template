@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { typefaces, fontColor } from '../../edit-bar/edit-bar-data';
 import { ContentEditorToolItemService } from './content-editor-tool-item.service';
 import { EditingAreaItemService } from '../../editing-area-item/editing-area-item.service';
+import { NzModalService } from 'ng-zorro-antd';
 @Component({
   selector: 'bl-content-editor-tool-item',
   templateUrl: './content-editor-tool-item.component.html',
@@ -15,7 +16,8 @@ export class ContentEditorToolItemComponent implements OnInit {
   isFontSizeDiv = false;
   constructor(
     public contentEditorToolItemService: ContentEditorToolItemService,
-    public editingAreaItemService: EditingAreaItemService
+    public editingAreaItemService: EditingAreaItemService,
+    private modalService: NzModalService
   ) { }
 
   ngOnInit() {
@@ -135,7 +137,16 @@ export class ContentEditorToolItemComponent implements OnInit {
     this.contentEditorToolItemService.isFontColorDiv = false;
   }
   delete() {
-    this.editingAreaItemService.deleteTemplate();
+    this.modalService.confirm({
+      nzTitle: '确定删除此块?',
+      nzOkText: '确定',
+      nzOkType: 'danger',
+      nzOnOk: () => {
+        this.editingAreaItemService.deleteTemplate();
+      },
+      nzCancelText: '取消',
+      nzOnCancel: () => {}
+    });
   }
   onMoveUp() {
     if (this.editingAreaItemService.insertIndex !== 0) {

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DemoModule } from './demo/demo.module';
 import { TemplateModule } from './template/template.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +15,8 @@ import { TemplateModule } from './template/template.module';
     BrowserModule,
     AppRoutingModule,
     DemoModule,
-    TemplateModule
+    TemplateModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

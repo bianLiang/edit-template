@@ -7,9 +7,81 @@ import { EditingAreaItemService } from '../editing-area-item/editing-area-item.s
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+   isText = true;
+   isBackgroundText = true;
+   isImg = true;
+   isImgGroup = true;
+   isImgText = true;
+   isBackgroundImgText = true;
+   isCode = true;
+   isButton = true;
+   isLine = true;
+   isHead = true;
+   isFoot = true;
+   isShare = true;
   @Input()
   set toolBarConfigure(value: any) {
     if (value) {
+      if (value.indexOf('text') !== -1) {
+        this.isText = true;
+      } else {
+        this.isText = false;
+      }
+      if (value.indexOf('backgroundText') !== -1) {
+        this.isBackgroundText = true;
+      } else {
+        this.isBackgroundText = false;
+      }
+      if (value.indexOf('img') !== -1) {
+        this.isImg = true;
+      } else {
+        this.isImg = false;
+      }
+      if (value.indexOf('imgGroup') !== -1) {
+        this.isImgGroup = true;
+      } else {
+        this.isImgGroup = false;
+      }
+      if (value.indexOf('imgText') !== -1) {
+        this.isImgText = true;
+      } else {
+        this.isImgText = false;
+      }
+      if (value.indexOf('backgroundImgText') !== -1) {
+        this.isBackgroundImgText = true;
+      } else {
+        this.isBackgroundImgText = false;
+      }
+      if (value.indexOf('code') !== -1) {
+        this.isCode = true;
+      } else {
+        this.isCode = false;
+      }
+      if (value.indexOf('button') !== -1) {
+        this.isButton = true;
+      } else {
+        this.isButton = false;
+      }
+      if (value.indexOf('line') !== -1) {
+        this.isLine = true;
+      } else {
+        this.isLine = false;
+      }
+      if (value.indexOf('head') !== -1) {
+        this.isHead = true;
+      } else {
+        this.isHead = false;
+      }
+      if (value.indexOf('foot') !== -1) {
+        this.isFoot = true;
+      } else {
+        this.isFoot = false;
+      }
+      if (value.indexOf('share') !== -1) {
+        this.isShare = true;
+      } else {
+        this.isShare = false;
+      }
     }
   }
   constructor(
