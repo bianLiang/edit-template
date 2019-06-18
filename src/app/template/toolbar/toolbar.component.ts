@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { EditingAreaItemService } from '../editing-area-item/editing-area-item.service';
-
+import { NzMessageService } from 'ng-zorro-antd';
 @Component({
   selector: 'bl-toolbar',
   templateUrl: './toolbar.component.html',
@@ -86,6 +86,7 @@ export class ToolbarComponent implements OnInit {
   }
   constructor(
     private editingAreaItemService: EditingAreaItemService,
+    private message: NzMessageService
   ) { }
 
   ngOnInit() {
@@ -130,7 +131,7 @@ export class ToolbarComponent implements OnInit {
           id: 'txt',
           style: {
             'outline-color': 'blue',
-            'background': 'red',
+            'background': '#888',
             'color': '#fff',
             'margin': 0,
             'line-height': '35px'
@@ -165,9 +166,9 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/bglogin.png',
+          url: '../../../assets/img/ditu_646_400.png',
           href: '',
-          imgSize: '宽650px'
+          imgSize: '650px * 400px'
         }
       ]
     };
@@ -194,9 +195,9 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/bglogin.png',
+          url: '../../../assets/img/ditu_1.png',
           href: '',
-          imgSize: '宽250px'
+          imgSize: '250px * 187px'
 
         },
         {
@@ -209,9 +210,9 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/login1.png',
+          url: '../../../assets/img/ditu_1.png',
           href: '',
-          imgSize: '宽250px'
+          imgSize: '250px * 187px'
         },
       ]
     };
@@ -232,14 +233,15 @@ export class ToolbarComponent implements OnInit {
           id: 'button',
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
-            'background': 'red',
+            'background': '#888',
             // tslint:disable-next-line:object-literal-key-quotes
             'border': '1px solid #ccc',
             'color': '#fff',
             'padding': '5px',
             'margin': '2px 0',
             'border-radius': '5px',
-            'outline-color': 'blue'
+            'outline-color': 'blue',
+            'cursor': 'default'
           },
           content: '立即点击',
           isEdit: true,
@@ -271,9 +273,9 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/bglogin.png',
+          url: '../../../assets/img/ditu_1.png',
           href: '',
-          imgSize: '宽250px'
+          imgSize: '250px * 187px'
 
         },
         {
@@ -284,7 +286,8 @@ export class ToolbarComponent implements OnInit {
             'color': 'red',
             'margin': 0,
             'margin-left': '10px',
-            'line-height': '35px'
+            'line-height': '35px',
+            'width': '350px',
           },
           content: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
           isEdit: true,
@@ -317,14 +320,15 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/bglogin.png',
+          url: '../../../assets/img/ditu_1.png',
           href: '',
-          imgSize: '宽250px'
+          imgSize: '250px * 187px'
 
         },
         {
           type: 'txt',
           id: 'txt',
+          isGroup: true,
           style: {
             'outline-color': 'blue',
             'color': 'red',
@@ -346,18 +350,16 @@ export class ToolbarComponent implements OnInit {
       type: 'div',
       index: null,
       style: {
-        // 'margin': '5px 0'
+        'margin': '10px 0'
       },
       children: [
         {
-          type: 'txt',
-          id: 'txt',
+          type: 'line',
+          id: 'line',
           style: {
-            'background': '#eee',
-            'text-align': 'center',
-            'height': '1px',
-            'border-bottom': '1px solid #333',
-            'margin': '0'
+            'border-style': 'solid',
+            'border-bottom': '1px',
+            'border-color': '#000'
           },
           content: '',
           isEdit: true,
@@ -447,7 +449,7 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: '../../../assets/img/code.jpg',
-          imgSize: '宽200px * 长200px'
+          imgSize: '200px * 200px'
 
         },
         {
@@ -472,6 +474,6 @@ export class ToolbarComponent implements OnInit {
     // this.editingAreaItemService.type = 'code';
   }
   onClickShare() {
-    alert('暂时不支持添加此模块！');
+    this.message.create('error', `暂时不支持添加此模块！`);
   }
 }

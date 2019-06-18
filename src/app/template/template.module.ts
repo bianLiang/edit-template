@@ -11,6 +11,7 @@ import { EditingAreaItemService } from './editing-area-item/editing-area-item.se
 import { ContentEditorToolItemService } from './content-editor-tool/content-editor-tool-item/content-editor-tool-item.service';
 import { FormsModule } from '@angular/forms';
 import { NzModalModule} from 'ng-zorro-antd';
+import { NzMessageModule } from 'ng-zorro-antd';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
@@ -19,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule,
     NzModalModule,
-    // NgZorroAntdModule
+    NzMessageModule
   ],
   declarations: [
     TemplateComponent,

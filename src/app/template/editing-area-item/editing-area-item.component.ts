@@ -25,7 +25,6 @@ export class EditingAreaItemComponent implements OnInit {
     this.editingAreaItemService.insertIndex = e.index;
   }
   onItemFocus(e: any) {
-    // console.log(e);
       this.editingAreaItemService.elem = document.getElementById(e.id);
       if (this.editingAreaItemService.isClick) {
         this.editingAreaItemService.type = e.type;
@@ -34,6 +33,12 @@ export class EditingAreaItemComponent implements OnInit {
       this.editingAreaItemService.imgSize = e.imgSize;
       this.editingAreaItemService.imgHref = e.href;
       this.editingAreaItemService.itemDom = e;
+      this.editingAreaItemService.isReUrl = false;
+      if (e.isGroup) {
+        this.editingAreaItemService.isGroup = e.isGroup;
+      } else {
+        this.editingAreaItemService.isGroup = false;
+      }
       this.editingAreaItemService.hideEditorTool(this.editingAreaItemService.items);
       if (e.isEdit) {
         e.isShowEditorTool = true;

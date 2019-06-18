@@ -95,6 +95,56 @@
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': borderColor}"></span>
     </div>
+    <div *ngIf="isImgTextBackgroundColor && this.editingAreaItemService.isGroup" class='currency'>图文：
+      <select [ngStyle]='imgTextBackgroundColorStyle' (change)="setImgTextBackgroundColorStyle($event.target.value)">
+        <option *ngFor="let item of imgTextBackgroundColorList" [ngStyle]="{'background': item}" [value]="item"></option>
+      </select>
+      <span
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': imgTextBackgroundColor,'border': '1px solid #ccc'}"></span>
+    </div>
+  </div>
+  <div [ngStyle]="{'display': editingAreaItemService.type === 'line'? 'block': 'none'}">
+    <h4 style="text-align: center;
+    color: #888;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-weight: 400;">分割线</h4>
+    <div *ngIf="isLineBorder">样式：
+      <select [ngStyle]='borderStyle' (change)="setLineBorderStyle($event.target.value)">
+        <option *ngFor="let item of lineBorderStyleList" [value]="item.value">{{item.text}}</option>
+      </select>
+    </div>
+    <div [ngStyle]="{'display': isLineBorder  ? 'block': 'none', 'margin': '10px 0'}">
+      <div class="User_ratings User_grade">
+        <div class="ratings_bars" style="display: flex;align-items: center;">
+          粗细：
+          <div class="scale" [ngStyle]="borderLineStyle" id="line-border-line-bar">
+            <div></div>
+            <span id="line-border-line-btn"></span>
+          </div>
+          <span style="margin-left: 5px; font-size: 13px;">{{lineBorderLine}}</span>
+        </div>
+      </div>
+    </div>
+    <div [ngStyle]="{'display': isLineBorder ? 'block': 'none', 'margin': '10px 0'}">
+        <div class="User_ratings User_grade">
+          <div class="ratings_bars" style="display: flex;align-items: center;">
+            行距：
+            <div class="scale" [ngStyle]="fontSizeStyle" id="line-margin-bar">
+              <div></div>
+              <span id="line-margin-btn"></span>
+            </div>
+            <span style="margin-left: 5px; font-size: 13px;">{{lineMargin}}</span>
+          </div>
+        </div>
+      </div>
+    <div *ngIf="isLineBorder" class='currency'>颜色：
+      <select [ngStyle]='lineBorderColorStyle' (change)="setborderColorStyle($event.target.value)">
+        <option *ngFor="let item of borderColorList" [ngStyle]="{'background': item}" [value]="item"></option>
+      </select>
+      <span
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': borderColor}"></span>
+    </div>
   </div>
   <div [ngStyle]="{'display': editingAreaItemService.type === 'img'  ? 'block': 'none'}">
     <h4 style="text-align: center;
@@ -108,21 +158,22 @@
       </div>
       <div>
         <a href="javascript:;" class="file">选择图片
-            <input type="file" (change)="onChangePicture($event.target)">
+            <input id="file" type="file" (change)="onChangePicture($event.target)">
           </a>
 
       </div>
     </div>
     <div>
       <p>建议尺寸：{{editingAreaItemService.imgSize}}</p>
-      <P>图片跳转：<input type="text" style="margin-left: 10px;
+      <P>图片跳转：<input type="text" style="
         height: 25px;
-        width: 178px;
+        width: 180px;
         border-radius: 5px;
         padding: 0 5px;
         outline: none;
         border: 1px solid #ccc;" [(ngModel)]="editingAreaItemService.imgHref" placeholder="请以http://或者https://开头"
         (change)="onChangeUrl($event.target.value)"></P>
+        <p *ngIf="editingAreaItemService.isReUrl" style="color: red;margin-left: 68px;">格式错误，请按照正确格式填写！</p>
     </div>
   </div>
   <div [ngStyle]="{'display': editingAreaItemService.type === 'code'  ? 'block': 'none'}">

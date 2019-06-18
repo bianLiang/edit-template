@@ -11,6 +11,8 @@ export class EditingAreaItemService {
   items: EeitingAreaItem[] = [];
   boxDom: any;
   itemDom: any;
+  isGroup = false;
+  isReUrl = false;
   insertIndex = 0;
   type: string;
   imgUrl: any;

@@ -3,6 +3,7 @@ import { typefaces, fontColor } from '../../edit-bar/edit-bar-data';
 import { ContentEditorToolItemService } from './content-editor-tool-item.service';
 import { EditingAreaItemService } from '../../editing-area-item/editing-area-item.service';
 import { NzModalService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd';
 @Component({
   selector: 'bl-content-editor-tool-item',
   templateUrl: './content-editor-tool-item.component.html',
@@ -17,7 +18,8 @@ export class ContentEditorToolItemComponent implements OnInit {
   constructor(
     public contentEditorToolItemService: ContentEditorToolItemService,
     public editingAreaItemService: EditingAreaItemService,
-    private modalService: NzModalService
+    private modalService: NzModalService,
+    private message: NzMessageService
   ) { }
 
   ngOnInit() {
@@ -64,7 +66,7 @@ export class ContentEditorToolItemComponent implements OnInit {
           sText.anchorNode.parentElement['target'] = '_blank';
         } else {
           if (linkURL) {
-            alert('请输入http或https开头的链接');
+            this.message.create('error', `请输入http或https开头的链接`);
           } else {
             return false;
           }
@@ -81,7 +83,7 @@ export class ContentEditorToolItemComponent implements OnInit {
         sText.anchorNode.parentElement['target'] = '_blank';
       } else {
         if (linkURL) {
-          alert('请输入http或https开头的链接');
+          this.message.create('error', `请输入http或https开头的链接`);
         } else {
           return false;
         }
@@ -97,7 +99,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
       // alert('超链接解除成功');
     } else {
-      alert('请选择解除超链接的位置');
+      this.message.create('error', `请选择解除超链接的位置`);
     }
   }
   setfontColor(color: string, event: any) {
@@ -160,7 +162,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       this.editingAreaItemService.idBase = 0;
       this.editingAreaItemService.sortIndex(this.editingAreaItemService.items);
     } else {
-      alert('已经是第一位！');
+      this.message.create('warning', `已经是第一位！`);
     }
   }
   onMoveDown() {
@@ -175,7 +177,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       this.editingAreaItemService.idBase = 0;
       this.editingAreaItemService.sortIndex(this.editingAreaItemService.items);
     } else {
-      alert('已经是最后一位！');
+      this.message.create('warning', `已经是最后一位！`);
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EditingAreaItemService } from '../editing-area-item/editing-area-item.service';
 import { typefaces, fontColor } from './edit-bar-data';
+import { NzMessageService } from 'ng-zorro-antd';
 @Component({
   selector: 'bl-edit-bar',
   templateUrl: './edit-bar.component.html',
@@ -80,6 +81,16 @@ export class EditBarComponent implements OnInit {
   };
   backgroundColor = '#ffffff';
   backgroundColorList = fontColor;
+  // 图文背景色
+  isImgTextBackgroundColor = true;
+  imgTextBackgroundColorStyle = {
+    'outline': 'none',
+    'width': '111px',
+    'height': '30px',
+    'border-radius': '5px'
+  };
+  imgTextBackgroundColor = '#ffffff';
+  imgTextBackgroundColorList = fontColor;
   // 边框
   isBorder = true;
   borderStyle = {
@@ -113,24 +124,53 @@ export class EditBarComponent implements OnInit {
   };
   borderColorList = fontColor;
   borderColor = '#000000';
+// 分割线
+  isLineBorder = true;
+  lineBorderStyleList = [
+    {text: '实线', value: 'solid '},
+    {text: '点状', value: 'dotted'},
+    {text: '双线', value: 'double'},
+    {text: '虚线', value: 'dashed'}
+  ];
+  lineBorderColorStyle = {
+    'outline': 'none',
+    'width': '110px',
+    'height': '30px',
+    'border-radius': '5px'
+  };
+  lineBorderLine = '0px';
+  lineBorderLineBar: any;
+  lineBorderLineBtn: any;
+  lineBorderLineStep: any;
+  lineBorderLineMaximumInterval = 30;
 
+  lineMargin = '0px';
+  lineMarginLineBar: any;
+  lineMarginLineBtn: any;
+  lineMarginLineStep: any;
+  lineMarginLineMaximumInterval = 30;
 
 
   // 以下是图片
   // backGroundUrl: any;
   constructor(
-    public editingAreaItemService: EditingAreaItemService
+    public editingAreaItemService: EditingAreaItemService,
+    private message: NzMessageService
   ) { }
 
   ngOnInit() {
     // tslint:disable-next-line:max-line-length
-    this.scale(this.fontSizeBtn, this.fontSizeBar, this.fontSizeStep, 'font-size-btn', 'font-size-bar', 'fontSize', this.fontSizeMaximumInterval);
+    this.scale(this.fontSizeBtn, this.fontSizeBar, this.fontSizeStep, 'font-size-btn', 'font-size-bar', 'fontSize', this.lineBorderLineMaximumInterval);
     // tslint:disable-next-line:max-line-length
     this.scale(this.lineHeightBtn, this.lineHeightBar, this.lineHeightStep, 'line-height-btn', 'line-height-bar', 'lineHeight', this.lineHeightMaximumInterval);
     // tslint:disable-next-line:max-line-length
     this.scale(this.letterSpacingBtn, this.letterSpacingBar, this.letterSpacingStep, 'letter-spacing-btn', 'letter-spacing-bar', 'letterSpacing', this.letterSpacingMaximumInterval);
     // tslint:disable-next-line:max-line-length
     this.scale(this.borderLineBtn, this.borderLineBar, this.borderLineStep, 'border-line-btn', 'border-line-bar', 'borderLine', this.borderLineMaximumInterval);
+    // tslint:disable-next-line:max-line-length
+    this.scale(this.lineBorderLineBtn, this.lineBorderLineBar, this.lineBorderLineStep, 'line-border-line-btn', 'line-border-line-bar', 'lineBorderLine', this.borderLineMaximumInterval);
+    // tslint:disable-next-line:max-line-length
+    this.scale(this.lineMarginLineBtn, this.lineMarginLineBar, this.lineMarginLineStep, 'line-margin-btn', 'line-margin-bar', 'lineMargin', this.lineMarginLineMaximumInterval);
   }
   setValue(obj: any) {
     // tslint:disable-next-line:prefer-for-of
@@ -138,17 +178,46 @@ export class EditBarComponent implements OnInit {
       if (obj[i].name === 'typefaces') {
         this.typefaces = obj[i].typefacesList ? obj[i].typefacesList : this.typefaces;
         this.isShowTypefaces = obj[i].isShow === undefined ? this.isShowTypefaces : obj[i].isShow;
-        this.typefacesStyle = obj[i].typefacesStyle ? obj[i].typefacesStyle : this.fontColorStyle;
+        this.typefacesStyle = obj[i].style ? obj[i].style : this.fontColorStyle;
       }
       if (obj[i].name === 'fontColor') {
         this.fontColor = obj[i].fontColorList ? obj[i].fontColorList : this.fontColor;
         this.isFontColor = obj[i].isShow === undefined ? this.isFontColor : obj[i].isShow;
-        this.fontColorStyle = obj[i].fontColorStyle ? obj[i].fontColorStyle : this.typefacesStyle;
+        this.fontColorStyle = obj[i].style ? obj[i].style : this.typefacesStyle;
       }
       if (obj[i].name === 'fontSize') {
         this.isFontSize = obj[i].isShow === undefined ? this.isFontSize : obj[i].isShow;
         this.fontSizeMaximumInterval = obj[i].maximumInterval ? obj[i].maximumInterval : this.fontSizeMaximumInterval;
-        this.fontSizeStyle = obj[i].fontSizeStyle ? obj[i].fontSizeStyle : this.fontSizeStyle;
+        this.fontSizeStyle = obj[i].style ? obj[i].style : this.fontSizeStyle;
+      }
+      if (obj[i].name === 'lineHeight') {
+        this.isLineHeight = obj[i].isShow === undefined ? this.isLineHeight : obj[i].isShow;
+        this.lineHeightMaximumInterval = obj[i].maximumInterval ? obj[i].maximumInterval : this.lineHeightMaximumInterval;
+        this.lineHeightStyle = obj[i].style ? obj[i].style : this.lineHeightStyle;
+      }
+      if (obj[i].name === 'letterSpacing') {
+        this.isLetterSpacing = obj[i].isShow === undefined ? this.isLetterSpacing : obj[i].isShow;
+        this.letterSpacingMaximumInterval = obj[i].maximumInterval ? obj[i].maximumInterval : this.letterSpacingMaximumInterval;
+        this.letterSpacingStyle = obj[i].style ? obj[i].style : this.letterSpacingStyle;
+      }
+      if (obj[i].name === 'textStyle') {
+        this.isTextStyle = obj[i].isShow === undefined ? this.isTextStyle : obj[i].isShow;
+      }
+      if (obj[i].name === 'backgroundColor') {
+        this.backgroundColorList = obj[i].backgroundColorList ? obj[i].backgroundColorList : this.backgroundColorList;
+        this.isBackgroundColor = obj[i].isShow === undefined ? this.isBackgroundColor : obj[i].isShow;
+        this.backgroundColorStyle = obj[i].style ? obj[i].style : this.backgroundColorStyle;
+      }
+      if (obj[i].name === 'imgTextBackgroundColor') {
+        this.imgTextBackgroundColorList = obj[i].imgTextBackgroundColorList ? obj[i].imgTextBackgroundColorList : this.imgTextBackgroundColorList;
+        this.isImgTextBackgroundColor = obj[i].isShow === undefined ? this.isImgTextBackgroundColor : obj[i].isShow;
+        this.imgTextBackgroundColorStyle = obj[i].style ? obj[i].style : this.imgTextBackgroundColorStyle;
+      }
+      if (obj[i].name === 'border') {
+        this.isBorder = obj[i].isShow === undefined ? this.isBorder : obj[i].isShow;
+      }
+      if (obj[i].name === 'lineBorder') {
+        this.isLineBorder = obj[i].isShow === undefined ? this.isLineBorder : obj[i].isShow;
       }
     }
   }
@@ -166,10 +235,21 @@ export class EditBarComponent implements OnInit {
     this.editingAreaItemService.itemDom.style['border-style'] = value;
     this.editingAreaItemService.elem.focus();
   }
+  setLineBorderStyle(value: string) {
+    this.editingAreaItemService.itemDom.style['border-style'] = value;
+    this.editingAreaItemService.elem.focus();
+  }
   setBackgroundColorStyle(value: string) {
     this.backgroundColor = value;
     this.backgroundColorStyle['background-color'] = value;
     this.editingAreaItemService.itemDom.style.background = value;
+    // this.editingAreaItemService.boxDom.style.background = value;
+    this.editingAreaItemService.elem.focus();
+  }
+  setImgTextBackgroundColorStyle(value: string) {
+    this.imgTextBackgroundColor = value;
+    this.imgTextBackgroundColorStyle['background-color'] = value;
+    this.editingAreaItemService.boxDom.style.background = value;
     this.editingAreaItemService.elem.focus();
   }
   setborderColorStyle(value: string) {
@@ -234,6 +314,12 @@ export class EditBarComponent implements OnInit {
     } else if (name === 'borderLine') {
       this.borderLine = pos + 'px';
       this.editingAreaItemService.itemDom.style['border-width'] =  this.borderLine;
+    } else if (name === 'lineBorderLine') {
+      this.lineBorderLine = pos + 'px';
+      this.editingAreaItemService.itemDom.style['border-width'] =  this.lineBorderLine;
+    } else if (name === 'lineMargin') {
+      this.lineMargin = pos + 'px';
+      this.editingAreaItemService.itemDom.style.margin =  `${this.lineMargin} 0`;
     }
   }
 
@@ -275,15 +361,28 @@ export class EditBarComponent implements OnInit {
   onChangePicture(e: any) {
     const that = this;
     const file = e.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function() {
-      that.editingAreaItemService.imgUrl = this.result;
-      that.editingAreaItemService.itemDom.url = this.result;
-    };
+    if (file.type.indexOf('image/') === -1) {
+      this.message.create('error', `文件格式错误，请上传图片文件！`);
+      return false;
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function() {
+        that.editingAreaItemService.imgUrl = this.result;
+        that.editingAreaItemService.itemDom.url = this.result;
+      };
+    }
+    const fileDoc = document.getElementById('file') as HTMLInputElement;
+    fileDoc.value = '';
   }
   onChangeUrl(value: any) {
-    this.editingAreaItemService.itemDom.href = value;
+    const reUrl = /(http|https):\/\/([\w.]+\/?)\S*/;
+    if (reUrl.test(value)) {
+      this.editingAreaItemService.isReUrl = false;
+      this.editingAreaItemService.itemDom.href = value;
+    } else {
+      this.editingAreaItemService.isReUrl = true;
+    }
   }
 
 

@@ -28,7 +28,7 @@ export class TemplateComponent implements OnInit {
         { name: '楷体', code: 'KaiTi' }
       ],
       isShow: true,
-      typefacesStyle: {
+      style: {
         'border-radius': '5px',
         'outline': 'none',
         'width': '150px',
@@ -38,7 +38,7 @@ export class TemplateComponent implements OnInit {
     {
       name: 'fontSize',
       isShow: true,
-      fontSizeStyle: {
+      style: {
         'width': '110px',
        },
       maximumInterval: 30,
