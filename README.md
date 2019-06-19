@@ -1,5 +1,5 @@
 ## 项目
-基于angular编写的富文本模块编辑器
+基于angular 8.0.1编写的富文本模块编辑器
 
 ### demo演示
 
@@ -156,7 +156,7 @@ ngOnInit() {
 其中  
 isEdit&emsp;控制此块是否可以被编辑；  
 isShowEditorTool&emsp;控制是否显示行内编辑器；  
-toolConfigure&emsp;显示行内编辑器哪些工具显示  
+toolConfigure&emsp;控制行内编辑器哪些工具显示  
 
 ![avatar](https://thumbnail0.baidupcs.com/thumbnail/f8e02fbf7a9d6810a5da3099e689d6ee?fid=3426899154-250528-252183015225510&time=1560916800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-zLPJ2y4QmUe3eIwye9ZPEv%2B%2BJCs%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3931627711021755050&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
 
@@ -166,7 +166,7 @@ toolConfigure&emsp;显示行内编辑器哪些工具显示
  <bl-toolbar [toolBarConfigure]="toolBarConfigure"></bl-toolbar>
  ```
  ```
- //这里是配置工具栏哪个显示和隐藏
+ //这里是配置工具栏哪些显示和隐藏
  toolBarConfigure = [
     'text', 
     'backgroundText', 
@@ -242,6 +242,174 @@ toolConfigure&emsp;显示行内编辑器哪些工具显示
   border &emsp;边框  
   lineBorder &emsp;分割线  
   
+  
+ #### 核心服务
+在editing-area-item.service.ts文件中用来处理页面上初始化数据、保存、删除、预览等功能
+```
+import { Injectable, SecurityContext } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { EeitingAreaItem } from './eiting-area-item.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EditingAreaItemService {
+  isShowBorder = true;
+  isClick = true;
+  items: EeitingAreaItem[] = [];
+  boxDom: any;
+  itemDom: any;
+  isGroup = false;
+  isReUrl = false;
+  insertIndex = 0;
+  type: string;
+  imgUrl: any;
+  imgSize: any;
+  imgHref: any;
+  elem: any;
+  base = 0;
+  idBase = 0;
+  divDom = document.getElementById('editing-area');
+  constructor(
+    public sanitizer: DomSanitizer,
+  ) { }
+  trustHtml(str: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(str);
+  }
+  transformationString(content: any) {
+    return this.sanitizer.sanitize(SecurityContext.HTML, content);
+  }
+  // 初始循环渲染行内样式
+  initialCyclel(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.initialCyclel(obj[i][key]);
+        } else {
+          if (key === 'content') {
+            obj[i][key] = that.trustHtml(obj[i][key]);
+          }
+        }
+      }
+    }
+  }
+   // 结束循环还原初始样式
+  endCyclels(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.endCyclels(obj[i][key]);
+        } else {
+          if (key === 'content') {
+            obj[i][key] = that.transformationString(obj[i][key]);
+          }
+          if (key === 'isShowEditorTool') {
+            obj[i][key] = false;
+          }
+        }
+      }
+    }
+  }
+  // 预览时处理数据、不可编辑
+  previewCyclel(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.previewCyclel(obj[i][key]);
+        } else {
+          if (key === 'isEdit') {
+            obj[i][key] = false;
+          }
+          if (key === 'isShowEditorTool') {
+            obj[i][key] = false;
+          }
+        }
+      }
+    }
+  }
+  // 排顺序
+  sortIndex(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.sortIndex(obj[i][key]);
+        } else {
+
+          if (key === 'index') {
+            obj[i][key] = that.base;
+            that.base++;
+          }
+          if (key === 'id') {
+            obj[i][key] = that.idBase;
+            that.idBase++;
+          }
+        }
+      }
+    }
+  }
+  // 插入模板
+  insertTemplate(dataTmp: any) {
+    const that = this;
+    that.base = 0;
+    that.idBase = 0;
+    const index = that.insertIndex;
+    const htmlData = dataTmp;
+    that.initialCyclel(htmlData);
+    that.items.splice(index + 1, 0, htmlData);
+    that.insertIndex++;
+    that.sortIndex(that.items);
+  }
+  // 删除模板
+  deleteTemplate() {
+    this.base = 0;
+    this.idBase = 0;
+    const index = this.insertIndex;
+    this.items.splice(index, 1);
+    this.insertIndex--;
+    this.sortIndex(this.items);
+  }
+  // 隐藏行内编辑器
+  hideEditorTool(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.hideEditorTool(obj[i][key]);
+        } else {
+          if (key === 'isShowEditorTool') {
+            obj[i][key] = false;
+          }
+        }
+      }
+    }
+  }
+  // 内容更改后重新复制
+  setContent(obj: any, id: any, content: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.setContent(obj[i][key], id, content);
+        } else {
+          if (obj[i].id === id) {
+            obj[i].content = that.trustHtml(content);
+          }
+        }
+      }
+    }
+  }
+}
+```
   
   
   
