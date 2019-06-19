@@ -1,7 +1,7 @@
 ## 项目
 基于angular编写的富文本模块编辑器
 
-### demo演示
+### demo演示  [地址](http://www.baidu.com "标题")
 
 ![动图](https://thumbnail0.baidupcs.com/thumbnail/580f167cce1bceb132e0dc9cc7b24feb?fid=3426899154-250528-902201281854451&time=1560924000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-0nA12je%2B6l41s7KykFRLWZ61k8A%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3933970193553128547&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
 
