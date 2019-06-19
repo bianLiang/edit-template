@@ -48,7 +48,7 @@ app
 
 ## 配置
 #### 内容区
-![avatar](http://a3.qpic.cn/psb?/V14dc6bM1BCIxt/iLoR0w40iEG.jX92RLNZrn4JqKCVknC5fgRwDN9ASd0!/m/dDYBAAAAAAAAnull&bo=hALnAgAAAAADB0E!&rf=photolist&t=5)
+![avatar](https://thumbnail0.baidupcs.com/thumbnail/ce2a82044d6705016f2d288430189530?fid=3426899154-250528-1109883440324340&time=1560927600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-KOeSCuTmCULivyJ5TknfmdrrhFI%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3934324456686416763&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
 ``` 
 <div id='editing-area'>
   <bl-editing-area [items]="editingAreaItemService.items">
