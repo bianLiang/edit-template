@@ -149,6 +149,7 @@ export class EditBarComponent implements OnInit {
   lineMarginLineBtn: any;
   lineMarginLineStep: any;
   lineMarginLineMaximumInterval = 30;
+  lineBorderColor = '#000000';
 
 
   // 以下是图片
@@ -255,6 +256,12 @@ export class EditBarComponent implements OnInit {
   setborderColorStyle(value: string) {
     this.borderColor = value;
     this.borderColorStyle['background-color'] = value;
+    this.editingAreaItemService.itemDom.style['border-color'] = value;
+    this.editingAreaItemService.elem.focus();
+  }
+  setLineBorderColorStyle(value: string) {
+    this.lineBorderColor = value;
+    this.lineBorderColorStyle['background-color'] = value;
     this.editingAreaItemService.itemDom.style['border-color'] = value;
     this.editingAreaItemService.elem.focus();
   }

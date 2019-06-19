@@ -166,7 +166,7 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/ditu_646_400.png',
+          url: 'https://thumbnail0.baidupcs.com/thumbnail/2db3e953554fdae27245e784e0aadfd7?fid=3426899154-250528-769924691759647&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-TdP3Fzu9df%2BBaQ7xmoHKuSGKWxY%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930413718729723293&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
           href: '',
           imgSize: '650px * 400px'
         }
@@ -195,7 +195,7 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/ditu_1.png',
+          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
           href: '',
           imgSize: '250px * 187px'
 
@@ -210,7 +210,7 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/ditu_1.png',
+          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
           href: '',
           imgSize: '250px * 187px'
         },
@@ -273,7 +273,7 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/ditu_1.png',
+          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
           href: '',
           imgSize: '250px * 187px'
 
@@ -320,7 +320,7 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/ditu_1.png',
+          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
           href: '',
           imgSize: '250px * 187px'
 
@@ -448,7 +448,7 @@ export class ToolbarComponent implements OnInit {
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: '../../../assets/img/code.jpg',
+          url: 'https://thumbnail0.baidupcs.com/thumbnail/f78cde3e3d4968e05e4733273e096525?fid=3426899154-250528-494691906577846&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-G0FZcfxSZxwJphbq8GN2dBW1Zco%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930743075549869675&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
           imgSize: '200px * 200px'
 
         },

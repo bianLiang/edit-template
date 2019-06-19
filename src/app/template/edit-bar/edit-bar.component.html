@@ -139,11 +139,11 @@
         </div>
       </div>
     <div *ngIf="isLineBorder" class='currency'>颜色：
-      <select [ngStyle]='lineBorderColorStyle' (change)="setborderColorStyle($event.target.value)">
+      <select [ngStyle]='lineBorderColorStyle' (change)="setLineBorderColorStyle($event.target.value)">
         <option *ngFor="let item of borderColorList" [ngStyle]="{'background': item}" [value]="item"></option>
       </select>
       <span
-        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': borderColor}"></span>
+        [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': lineBorderColor}"></span>
     </div>
   </div>
   <div [ngStyle]="{'display': editingAreaItemService.type === 'img'  ? 'block': 'none'}">
