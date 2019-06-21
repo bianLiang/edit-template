@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ImgTailoringService } from './img-tailoring.service';
+import { EditingAreaItemService } from '../editing-area-item/editing-area-item.service';
 
 @Component({
-  selector: 'bl-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css']
+  selector: 'bl-img-tailoring',
+  templateUrl: './img-tailoring.component.html',
+  styleUrls: ['./img-tailoring.component.css']
 })
-export class DemoComponent implements OnInit {
+export class ImgTailoringComponent implements OnInit {
+  clientHeight: number;
+  clientWidth: number;
   box: any;
   mainDiv: any;
   rightDiv: any;
@@ -22,10 +26,15 @@ export class DemoComponent implements OnInit {
   disY: any;
   imgUrl: any;
   previewUrl: any;
-  constructor() { }
+  constructor(
+    public imgTailoringService: ImgTailoringService,
+    public editingAreaItemService: EditingAreaItemService
+  ) { }
 
   ngOnInit() {
     const that = this;
+    this.clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    this.clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
     //  防止框选变蓝
     document.onselectstart = () => {
       return false;
@@ -107,7 +116,6 @@ export class DemoComponent implements OnInit {
         }
       }
       that.setChoice();
-
     };
     that.mainDiv.onmousedown = (e: any) => {
       that.ifKeyDown = true;
@@ -143,23 +151,20 @@ export class DemoComponent implements OnInit {
 
   setChoice() {
     const top = this.mainDiv.offsetTop;
-    // console.log(this.mainDiv.offsetLeft );
-    // console.log(this.mainDiv.offsetWidth);
     const right = this.mainDiv.offsetLeft + this.mainDiv.offsetWidth;
     const bottom = this.mainDiv.offsetTop + this.mainDiv.offsetHeight;
     const left = this.mainDiv.offsetLeft;
     const img2 = document.getElementById('img2');
-    // console.log(top);
-    // console.log(right);
-    // console.log(bottom);
-    // console.log(left);
-    img2.style.clip = 'rect(' + top + 'px,' + right + 'px,' + bottom + 'px,' + left + 'px)';
-    this.setPreview();
+    if (img2) {
+      img2.style.clip = 'rect(' + top + 'px,' + right + 'px,' + bottom + 'px,' + left + 'px)';
+    }
+    // 设置根据选区时刻预览效果图
+    // this.setPreview();
   }
   bili(img, box) {
-    const w = Math.round(img.width / box.offsetWidth * 100) / 100;
-    const h = Math.round(img.height / box.offsetHeight * 100) / 100;
-    return { w: w, 'h': h };
+    const ws = Math.round(img.width / box.offsetWidth * 100) / 100;
+    const hs = Math.round(img.height / box.offsetHeight * 100) / 100;
+    return { w: ws, h: hs };
   }
   setPreview() {
     const that = this;
@@ -167,20 +172,19 @@ export class DemoComponent implements OnInit {
     const t = that.mainDiv.offsetTop;
     const tt = that.right_down.offsetTop - that.right_up.offsetTop;
     const ll = that.right_down.offsetLeft - that.left_down.offsetLeft;
-    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    canvas.width = this.mainDiv.offsetWidth;
-    canvas.height = this.mainDiv.offsetHeight;
-    const context = canvas.getContext('2d');
-    const box = document.getElementById('box');
-    const img = new Image();
-    img.src = '../../assets/img/bglogin.png';
-    img.onload = () => {
-      // tslint:disable-next-line:max-line-length
-      context.drawImage(img, l * that.bili(img, box).w, t * that.bili(img, box).h, ll * that.bili(img, box).w, tt * that.bili(img, box).h, 0, 0, canvas.width, canvas.height);
-      // context.fillStyle = 'red';
-      // context.fillRect (0, 0, 100, 100);
-      that.imgUrl = canvas.toDataURL('image/jpeg');
-    };
+    const canvas: any = document.getElementById('canvas');
+    if (canvas) {
+      const context = canvas.getContext('2d');
+      const box = document.getElementById('box');
+      const img = new Image();
+      img.setAttribute('crossOrigin', 'anonymous');
+      img.src = that.imgTailoringService.cropUrl;
+      img.onload = () => {
+        // tslint:disable-next-line:max-line-length
+        context.drawImage(img, l * that.bili(img, box).w, t * that.bili(img, box).h, ll * that.bili(img, box).w, tt * that.bili(img, box).h, 0, 0, 650, 300);
+        that.imgUrl = canvas.toDataURL('image/jpeg');
+      };
+    }
   }
   rightMove(e) {
     let x = e.clientX;
@@ -238,12 +242,39 @@ export class DemoComponent implements OnInit {
   }
 
   complete() {
-    // this.previewUrl = this.imgUrl;
-
-    // const c = document.getElementById('myCancas')  as HTMLCanvasElement;
-    // const ctx = c.getContext('2d');
-    // const img = document.getElementById('img2')as HTMLCanvasElement;
-    // ctx.drawImage(img, 10, 10, 240, 160);
+    const that = this;
+    const l = that.mainDiv.offsetLeft;
+    const t = that.mainDiv.offsetTop;
+    const tt = that.right_down.offsetTop - that.right_up.offsetTop;
+    const ll = that.right_down.offsetLeft - that.left_down.offsetLeft;
+    const canvas: any = document.getElementById('canvas');
+    if (canvas) {
+      canvas.width = this.mainDiv.offsetWidth;
+      canvas.height = this.mainDiv.offsetHeight;
+      const context = canvas.getContext('2d');
+      const box = document.getElementById('box');
+      const img = new Image();
+      img.setAttribute('crossOrigin', 'anonymous');
+      img.src = that.imgTailoringService.cropUrl;
+      img.onload = () => {
+        // tslint:disable-next-line:max-line-length
+        context.drawImage(img,
+            l * that.bili(img, box).w,
+            t * that.bili(img, box).h,
+            ll * that.bili(img, box).w,
+            tt * that.bili(img, box).h,
+            0, 0, canvas.width, canvas.height);
+        const url = canvas.toDataURL('image/jpeg');
+        that.previewUrl = url;
+        that.editingAreaItemService.itemDom.url = url;
+        that.editingAreaItemService.imgUrl = url;
+        that.editingAreaItemService.itemDom.isCrop = false;
+        that.editingAreaItemService.itemDom.isNoUploading = false;
+      };
+    }
+  }
+  giveUp() {
+    this.editingAreaItemService.itemDom.isCrop = false;
+    this.editingAreaItemService.itemDom.isNoUploading = false;
   }
 }
-

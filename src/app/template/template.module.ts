@@ -14,13 +14,18 @@ import { NzModalModule} from 'ng-zorro-antd';
 import { NzMessageModule } from 'ng-zorro-antd';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImgTailoringComponent } from './img-tailoring/img-tailoring.component';
+import { ImgTailoringService } from './img-tailoring/img-tailoring.service';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
     NzModalModule,
-    NzMessageModule
+    NzMessageModule,
+    HttpClientModule,
   ],
   declarations: [
     TemplateComponent,
@@ -30,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditingAreaItemComponent,
     ContentEditorToolComponent,
     ContentEditorToolItemComponent,
+    ImgTailoringComponent
 
   ],
   exports: [
@@ -39,11 +45,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditBarComponent,
     EditingAreaItemComponent,
     ContentEditorToolComponent,
-    ContentEditorToolItemComponent
+    ContentEditorToolItemComponent,
+    ImgTailoringComponent
   ],
   providers: [
     EditingAreaItemService,
     ContentEditorToolItemService,
+    ImgTailoringService
   ]
 })
 export class TemplateModule { }

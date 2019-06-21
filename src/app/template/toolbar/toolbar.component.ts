@@ -153,6 +153,7 @@ export class ToolbarComponent implements OnInit {
       style: {
         'display': 'flex',
         'justify-content': 'center',
+        // 'text-align': 'center',
         'margin': '5px 0'
       },
       children: [
@@ -160,18 +161,20 @@ export class ToolbarComponent implements OnInit {
           type: 'img',
           id: 'img',
           style: {
-            'width': '100%',
+            'max-width': '100%',
             'outline-color': 'blue',
           },
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: 'https://thumbnail0.baidupcs.com/thumbnail/2db3e953554fdae27245e784e0aadfd7?fid=3426899154-250528-769924691759647&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-TdP3Fzu9df%2BBaQ7xmoHKuSGKWxY%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930413718729723293&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
+          isCrop: false,
+          toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
+          url: 'http://wx.xrewin.com:8083/ditu_646_400.png',
           href: '',
           imgSize: '650px * 400px'
         }
       ]
     };
+    // ../../../assets/img/ditu_646_400.png
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'img';
   }
@@ -189,13 +192,14 @@ export class ToolbarComponent implements OnInit {
           type: 'img',
           id: 'img',
           style: {
-            'width': '250px',
+            'max-width': '100%',
             'outline-color': 'blue',
           },
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
+          isCrop: false,
+          toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
+          url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '250px * 187px'
 
@@ -204,13 +208,14 @@ export class ToolbarComponent implements OnInit {
           type: 'img',
           id: 'img',
           style: {
-            'width': '250px',
+            'max-width': '100%',
             'outline-color': 'blue',
           },
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
+          isCrop: false,
+          toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
+          url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '250px * 187px'
         },
@@ -267,13 +272,14 @@ export class ToolbarComponent implements OnInit {
           type: 'img',
           id: 'img',
           style: {
-            'width': '250px',
+            'max-width': '100%',
             'outline-color': 'blue',
           },
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
+          isCrop: false,
+          toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
+          url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '250px * 187px'
 
@@ -306,7 +312,10 @@ export class ToolbarComponent implements OnInit {
       index: null,
       style: {
         'background': '#eee',
-        'text-align': 'center',
+        // 'text-align': 'center',
+        // 'margin': '5px 0'
+        'display': 'flex',
+        'justify-content': 'space-evenly',
         'margin': '5px 0'
       },
       children: [
@@ -314,13 +323,14 @@ export class ToolbarComponent implements OnInit {
           type: 'img',
           id: 'img',
           style: {
-            'width': '250px',
+            'max-width': '100%',
             'outline-color': 'blue',
           },
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: 'https://thumbnail0.baidupcs.com/thumbnail/60e733f0483ed1f87ffaacd405fc509c?fid=3426899154-250528-7369681205745&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-wDfpjtSFArfvJd1F142X5u6ZV40%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930712577336320078&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
+          isCrop: false,
+          toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
+          url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '250px * 187px'
 
@@ -333,7 +343,8 @@ export class ToolbarComponent implements OnInit {
             'outline-color': 'blue',
             'color': 'red',
             'margin': 0,
-            'line-height': '35px'
+            'line-height': '35px',
+            'width': '350px'
           },
           content: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
           isEdit: true,
@@ -442,13 +453,13 @@ export class ToolbarComponent implements OnInit {
           type: 'code',
           id: 'code',
           style: {
-            'width': '200px',
+            'max-width': '100%',
             'outline-color': 'blue',
           },
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
-          url: 'https://thumbnail0.baidupcs.com/thumbnail/f78cde3e3d4968e05e4733273e096525?fid=3426899154-250528-494691906577846&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-G0FZcfxSZxwJphbq8GN2dBW1Zco%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3930743075549869675&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video',
+          url: 'http://wx.xrewin.com:8083/code.jpg',
           imgSize: '200px * 200px'
 
         },

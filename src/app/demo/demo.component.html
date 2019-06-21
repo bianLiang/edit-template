@@ -1,3 +1,24 @@
-<p>
-  demo works!
-</p>
+<div id="box">
+  <img src="../../assets/img/bglogin.png" id="img1" />
+  <img src="../../assets/img/bglogin.png" id="img2" />
+  <div id="main">
+    <div class="div minDiv" id="up"></div>
+    <div class="div minDiv2" id="left_up"></div>
+    <div class="div minDiv3" id="right_up"></div>
+    <div class="div minDiv4" id="left"></div>
+    <div class="div minDiv5" id="right"></div>
+    <div class="div minDiv6" id="left_down"></div>
+    <div class="div minDiv7" id="down"></div>
+    <div class="div minDiv8" id="right_down"></div>
+  </div>
+</div>
+<div id="preview">
+  <canvas id="canvas"></canvas>
+</div>
+<div>
+  <button (click)="complete()">完成</button>
+</div>
+<img style="position: absolute;
+top: 422px;" [src]="previewUrl" alt="">
+<!-- <canvas style="position: absolute;
+top: 422px;" id="myCancas"></canvas> -->

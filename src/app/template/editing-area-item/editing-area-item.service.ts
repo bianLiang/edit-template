@@ -16,6 +16,7 @@ export class EditingAreaItemService {
   insertIndex = 0;
   type: string;
   imgUrl: any;
+  isNoUploading = false;
   imgSize: any;
   imgHref: any;
   elem: any;
@@ -84,6 +85,44 @@ export class EditingAreaItemService {
         }
       }
     }
+  }
+  // 处理剪裁时其他模块不可编辑，不可上传新的图片
+   cropCyclel(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.cropCyclel(obj[i][key]);
+        } else {
+          if (key === 'isEdit') {
+            obj[i][key] = false;
+          }
+        }
+      }
+    }
+    that.itemDom.isEdit = true;
+    that.isNoUploading = true;
+  }
+  // 处理剪裁结束后数据
+  endCropCyclel(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.endCropCyclel(obj[i][key]);
+        } else {
+          if (key === 'isEdit') {
+            obj[i][key] = true;
+          }
+          // if (key === 'style') {
+          //   obj[i][key]['pointer-events'] = 'auto';
+          // }
+        }
+      }
+    }
+    that.isNoUploading = false;
   }
   // 排顺序
   sortIndex(obj: any) {

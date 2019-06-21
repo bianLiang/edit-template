@@ -154,11 +154,11 @@
     font-weight: 400;">图片</h4>
     <div style="position: relative;border-bottom: 1px solid #111;width: 98%;display: flex;">
       <div>
-        <img [ngStyle]="{'background-image':'url(' + editingAreaItemService.imgUrl + ')', 'width': '105px', 'height': '80px', 'background-repeat': 'no-repeat', 'background-size': 'cover'}" alt="">
+        <img [ngStyle]="{'background-image':'url(' + editingAreaItemService.imgUrl + ')', 'width': '105px', 'height': '80px', 'background-repeat': 'no-repeat', 'background-size': '100% 100%'}" alt="">
       </div>
       <div>
         <a href="javascript:;" class="file">选择图片
-            <input id="file" type="file" (change)="onChangePicture($event.target)">
+            <input id="file" type="file" [disabled]='editingAreaItemService.isNoUploading' (change)="onChangePicture($event.target)">
           </a>
 
       </div>

@@ -12,7 +12,7 @@
 .User_ratings .ratings_bars .scale {
   height: 12px;
   position: relative;
-  background: url(https://thumbnail0.baidupcs.com/thumbnail/cb547230db2951de72b5172e78637963?fid=3426899154-250528-303987996245078&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-MxeAeKszzrx%2BwU2Jf7XneWy2ECg%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3931098394522492200&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video) 0 0 no-repeat;
+  background: url(http://wx.xrewin.com:8083/progress02.png) 0 0 no-repeat;
   border-radius: 9px;
 }
 
@@ -23,7 +23,7 @@
   left: 0;
   height: 12px;
   bottom: 0;
-  background: url(https://thumbnail0.baidupcs.com/thumbnail/cb547230db2951de72b5172e78637963?fid=3426899154-250528-303987996245078&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-MxeAeKszzrx%2BwU2Jf7XneWy2ECg%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3931098394522492200&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video) 0 -14px no-repeat;
+  background: url(http://wx.xrewin.com:8083/progress02.png) 0 -14px no-repeat;
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
 }
@@ -36,7 +36,7 @@
   top: -7px;
   cursor: pointer;
   border-radius: 8px;
-  background: url(https://thumbnail0.baidupcs.com/thumbnail/5e4ecab94084689648e21ede653223b3?fid=3426899154-250528-461314421755500&time=1560913200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-5JuTwB9MMl8lrYtYPsCuoXKUHGc%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=3931068652621486357&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video) no-repeat;
+  background: url(http://wx.xrewin.com:8083/j.png) no-repeat;
 }
 
 .file {

@@ -13,6 +13,7 @@ export class EeitingAreaItem {
   public key?: string;
   public isEdit?: boolean;
   public isShowEditorTool?: boolean;
+  public isCrop?: boolean;
   public showShadow?: boolean;
   public children?: EeitingAreaItem[];
 

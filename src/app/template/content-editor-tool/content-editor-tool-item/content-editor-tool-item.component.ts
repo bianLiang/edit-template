@@ -4,6 +4,7 @@ import { ContentEditorToolItemService } from './content-editor-tool-item.service
 import { EditingAreaItemService } from '../../editing-area-item/editing-area-item.service';
 import { NzModalService } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ImgTailoringService } from '../../img-tailoring/img-tailoring.service';
 @Component({
   selector: 'bl-content-editor-tool-item',
   templateUrl: './content-editor-tool-item.component.html',
@@ -19,7 +20,8 @@ export class ContentEditorToolItemComponent implements OnInit {
     public contentEditorToolItemService: ContentEditorToolItemService,
     public editingAreaItemService: EditingAreaItemService,
     private modalService: NzModalService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    public imgTailoringService: ImgTailoringService
   ) { }
 
   ngOnInit() {
@@ -179,5 +181,10 @@ export class ContentEditorToolItemComponent implements OnInit {
     } else {
       this.message.create('warning', `已经是最后一位！`);
     }
+  }
+  crop() {
+    // this.editingAreaItemService.cropCyclel(this.editingAreaItemService.items);
+    this.editingAreaItemService.itemDom.isCrop = true;
+    this.imgTailoringService.cropUrl = this.editingAreaItemService.itemDom.url;
   }
 }

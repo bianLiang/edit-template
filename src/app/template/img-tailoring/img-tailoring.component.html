@@ -1,0 +1,47 @@
+<div [ngStyle]="{height: clientHeight + 'px', width: clientWidth + 'px'}" style='position: fixed;top: 0;left: 0;background: rgba(0,0,0,0.2);z-index: 19999;'>
+
+</div>
+<div id="box">
+  <img [src]="imgTailoringService.cropUrl" id="img1" />
+  <img [src]="imgTailoringService.cropUrl" id="img2" />
+  <div id="main">
+    <div class="div minDiv" id="up"></div>
+    <div class="div minDiv2" id="left_up"></div>
+    <div class="div minDiv3" id="right_up"></div>
+    <div class="div minDiv4" id="left"></div>
+    <div class="div minDiv5" id="right"></div>
+    <div class="div minDiv6" id="left_down"></div>
+    <div class="div minDiv7" id="down"></div>
+    <div class="div minDiv8" id="right_down"></div>
+  </div>
+  <div style="
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  height: 40px;
+  background: #fff;
+  width: 100%;
+  min-width: 150px;
+  z-index: 20000;
+  display: flex;
+  align-items: center;">
+    <button style="width: 80px;
+    height: 31px;
+    background: rgb(0,150,136);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;" (click)="complete()">完成</button>
+    <button style="width: 80px;
+    height: 31px;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #444;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;" (click)="giveUp()">放弃</button>
+  </div>
+</div>
+<div id="preview" style="display: none;">
+  <canvas id="canvas"></canvas>
+</div>

@@ -1,12 +1,10 @@
-body{
-  background: #333;
-  }
-  #box{
+#box{
   position:absolute;
-  top: 1rem;
-  left: 2rem;
-  height: 400px;
-  width: 400px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20000;
   }
   #img1{
   position: absolute;
@@ -85,18 +83,19 @@ body{
   }
   #preview{
     position: absolute;
-    /* width: 10rem;
-    height: 10rem; */
+    width: 10rem;
+    height: 10rem;
     top: 1rem;
     left: 28rem;
-    /* overflow: hidden; */
+    overflow: hidden;
+    z-index: 20000;
   }
   #img3{
   position: absolute;
   }
   #canvas{
-  /* height: 100%;
-  width: 100%; */
+  height: 100%;
+  width: 100%;
   background: #fff;
   border: 1px solid #aaa;
   }
