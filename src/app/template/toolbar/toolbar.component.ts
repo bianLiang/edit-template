@@ -111,7 +111,7 @@ export class ToolbarComponent implements OnInit {
           content: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -139,7 +139,7 @@ export class ToolbarComponent implements OnInit {
           content: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -251,7 +251,7 @@ export class ToolbarComponent implements OnInit {
           content: '立即点击',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -293,12 +293,12 @@ export class ToolbarComponent implements OnInit {
             'margin': 0,
             'margin-left': '10px',
             'line-height': '35px',
-            'width': '350px',
+            'width': '400px',
           },
           content: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -312,8 +312,6 @@ export class ToolbarComponent implements OnInit {
       index: null,
       style: {
         'background': '#eee',
-        // 'text-align': 'center',
-        // 'margin': '5px 0'
         'display': 'flex',
         'justify-content': 'space-evenly',
         'margin': '5px 0'
@@ -343,13 +341,14 @@ export class ToolbarComponent implements OnInit {
             'outline-color': 'blue',
             'color': 'red',
             'margin': 0,
+            'margin-left': '10px',
             'line-height': '35px',
-            'width': '350px'
+            'width': '400px'
           },
-          content: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
+          content: '这是新增加的背景文本段落,这是新增加的背景文本段落,这是新增加的背景文本段落,这是新增加的背景文本段落。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -401,7 +400,7 @@ export class ToolbarComponent implements OnInit {
           content: '图片无法正常显示，请点击<a href="{{edm_cannot_read}}" target="_blank">在线预览</a>',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -427,10 +426,12 @@ export class ToolbarComponent implements OnInit {
             'font-weight': '400',
             'color': '#888'
           },
+          // tslint:disable-next-line:max-line-length
           content: '您之所以收到这封邮件，是因为您曾经与我们沟通或在官网订阅此邮件；<br> 如果您想将我们的信息分享给更多的朋友，请分享或转发；<br> 为了您不错过我们的每一次专享资讯，请将我们的发件人地址加到通讯录<br> 本电子邮件由系统自动发送，请勿直接回复。如有任何意见或建议，请您联系我们。<br> 若您不希望再次收到来自我们的邮件，<a href="{{edm_unsubscribe_url}}" target="_blank">请点此退订</a>。',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          // tslint:disable-next-line:max-line-length
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };
@@ -476,7 +477,7 @@ export class ToolbarComponent implements OnInit {
           content: '扫码关注',
           isEdit: true,
           isShowEditorTool: false,
-          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+          toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
         }
       ]
     };

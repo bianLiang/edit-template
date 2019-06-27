@@ -70,10 +70,10 @@ export class TemplateComponent implements OnInit {
               'font-weight': 400,
               'color': 'red',
             },
-            content: '小时不识月， 呼作白玉盘。',
+            content: '小时不识月， 呼作白玉盘。<span id="my-var-0">hahah</span>',
             isEdit: true,
             isShowEditorTool: false,
-            toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'moveUp', 'moveDown', 'delete']
+            toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'moveUp', 'moveDown', 'insert', 'delete']
           }
         ]
       },
@@ -97,7 +97,7 @@ export class TemplateComponent implements OnInit {
             content: '这是新增加的文本',
             isEdit: true,
             isShowEditorTool: false,
-            toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'delete']
+            toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'insert', 'delete']
           }
         ]
       }

@@ -22,6 +22,7 @@ export class EditingAreaItemService {
   elem: any;
   base = 0;
   idBase = 0;
+  varBase = 0;
   divDom = document.getElementById('editing-area');
   constructor(
     public sanitizer: DomSanitizer,
@@ -42,6 +43,9 @@ export class EditingAreaItemService {
           that.initialCyclel(obj[i][key]);
         } else {
           if (key === 'content') {
+            if (obj[i][key].indexOf('my-var-') !== -1) {
+              this.varBase++;
+            }
             obj[i][key] = that.trustHtml(obj[i][key]);
           }
         }

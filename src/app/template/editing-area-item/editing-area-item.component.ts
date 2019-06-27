@@ -54,26 +54,26 @@ export class EditingAreaItemComponent implements OnInit {
     // }, 200);
   }
   // 获得光标信息
-  getCursortPosition() {
-    if (window.getSelection) {
-      this.savedRange = window.getSelection().getRangeAt(0);
-    }
-  }
+  // getCursortPosition() {
+  //   if (window.getSelection) {
+  //     this.savedRange = window.getSelection().getRangeAt(0);
+  //   }
+  // }
   // 设置光标
-  setCaretPosition() {
-    // document.getElementById('text').focus();
-    if (this.savedRange !== null) {
-        if (window.getSelection) {
-            const s = window.getSelection();
-            if (s.rangeCount > 0) {
-              s.removeAllRanges();
-              s.addRange(this.savedRange);
-            }
-        } else if (document.createRange) {
-            window.getSelection().addRange(this.savedRange);
-          }
-    }
-  }
+  // setCaretPosition() {
+  //   // document.getElementById('text').focus();
+  //   if (this.savedRange !== null) {
+  //       if (window.getSelection) {
+  //           const s = window.getSelection();
+  //           if (s.rangeCount > 0) {
+  //             s.removeAllRanges();
+  //             s.addRange(this.savedRange);
+  //           }
+  //       } else if (document.createRange) {
+  //           window.getSelection().addRange(this.savedRange);
+  //         }
+  //   }
+  // }
 
 
 }
