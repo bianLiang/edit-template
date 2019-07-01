@@ -47,33 +47,14 @@ export class EditingAreaItemComponent implements OnInit {
         return true;
       }
   }
-  onItemBlur(e: any) {
-    // this.getCursortPosition();
-    // setTimeout( () => {
-    //   e.isShowEditorTool = false;
-    // }, 200);
+  getDom(id: any) {
+    return document.getElementById(id).innerHTML;
   }
-  // 获得光标信息
-  // getCursortPosition() {
-  //   if (window.getSelection) {
-  //     this.savedRange = window.getSelection().getRangeAt(0);
-  //   }
-  // }
-  // 设置光标
-  // setCaretPosition() {
-  //   // document.getElementById('text').focus();
-  //   if (this.savedRange !== null) {
-  //       if (window.getSelection) {
-  //           const s = window.getSelection();
-  //           if (s.rangeCount > 0) {
-  //             s.removeAllRanges();
-  //             s.addRange(this.savedRange);
-  //           }
-  //       } else if (document.createRange) {
-  //           window.getSelection().addRange(this.savedRange);
-  //         }
-  //   }
-  // }
-
-
+  onItemKeyUp(e: any) {
+    const that = this;
+    setTimeout(() => {
+      const content = that.getDom(that.editingAreaItemService.itemDom.id);
+      that.editingAreaItemService.setContent(that.editingAreaItemService.items, that.editingAreaItemService.itemDom.id, content);
+    }, 200);
+  }
 }

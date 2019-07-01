@@ -43,9 +43,6 @@ export class EditingAreaItemService {
           that.initialCyclel(obj[i][key]);
         } else {
           if (key === 'content') {
-            if (obj[i][key].indexOf('my-var-') !== -1) {
-              this.varBase++;
-            }
             obj[i][key] = that.trustHtml(obj[i][key]);
           }
         }
@@ -64,6 +61,22 @@ export class EditingAreaItemService {
           if (key === 'content') {
             obj[i][key] = that.transformationString(obj[i][key]);
           }
+          if (key === 'isShowEditorTool') {
+            obj[i][key] = false;
+          }
+        }
+      }
+    }
+  }
+  // 结束时处理隐藏所有的行内编辑器
+  endHideCyclels(obj: any) {
+    const that = this;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < obj.length; i++) {
+      for (const key in obj[i]) {
+        if (Array.isArray(obj[i][key])) {
+          that.endHideCyclels(obj[i][key]);
+        } else {
           if (key === 'isShowEditorTool') {
             obj[i][key] = false;
           }

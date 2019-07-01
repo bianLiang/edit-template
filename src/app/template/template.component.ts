@@ -70,7 +70,7 @@ export class TemplateComponent implements OnInit {
               'font-weight': 400,
               'color': 'red',
             },
-            content: '小时不识月， 呼作白玉盘。<span id="my-var-0">hahah</span>',
+            content: '小时不识月， 呼作白玉盘。<span id="my-var-0">这是添加好的自定义变量</span>',
             isEdit: true,
             isShowEditorTool: false,
             toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'moveUp', 'moveDown', 'insert', 'delete']

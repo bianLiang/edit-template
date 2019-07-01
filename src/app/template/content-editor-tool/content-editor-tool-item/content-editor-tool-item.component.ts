@@ -207,12 +207,12 @@ export class ContentEditorToolItemComponent implements OnInit {
         preCaretRange.setEnd(range.endContainer, range.endOffset);
         caretOffset = preCaretRange.toString().length;
         this.savedRange = caretOffset;
-        console.log(this.savedRange);
+        // console.log(this.savedRange);
       }
     }
   }
   // 设置光标
-  setCaretPosition() {
+  setCaretPosition(id: any) {
     // if (this.savedRange !== null) {
     //   if (window.getSelection) {
     //     const s = window.getSelection();
@@ -224,47 +224,53 @@ export class ContentEditorToolItemComponent implements OnInit {
     //     window.getSelection().addRange(this.savedRange);
     //   }
     // }
-
-    const element: any = document.getElementById('my-var-' + this.editingAreaItemService.varBase);
-    // let range;
-    // let selection;
-    // if (document.createRange) {
-    //   range = document.createRange();
-    //   range.selectNodeContents(element);
-    //   console.log(element.innerHTML);
-    //   if (element.innerHTML.length > 0) {
-    //     console.log(element.childNodes);
-    //     range.setStart(element.childNodes[0], this.savedRange + 7);
-    //   }
-    //   range.collapse(true);
-    //   selection = window.getSelection();
-    //   selection.removeAllRanges();
-    //   selection.addRange(range);
-    // }
-    console.log(element);
-    if (element.setSelectionRange) {
-      element.focus();
-      element.setSelectionRange(7, 7);
-      // IE8 and below
-    } else if (element.createTextRange) {
-      const range = element.createTextRange();
+    const element = document.getElementById(id);
+    let range;
+    let selection;
+    if (document.createRange) {
+      range = document.createRange();
+      range.selectNodeContents(element);
+      if (element.innerHTML.length > 0) {
+        range.setStart(element.childNodes[0], 7);
+      }
       range.collapse(true);
-      range.moveEnd('character', 7);
-      range.moveStart('character', 7);
-      range.select();
+      selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      // this.editingAreaItemService.varBase++;
     }
+    // console.log(element);
+    // if (element.setSelectionRange) {
+    //   element.focus();
+    //   element.setSelectionRange(7, 7);
+    // } else if (element.createTextRange) {
+    //   const range = element.createTextRange();
+    //   range.collapse(true);
+    //   range.moveEnd('character', 7);
+    //   range.moveStart('character', 7);
+    //   range.select();
+    // }
   }
+
   insert() {
     const that = this;
-    this.getCursortPosition();
-    // document.execCommand('insertHTML', false, '<span style="color:#ccc;">$$data.自定义变量名称$$</span>');
+    const range = window.getSelection().getRangeAt(0);
+    const span = document.createElement('span');
+    span.innerHTML = '$$data.自定义变量名称$$';
+    const result = new Date().getTime();
+    span.setAttribute('id', 'my-var-' + result);
+    // span.setAttribute('style', 'background: rgb(0,150,136);color:#fff;');
+    range.insertNode(span);
     // tslint:disable-next-line:max-line-length
-    document.execCommand('insertHTML', false, '<input id="my-var-' + that.editingAreaItemService.varBase + '" value="$$data.自定义变量名称$$" style="background: rgb(0,150,136);color:#fff;border: none;">');
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // document.execCommand('insertHTML', true, '<span id="my-var-' + that.editingAreaItemService.varBase + '" style="color:#ccc;">$$data.自定义变量名称$$</span>');
+    // tslint:disable-next-line:max-line-length
+    // document.execCommand('insertHTML', false, '<input id="my-var-' + that.editingAreaItemService.varBase + '" value="$$data.自定义变量名称$$" style="background: rgb(0,150,136);color:#fff;border: none;">');
+    const content = that.getDom(this.editingAreaItemService.itemDom.id);
+    that.editingAreaItemService.setContent(that.editingAreaItemService.items, that.editingAreaItemService.itemDom.id, content);
     setTimeout(() => {
-      that.setCaretPosition();
-      that.editingAreaItemService.varBase++;
-    }, 1000);
+      // 随机id
+      const id = 'my-var-' + result;
+      that.setCaretPosition(id);
+    }, 500);
   }
 }
