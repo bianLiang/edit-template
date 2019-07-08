@@ -1,6 +1,7 @@
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component, OnInit, SecurityContext, ViewChild } from '@angular/core';
 import { EeitingAreaItem } from './editing-area-item/eiting-area-item.model';
 import { EditingAreaItemService } from './editing-area-item/editing-area-item.service';
+import { EditBarComponent } from './edit-bar/edit-bar.component';
 
 @Component({
   selector: 'bl-template',
@@ -8,6 +9,7 @@ import { EditingAreaItemService } from './editing-area-item/editing-area-item.se
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent implements OnInit {
+  @ViewChild('editBar', { static: false }) editBar: EditBarComponent;
   insertDataTmp: any;
   base = 0;
   idBase = 0;
@@ -137,6 +139,9 @@ export class TemplateComponent implements OnInit {
   }
   save() {
     this.editingAreaItemService.endCyclels(this.editingAreaItemService.items);
+  }
+  setEditBarValues() {
+    this.editBar.clearValue();
   }
 
 }

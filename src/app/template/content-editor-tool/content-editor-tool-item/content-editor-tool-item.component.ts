@@ -33,18 +33,18 @@ export class ContentEditorToolItemComponent implements OnInit {
 
   bold() {
     document.execCommand('Bold', true);
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   italic() {
     document.execCommand('Italic', true);
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   slideLine() {
     document.execCommand('Underline', false);
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
 
   }
   addLink() {
@@ -54,7 +54,6 @@ export class ContentEditorToolItemComponent implements OnInit {
     div.appendChild(range.cloneContents());
     const obj = document.getElementById('aaabbcc');
     const reg = /\<\/?a\>/gim;
-    // window.getSelection().parentNode.nodeName === 'A'
     if (
       reg.test(div.innerHTML) === true
     ) {
@@ -92,14 +91,14 @@ export class ContentEditorToolItemComponent implements OnInit {
         }
       }
     }
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   removeHyperlinks() {
     if (window.getSelection().toString().length > 0) {
       document.execCommand('Unlink', true);
-      const content = this.getDom(this.editingAreaItemService.itemDom.id);
-      this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+      // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+      // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
       // alert('超链接解除成功');
     } else {
       this.message.create('error', `请选择解除超链接的位置`);
@@ -108,22 +107,22 @@ export class ContentEditorToolItemComponent implements OnInit {
   setfontColor(color: string, event: any) {
     event.stopPropagation();
     document.execCommand('ForeColor', true, color);
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isFontColorDiv = false;
   }
   setBackgroundColor(color: string, event: any) {
     event.stopPropagation();
     document.execCommand('backColor', true, color);
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isBackgroundColorDiv = false;
   }
   setFontSize(value: string, event: any) {
     event.stopPropagation();
     document.execCommand('FontSize', false, value);
-    const content = this.getDom(this.editingAreaItemService.itemDom.id);
-    this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
+    // const content = this.getDom(this.editingAreaItemService.itemDom.id);
+    // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isFontSizeDiv = false;
   }
   showIsFontColorDiv(event: any) {
@@ -189,41 +188,26 @@ export class ContentEditorToolItemComponent implements OnInit {
     this.imgTailoringService.cropUrl = this.editingAreaItemService.itemDom.url;
   }
   // 获得光标信息
-  getCursortPosition() {
-    // if (window.getSelection) {
-    //   this.savedRange = window.getSelection().getRangeAt(0);
-    // }
-    let caretOffset = 0;
-    // tslint:disable-next-line:max-line-length
-    const doc = document.getElementById(this.editingAreaItemService.itemDom.id).ownerDocument;
-    const win = doc.defaultView;
-    let sel;
-    if (typeof win.getSelection !== 'undefined') {
-      sel = win.getSelection();
-      if (sel.rangeCount > 0) {
-        const range = win.getSelection().getRangeAt(0);
-        const preCaretRange = range.cloneRange();
-        preCaretRange.selectNodeContents(document.getElementById(this.editingAreaItemService.itemDom.id));
-        preCaretRange.setEnd(range.endContainer, range.endOffset);
-        caretOffset = preCaretRange.toString().length;
-        this.savedRange = caretOffset;
-        // console.log(this.savedRange);
-      }
-    }
-  }
+  // getCursortPosition() {
+  //   let caretOffset = 0;
+  //   // tslint:disable-next-line:max-line-length
+  //   const doc = document.getElementById(this.editingAreaItemService.itemDom.id).ownerDocument;
+  //   const win = doc.defaultView;
+  //   let sel;
+  //   if (typeof win.getSelection !== 'undefined') {
+  //     sel = win.getSelection();
+  //     if (sel.rangeCount > 0) {
+  //       const range = win.getSelection().getRangeAt(0);
+  //       const preCaretRange = range.cloneRange();
+  //       preCaretRange.selectNodeContents(document.getElementById(this.editingAreaItemService.itemDom.id));
+  //       preCaretRange.setEnd(range.endContainer, range.endOffset);
+  //       caretOffset = preCaretRange.toString().length;
+  //       this.savedRange = caretOffset;
+  //     }
+  //   }
+  // }
   // 设置光标
   setCaretPosition(id: any) {
-    // if (this.savedRange !== null) {
-    //   if (window.getSelection) {
-    //     const s = window.getSelection();
-    //     if (s.rangeCount > 0) {
-    //       s.removeAllRanges();
-    //       s.addRange(this.savedRange);
-    //     }
-    //   } else if (document.createRange) {
-    //     window.getSelection().addRange(this.savedRange);
-    //   }
-    // }
     const element = document.getElementById(id);
     let range;
     let selection;
@@ -237,19 +221,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       selection = window.getSelection();
       selection.removeAllRanges();
       selection.addRange(range);
-      // this.editingAreaItemService.varBase++;
     }
-    // console.log(element);
-    // if (element.setSelectionRange) {
-    //   element.focus();
-    //   element.setSelectionRange(7, 7);
-    // } else if (element.createTextRange) {
-    //   const range = element.createTextRange();
-    //   range.collapse(true);
-    //   range.moveEnd('character', 7);
-    //   range.moveStart('character', 7);
-    //   range.select();
-    // }
   }
 
   insert() {
@@ -261,16 +233,22 @@ export class ContentEditorToolItemComponent implements OnInit {
     span.setAttribute('id', 'my-var-' + result);
     // span.setAttribute('style', 'background: rgb(0,150,136);color:#fff;');
     range.insertNode(span);
+    if (!range.commonAncestorContainer['isContentEditable']) {
+      const self = document.getElementById('my-var-' + result);
+      const parent = self.parentElement;
+      parent.removeChild(self);
+    } else {
+      setTimeout(() => {
+        // 随机id
+        const id = 'my-var-' + result;
+        that.setCaretPosition(id);
+      }, 200);
+    }
     // tslint:disable-next-line:max-line-length
-    // document.execCommand('insertHTML', true, '<span id="my-var-' + that.editingAreaItemService.varBase + '" style="color:#ccc;">$$data.自定义变量名称$$</span>');
+    // document.execCommand('insertHTML', false, '<span id="my-var-' + result + '>$$data.自定义变量名称$$</span>');
     // tslint:disable-next-line:max-line-length
     // document.execCommand('insertHTML', false, '<input id="my-var-' + that.editingAreaItemService.varBase + '" value="$$data.自定义变量名称$$" style="background: rgb(0,150,136);color:#fff;border: none;">');
-    const content = that.getDom(this.editingAreaItemService.itemDom.id);
-    that.editingAreaItemService.setContent(that.editingAreaItemService.items, that.editingAreaItemService.itemDom.id, content);
-    setTimeout(() => {
-      // 随机id
-      const id = 'my-var-' + result;
-      that.setCaretPosition(id);
-    }, 500);
+    // const content = that.getDom(this.editingAreaItemService.itemDom.id);
+    // that.editingAreaItemService.setContent(that.editingAreaItemService.items, that.editingAreaItemService.itemDom.id, content);
   }
 }

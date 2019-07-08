@@ -9,9 +9,13 @@ import { EeitingAreaItem } from '../editing-area-item/eiting-area-item.model';
 })
 export class EditingAreaComponent implements OnInit {
   @Input() public items: EeitingAreaItem[];
+  @Output() public setEditBarValues: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+  setEditBarValue() {
+    this.setEditBarValues.emit();
   }
 }

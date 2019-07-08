@@ -10,7 +10,11 @@ import { EditingAreaItemService } from './editing-area-item.service';
 })
 export class EditingAreaItemComponent implements OnInit {
   @Input() public item: EeitingAreaItem;
+  @Output() public setEditBar: EventEmitter<any> = new EventEmitter();
+  @Output() public setEditBarValue: EventEmitter<any> = new EventEmitter();
   savedRange: any;
+  savedRangeIndex: any;
+  doc: any;
 
   constructor(
     public editingAreaItemService: EditingAreaItemService
@@ -24,37 +28,32 @@ export class EditingAreaItemComponent implements OnInit {
     this.editingAreaItemService.boxDom = e;
     this.editingAreaItemService.insertIndex = e.index;
   }
+  setEditBars() {
+    this.setEditBarValue.emit();
+  }
   onItemFocus(e: any) {
-      this.editingAreaItemService.elem = document.getElementById(e.id);
-      if (this.editingAreaItemService.isClick) {
-        this.editingAreaItemService.type = e.type;
-      }
-      this.editingAreaItemService.imgUrl = e.url;
-      this.editingAreaItemService.imgSize = e.imgSize;
-      this.editingAreaItemService.imgHref = e.href;
-      this.editingAreaItemService.itemDom = e;
-      this.editingAreaItemService.isReUrl = false;
-      if (e.isGroup) {
-        this.editingAreaItemService.isGroup = e.isGroup;
-      } else {
-        this.editingAreaItemService.isGroup = false;
-      }
-      this.editingAreaItemService.hideEditorTool(this.editingAreaItemService.items);
-      if (e.isEdit) {
-        e.isShowEditorTool = true;
-        return false;
-      } else {
-        return true;
-      }
-  }
-  getDom(id: any) {
-    return document.getElementById(id).innerHTML;
-  }
-  onItemKeyUp(e: any) {
-    const that = this;
-    setTimeout(() => {
-      const content = that.getDom(that.editingAreaItemService.itemDom.id);
-      that.editingAreaItemService.setContent(that.editingAreaItemService.items, that.editingAreaItemService.itemDom.id, content);
-    }, 200);
+    // 向父级传递一个方法调用清楚文本编辑栏的值
+    this.setEditBar.emit();
+    this.editingAreaItemService.elem = document.getElementById(e.id);
+    if (this.editingAreaItemService.isClick) {
+      this.editingAreaItemService.type = e.type;
+    }
+    this.editingAreaItemService.imgUrl = e.url;
+    this.editingAreaItemService.imgSize = e.imgSize;
+    this.editingAreaItemService.imgHref = e.href;
+    this.editingAreaItemService.itemDom = e;
+    this.editingAreaItemService.isReUrl = false;
+    if (e.isGroup) {
+      this.editingAreaItemService.isGroup = e.isGroup;
+    } else {
+      this.editingAreaItemService.isGroup = false;
+    }
+    this.editingAreaItemService.hideEditorTool(this.editingAreaItemService.items);
+    if (e.isEdit) {
+      e.isShowEditorTool = true;
+      return false;
+    } else {
+      return true;
+    }
   }
 }

@@ -103,7 +103,7 @@ export class ToolbarComponent implements OnInit {
           type: 'txt',
           id: 'txt',
           style: {
-            'color': 'red',
+            'color': '#222',
             'margin': 0,
             'line-height': '35px',
             'outline-color': 'blue'
@@ -131,8 +131,8 @@ export class ToolbarComponent implements OnInit {
           id: 'txt',
           style: {
             'outline-color': 'blue',
-            'background': '#888',
-            'color': '#fff',
+            'background': '#e8e8e8',
+            'color': '#222',
             'margin': 0,
             'line-height': '35px'
           },
@@ -238,10 +238,10 @@ export class ToolbarComponent implements OnInit {
           id: 'button',
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
-            'background': '#888',
+            'background': '#e8e8e8',
             // tslint:disable-next-line:object-literal-key-quotes
-            'border': '1px solid #ccc',
-            'color': '#fff',
+            'border': '1px solid #e8e8e8',
+            'color': '#222',
             'padding': '5px',
             'margin': '2px 0',
             'border-radius': '5px',
@@ -289,7 +289,7 @@ export class ToolbarComponent implements OnInit {
           id: 'txt',
           style: {
             'outline-color': 'blue',
-            'color': 'red',
+            'color': '#222',
             'margin': 0,
             'margin-left': '10px',
             'line-height': '35px',
@@ -311,7 +311,7 @@ export class ToolbarComponent implements OnInit {
       type: 'div',
       index: null,
       style: {
-        'background': '#eee',
+        'background': '#e8e8e8',
         'display': 'flex',
         'justify-content': 'space-evenly',
         'margin': '5px 0'
@@ -339,7 +339,7 @@ export class ToolbarComponent implements OnInit {
           isGroup: true,
           style: {
             'outline-color': 'blue',
-            'color': 'red',
+            'color': '#222',
             'margin': 0,
             'margin-left': '10px',
             'line-height': '35px',
@@ -395,7 +395,8 @@ export class ToolbarComponent implements OnInit {
           style: {
             'margin': 0,
             'line-height': '35px',
-            'outline-color': 'blue'
+            'outline-color': 'blue',
+            'color': '#222'
           },
           content: '图片无法正常显示，请点击<a href="{{edm_cannot_read}}" target="_blank">在线预览</a>',
           isEdit: true,
@@ -424,7 +425,7 @@ export class ToolbarComponent implements OnInit {
             'outline-color': 'blue',
             'text-align': 'center',
             'font-weight': '400',
-            'color': '#888'
+            'color': '#222'
           },
           // tslint:disable-next-line:max-line-length
           content: '您之所以收到这封邮件，是因为您曾经与我们沟通或在官网订阅此邮件；<br> 如果您想将我们的信息分享给更多的朋友，请分享或转发；<br> 为了您不错过我们的每一次专享资讯，请将我们的发件人地址加到通讯录<br> 本电子邮件由系统自动发送，请勿直接回复。如有任何意见或建议，请您联系我们。<br> 若您不希望再次收到来自我们的邮件，<a href="{{edm_unsubscribe_url}}" target="_blank">请点此退订</a>。',
@@ -469,7 +470,7 @@ export class ToolbarComponent implements OnInit {
           id: 'txt',
           style: {
             'outline-color': 'blue',
-            'color': 'red',
+            'color': '#222',
             'margin': 0,
             'margin-left': '10px',
             'line-height': '35px'

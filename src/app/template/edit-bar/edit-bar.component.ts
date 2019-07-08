@@ -31,7 +31,8 @@ export class EditBarComponent implements OnInit {
     'outline': 'none',
     'width': '111px',
     'height': '30px',
-    'border-radius': '5px'
+    'border-radius': '5px',
+    'background': '#fff'
   };
   fontBackgroundColor = '#ffffff';
   // 滑块
@@ -123,7 +124,7 @@ export class EditBarComponent implements OnInit {
     'margin-left': '44px'
   };
   borderColorList = fontColor;
-  borderColor = '#000000';
+  borderColor = '#fff';
 // 分割线
   isLineBorder = true;
   lineBorderStyleList = [
@@ -271,16 +272,8 @@ export class EditBarComponent implements OnInit {
   scale(btndom: any, bardom: any, stepdom: any, btn: any, bar: any, name: any, maximumInterval: number) {
     btndom = document.getElementById(btn);
     bardom = document.getElementById(bar);
-    // this.btn = document.getElementById(btn);
-    // this.bar = document.getElementById(bar);
-    // stepdom = bardom.getElementsByTagName('DIV')[0];
-    // this.init(maximumInterval, name, btndom, bardom, stepdom);
     stepdom = bardom.getElementsByTagName('DIV')[0];
     this.init(maximumInterval, name, btndom, bardom, stepdom);
-    // if (bardom) {
-    //   stepdom = bardom.getElementsByTagName('DIV')[0];
-    //   this.init(maximumInterval, name, btndom, bardom, stepdom);
-    // }
   }
   init(maximumInterval: number, name: string, btndom: any, bardom: any, stepdom: any) {
     const f = this;
@@ -390,6 +383,52 @@ export class EditBarComponent implements OnInit {
     } else {
       this.editingAreaItemService.isReUrl = true;
     }
+  }
+
+  clearValue() {
+    // 字体
+    const typefacesStyle = document.getElementById('typefacesStyle').getElementsByTagName('option');
+    typefacesStyle[0].selected = true;
+    // 字体颜色
+    this.fontColorStyle['background-color'] = '#fff';
+    this.fontBackgroundColor = '#fff';
+    // 字号
+    this.fontSize = '0px';
+    document.getElementById('font-size-btn').style.left = 0 + 'px';
+    document.getElementById('font-size-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
+    // 行距
+    this.lineHeight = '0倍';
+    document.getElementById('line-height-btn').style.left = 0 + 'px';
+    document.getElementById('line-height-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
+    // 间距
+    this.letterSpacing = '0px';
+    document.getElementById('letter-spacing-btn').style.left = 0 + 'px';
+    document.getElementById('letter-spacing-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
+    // 背景色
+    this.backgroundColorStyle['background-color'] = '#fff';
+    this.backgroundColor = '#fff';
+    // 边框
+    const borderStyle = document.getElementById('borderStyle').getElementsByTagName('option');
+    borderStyle[0].selected = true;
+    this.borderLine = '0px';
+    document.getElementById('border-line-btn').style.left = 0 + 'px';
+    document.getElementById('border-line-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
+    this.borderColorStyle['background-color'] = '#fff';
+    this.borderColor = '#fff';
+    // 分割线
+    const partition = document.getElementById('partition').getElementsByTagName('option');
+    partition[0].selected = true;
+    this.lineBorderLine = '0px';
+    document.getElementById('line-border-line-btn').style.left = 0 + 'px';
+    document.getElementById('line-border-line-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
+    this.lineMargin = '0px';
+    document.getElementById('line-margin-btn').style.left = 0 + 'px';
+    document.getElementById('line-margin-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
+    this.lineBorderColorStyle['background-color'] = '#fff';
+    this.lineBorderColor = '#fff';
+    // 图文
+    this.imgTextBackgroundColorStyle['background-color'] = '#fff';
+    this.imgTextBackgroundColor = '#fff';
   }
 
 

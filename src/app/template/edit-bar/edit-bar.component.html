@@ -6,12 +6,12 @@
     margin: 0 0 20px 0;
     font-weight: 400;">文本样式</h4>
     <div *ngIf="isShowTypefaces" class='currency'>字体：
-      <select [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
+      <select id="typefacesStyle" [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
         <option *ngFor="let item of typefaces" [value]="item.code">{{item.name}}</option>
       </select>
     </div>
     <div *ngIf="isFontColor" class='currency'>颜色：
-      <select [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
+      <select id="fontColorStyle" [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
         <option *ngFor="let item of fontColor" [ngStyle]="{'background': item}" [value]="item"></option>
       </select>
       <span
@@ -20,7 +20,7 @@
     <div [ngStyle]="{'display': isFontSize? 'block': 'none', 'margin': '10px 0'}">
       <div class="User_ratings User_grade">
         <div class="ratings_bars" style="display: flex;align-items: center;">
-          大小：
+          字号：
           <div class="scale" [ngStyle]="fontSizeStyle" id="font-size-bar">
             <div></div>
             <span id="font-size-btn"></span>
@@ -73,7 +73,7 @@
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': backgroundColor,'border': '1px solid #ccc'}"></span>
     </div>
     <div *ngIf="isBorder">边框：
-      <select [ngStyle]='borderStyle' (change)="setBorderStyle($event.target.value)">
+      <select id="borderStyle" [ngStyle]='borderStyle' (change)="setBorderStyle($event.target.value)">
         <option *ngFor="let item of borderStyleList" [value]="item.value">{{item.text}}</option>
       </select>
     </div>
@@ -110,7 +110,7 @@
     margin: 0 0 20px 0;
     font-weight: 400;">分割线</h4>
     <div *ngIf="isLineBorder">样式：
-      <select [ngStyle]='borderStyle' (change)="setLineBorderStyle($event.target.value)">
+      <select id="partition" [ngStyle]='borderStyle' (change)="setLineBorderStyle($event.target.value)">
         <option *ngFor="let item of lineBorderStyleList" [value]="item.value">{{item.text}}</option>
       </select>
     </div>

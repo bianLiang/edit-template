@@ -1,11 +1,11 @@
 <div #boxTemplate *ngIf="item.type === 'div'"
      [ngStyle]='item.style' [ngClass]="{'item-box': editingAreaItemService.isShowBorder}">
     <bl-editing-area-item *ngFor="let childItem of item.children;let _index=index;"
-                       [item]="childItem" (click)='onBoxFocus(item)'>
+                       [item]="childItem" (click)='onBoxFocus(item)' (setEditBar)="setEditBars()">
     </bl-editing-area-item>
 </div>
 <div class="box" *ngIf="item.type ==='txt'">
-  <h5  [innerHTML]="item.content" [id]='item.id' [ngStyle]="item.style" attr.contenteditable='{{item.isEdit}}' (click)="onItemFocus(item)" (blur)="onItemKeyUp(item)"></h5>
+  <h5  [innerHTML]="item.content" [id]='item.id' [ngStyle]="item.style" attr.contenteditable='{{item.isEdit}}' (click)="onItemFocus(item)"></h5>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type ==='line'">
@@ -13,7 +13,7 @@
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'button'">
-  <button [id]='item.id' attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item)" (blur)="onItemKeyUp(item)"></button>
+  <button [id]='item.id' attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item)"></button>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure" ></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'img'">

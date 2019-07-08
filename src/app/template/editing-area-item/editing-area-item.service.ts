@@ -58,9 +58,12 @@ export class EditingAreaItemService {
         if (Array.isArray(obj[i][key])) {
           that.endCyclels(obj[i][key]);
         } else {
-          if (key === 'content') {
-            obj[i][key] = that.transformationString(obj[i][key]);
+          if (key === 'id') {
+            obj[i].content = document.getElementById(obj[i][key]).innerHTML;
           }
+          // if (key === 'content') {
+          //   // obj[i][key] = that.transformationString(obj[i][key]);
+          // }
           if (key === 'isShowEditorTool') {
             obj[i][key] = false;
           }
