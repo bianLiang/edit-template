@@ -74,3 +74,6 @@
   text-decoration: none;
   cursor: pointer;
 }
+::ng-deep .ant-select-dropdown-menu-item {
+  padding: 0;
+}

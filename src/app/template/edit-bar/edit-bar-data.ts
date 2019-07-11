@@ -1,16 +1,20 @@
-export const typefaces = [
+export const WINtypefaces = [
   { name: '宋体', code: 'SimSun' },
   { name: '黑体', code: 'SimHei' },
   { name: '微软雅黑', code: 'Microsoft YaHei' },
   { name: '微软正黑体', code: 'Microsoft JhengHei' },
   { name: '新宋体', code: 'NSimSun' },
-  { name: '新细明体', code: 'PMingLiU' },
-  { name: '细明体', code: 'MingLiU' },
-  { name: '标楷体', code: 'DFKai-SB' },
   { name: '仿宋', code: 'FangSong' },
   { name: '楷体', code: 'KaiTi' },
-  { name: '仿宋_GB2312', code: 'FangSong_GB2312' },
-  { name: '楷体_GB2312', code: 'KaiTi_GB2312' }
+];
+export const MACtypefaces = [
+  { name: '华文宋体', code: 'STSong' },
+  { name: '华文黑体', code: 'STHeiti' },
+  { name: '华文隶书', code: 'STLiti' },
+  { name: '华文楷体', code: 'STKaiti' },
+  { name: '华文仿宋', code: 'STFangsong' },
+  { name: '娃娃体', code: 'Wawati SC' },
+  { name: '圆体', code: 'Yuanti SC' }
 ];
 export const fontColor = [
     '#000000',

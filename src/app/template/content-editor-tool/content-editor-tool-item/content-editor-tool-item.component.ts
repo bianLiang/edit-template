@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { typefaces, fontColor } from '../../edit-bar/edit-bar-data';
+import {  fontColor } from '../../edit-bar/edit-bar-data';
 import { ContentEditorToolItemService } from './content-editor-tool-item.service';
 import { EditingAreaItemService } from '../../editing-area-item/editing-area-item.service';
 import { NzModalService } from 'ng-zorro-antd';
@@ -186,6 +186,7 @@ export class ContentEditorToolItemComponent implements OnInit {
     // this.editingAreaItemService.cropCyclel(this.editingAreaItemService.items);
     this.editingAreaItemService.itemDom.isCrop = true;
     this.imgTailoringService.cropUrl = this.editingAreaItemService.itemDom.url;
+    this.imgTailoringService.width = this.editingAreaItemService.itemDom.width;
   }
   // 获得光标信息
   // getCursortPosition() {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EditingAreaItemService } from '../editing-area-item/editing-area-item.service';
-import { typefaces, fontColor } from './edit-bar-data';
+import { WINtypefaces, fontColor, MACtypefaces } from './edit-bar-data';
 import { NzMessageService } from 'ng-zorro-antd';
 @Component({
   selector: 'bl-edit-bar',
@@ -16,7 +16,8 @@ export class EditBarComponent implements OnInit {
     }
   }
   // 字体
-  typefaces = typefaces;
+  typefacesValue: any;
+  typefaces: any;
   isShowTypefaces = true;
   typefacesStyle = {
     'outline': 'none',
@@ -34,7 +35,7 @@ export class EditBarComponent implements OnInit {
     'border-radius': '5px',
     'background': '#fff'
   };
-  fontBackgroundColor = '#ffffff';
+  fontBackgroundColor: any;
   // 滑块
   btn: any;
   bar: any;
@@ -80,7 +81,7 @@ export class EditBarComponent implements OnInit {
     'height': '30px',
     'border-radius': '5px'
   };
-  backgroundColor = '#ffffff';
+  backgroundColor: any;
   backgroundColorList = fontColor;
   // 图文背景色
   isImgTextBackgroundColor = true;
@@ -90,9 +91,10 @@ export class EditBarComponent implements OnInit {
     'height': '30px',
     'border-radius': '5px'
   };
-  imgTextBackgroundColor = '#ffffff';
+  imgTextBackgroundColor: any;
   imgTextBackgroundColorList = fontColor;
   // 边框
+  borderValue: any;
   isBorder = true;
   borderStyle = {
     'outline': 'none',
@@ -124,7 +126,7 @@ export class EditBarComponent implements OnInit {
     'margin-left': '44px'
   };
   borderColorList = fontColor;
-  borderColor = '#fff';
+  borderColor: any;
 // 分割线
   isLineBorder = true;
   lineBorderStyleList = [
@@ -161,6 +163,13 @@ export class EditBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    const isMac = /macintosh|mac os x/i.test(navigator.userAgent);
+    if (isMac) {
+      this.typefaces = MACtypefaces;
+    } else {
+      this.typefaces = WINtypefaces;
+    }
     // tslint:disable-next-line:max-line-length
     this.scale(this.fontSizeBtn, this.fontSizeBar, this.fontSizeStep, 'font-size-btn', 'font-size-bar', 'fontSize', this.lineBorderLineMaximumInterval);
     // tslint:disable-next-line:max-line-length
@@ -388,10 +397,11 @@ export class EditBarComponent implements OnInit {
   clearValue() {
     // 字体
     const typefacesStyle = document.getElementById('typefacesStyle').getElementsByTagName('option');
-    typefacesStyle[0].selected = true;
+    // typefacesStyle[0].selected = true;
+    this.typefacesValue = null;
     // 字体颜色
-    this.fontColorStyle['background-color'] = '#fff';
-    this.fontBackgroundColor = '#fff';
+    // this.fontColorStyle['background-color'] = '#fff';
+    this.fontBackgroundColor = null;
     // 字号
     this.fontSize = '0px';
     document.getElementById('font-size-btn').style.left = 0 + 'px';
@@ -405,16 +415,17 @@ export class EditBarComponent implements OnInit {
     document.getElementById('letter-spacing-btn').style.left = 0 + 'px';
     document.getElementById('letter-spacing-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
     // 背景色
-    this.backgroundColorStyle['background-color'] = '#fff';
-    this.backgroundColor = '#fff';
+    // this.backgroundColorStyle['background-color'] = '#fff';
+    this.backgroundColor = null;
     // 边框
     const borderStyle = document.getElementById('borderStyle').getElementsByTagName('option');
-    borderStyle[0].selected = true;
+    // borderStyle[0].selected = true;
+    this.borderValue = null;
     this.borderLine = '0px';
     document.getElementById('border-line-btn').style.left = 0 + 'px';
     document.getElementById('border-line-bar').getElementsByTagName('DIV')[0]['style'].width = 0 + 'px';
-    this.borderColorStyle['background-color'] = '#fff';
-    this.borderColor = '#fff';
+    // this.borderColorStyle['background-color'] = '#fff';
+    this.borderColor = null;
     // 分割线
     const partition = document.getElementById('partition').getElementsByTagName('option');
     partition[0].selected = true;
@@ -427,8 +438,8 @@ export class EditBarComponent implements OnInit {
     this.lineBorderColorStyle['background-color'] = '#fff';
     this.lineBorderColor = '#fff';
     // 图文
-    this.imgTextBackgroundColorStyle['background-color'] = '#fff';
-    this.imgTextBackgroundColor = '#fff';
+    // this.imgTextBackgroundColorStyle['background-color'] = '#fff';
+    this.imgTextBackgroundColor = null;
   }
 
 

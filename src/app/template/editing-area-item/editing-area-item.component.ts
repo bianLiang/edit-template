@@ -31,10 +31,12 @@ export class EditingAreaItemComponent implements OnInit {
   setEditBars() {
     this.setEditBarValue.emit();
   }
-  onItemFocus(e: any) {
+  onItemFocus(e: any, event: any) {
     // 向父级传递一个方法调用清楚文本编辑栏的值
     this.setEditBar.emit();
     this.editingAreaItemService.elem = document.getElementById(e.id);
+    // this.editingAreaItemService.Y = event.clientY;
+
     if (this.editingAreaItemService.isClick) {
       this.editingAreaItemService.type = e.type;
     }

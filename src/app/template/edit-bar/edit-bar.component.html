@@ -6,14 +6,23 @@
     margin: 0 0 20px 0;
     font-weight: 400;">文本样式</h4>
     <div *ngIf="isShowTypefaces" class='currency'>字体：
-      <select id="typefacesStyle" [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
+      <!-- <select id="typefacesStyle" [ngStyle]='typefacesStyle' (change)="setTypeface($event.target.value)">
         <option *ngFor="let item of typefaces" [value]="item.code">{{item.name}}</option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" id="typefacesStyle" [ngStyle]='typefacesStyle' [(ngModel)]="typefacesValue"   (ngModelChange)="setTypeface($event)" nzPlaceHolder="请选择">
+        <nz-option *ngFor="let item of typefaces" style="padding: 0;"  [nzValue]="item.code" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
     </div>
     <div *ngIf="isFontColor" class='currency'>颜色：
-      <select id="fontColorStyle" [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
+      <!-- <select id="fontColorStyle" [ngStyle]='fontColorStyle' (change)="setfontColor($event.target.value)">
         <option *ngFor="let item of fontColor" [ngStyle]="{'background': item}" [value]="item"></option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" id="fontColorStyle" [ngStyle]='fontColorStyle' [(ngModel)]="fontBackgroundColor"  (ngModelChange)="setfontColor($event)" nzPlaceHolder="请选择">
+        <nz-option *ngFor="let item of fontColor" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
+          <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
+        </nz-option>
+      </nz-select>
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': fontBackgroundColor,'border': '1px solid #ccc'}"></span>
     </div>
@@ -66,16 +75,25 @@
       </span>
     </div>
     <div *ngIf="isBackgroundColor" class='currency'>背景：
-      <select [ngStyle]='backgroundColorStyle' (change)="setBackgroundColorStyle($event.target.value)">
+      <!-- <select [ngStyle]='backgroundColorStyle' (change)="setBackgroundColorStyle($event.target.value)">
         <option *ngFor="let item of backgroundColorList" [ngStyle]="{'background': item}" [value]="item"></option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" id="backgroundColorStyle" [ngStyle]='backgroundColorStyle' [(ngModel)]="backgroundColor"  (ngModelChange)="setBackgroundColorStyle($event)" nzPlaceHolder="请选择">
+        <nz-option *ngFor="let item of backgroundColorList" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
+          <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
+        </nz-option>
+      </nz-select>
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': backgroundColor,'border': '1px solid #ccc'}"></span>
     </div>
     <div *ngIf="isBorder">边框：
-      <select id="borderStyle" [ngStyle]='borderStyle' (change)="setBorderStyle($event.target.value)">
+      <!-- <select id="borderStyle" [ngStyle]='borderStyle' (change)="setBorderStyle($event.target.value)">
         <option *ngFor="let item of borderStyleList" [value]="item.value">{{item.text}}</option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" id="borderStyle" [ngStyle]='borderStyle' [(ngModel)]="borderValue"  (ngModelChange)="setBorderStyle($event)" nzPlaceHolder="请选择">
+        <nz-option *ngFor="let item of borderStyleList"  [nzValue]="item.value" [nzLabel]="item.text">
+        </nz-option>
+      </nz-select>
     </div>
     <div [ngStyle]="{'display': isBorder  ? 'block': 'none', 'margin': '10px 0 0 45px'}">
       <div class="User_ratings User_grade">
@@ -89,16 +107,26 @@
       </div>
     </div>
     <div *ngIf="isBorder" class='currency'>
-      <select [ngStyle]='borderColorStyle' (change)="setborderColorStyle($event.target.value)">
+      <!-- <select [ngStyle]='borderColorStyle' (change)="setborderColorStyle($event.target.value)">
         <option *ngFor="let item of borderColorList" [ngStyle]="{'background': item}" [value]="item"></option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" [ngStyle]='borderColorStyle' [(ngModel)]="borderColor"  (ngModelChange)="setborderColorStyle($event)"  nzPlaceHolder="请选择">
+        <nz-option *ngFor="let item of borderColorList" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
+          <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
+        </nz-option>
+      </nz-select>
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': borderColor}"></span>
     </div>
     <div *ngIf="isImgTextBackgroundColor && this.editingAreaItemService.isGroup" class='currency'>图文：
-      <select [ngStyle]='imgTextBackgroundColorStyle' (change)="setImgTextBackgroundColorStyle($event.target.value)">
+      <!-- <select [ngStyle]='imgTextBackgroundColorStyle' (change)="setImgTextBackgroundColorStyle($event.target.value)">
         <option *ngFor="let item of imgTextBackgroundColorList" [ngStyle]="{'background': item}" [value]="item"></option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" [ngStyle]='imgTextBackgroundColorStyle' [(ngModel)]="imgTextBackgroundColor"  (ngModelChange)="setImgTextBackgroundColorStyle($event)"  nzPlaceHolder="请选择">
+        <nz-option *ngFor="let item of imgTextBackgroundColorList" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
+          <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
+        </nz-option>
+      </nz-select>
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': imgTextBackgroundColor,'border': '1px solid #ccc'}"></span>
     </div>
@@ -139,9 +167,14 @@
         </div>
       </div>
     <div *ngIf="isLineBorder" class='currency'>颜色：
-      <select [ngStyle]='lineBorderColorStyle' (change)="setLineBorderColorStyle($event.target.value)">
+      <!-- <select [ngStyle]='lineBorderColorStyle' (change)="setLineBorderColorStyle($event.target.value)">
         <option *ngFor="let item of borderColorList" [ngStyle]="{'background': item}" [value]="item"></option>
-      </select>
+      </select> -->
+      <nz-select style="width: 120px;" [ngStyle]='lineBorderColorStyle' [(ngModel)]="lineBorderColor"  (ngModelChange)="setLineBorderColorStyle($event)">
+        <nz-option *ngFor="let item of borderColorList" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
+          <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
+        </nz-option>
+      </nz-select>
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': lineBorderColor}"></span>
     </div>
@@ -165,13 +198,12 @@
     </div>
     <div>
       <p>建议尺寸：{{editingAreaItemService.imgSize}}</p>
-      <P>图片跳转：<input type="text" style="
+      <P>图片跳转：<input nz-input type="text" style="
         height: 25px;
         width: 180px;
         border-radius: 5px;
         padding: 0 5px;
-        outline: none;
-        border: 1px solid #ccc;" [(ngModel)]="editingAreaItemService.imgHref" placeholder="请以http://或者https://开头"
+        outline: none;" [(ngModel)]="editingAreaItemService.imgHref" placeholder="请以http://或者https://开头"
         (change)="onChangeUrl($event.target.value)"></P>
         <p *ngIf="editingAreaItemService.isReUrl" style="color: red;margin-left: 68px;">格式错误，请按照正确格式填写！</p>
     </div>
@@ -182,7 +214,7 @@
     font-size: 20px;
     margin: 0 0 20px 0;
     font-weight: 400;">二维码</h4>
-    <div style="position: relative;border-bottom: 1px solid #111;width: 394px;display: flex;">
+    <div style="position: relative;border-bottom: 1px solid #111;width: 98%;display: flex;">
       <div>
         <img [ngStyle]="{'background-image':'url(' + editingAreaItemService.imgUrl + ')', 'width': '105px', 'height': '105px', 'background-repeat': 'no-repeat', 'background-size': 'cover'}" alt="">
       </div>

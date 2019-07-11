@@ -143,5 +143,7 @@ export class TemplateComponent implements OnInit {
   setEditBarValues() {
     this.editBar.clearValue();
   }
+  setScroll(value: number) {
+  }
 
 }

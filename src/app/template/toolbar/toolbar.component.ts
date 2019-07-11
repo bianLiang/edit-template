@@ -7,6 +7,7 @@ import { NzMessageService } from 'ng-zorro-antd';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+  @Output() public setScroll: EventEmitter<any> = new EventEmitter();
    isText = true;
    isBackgroundText = true;
    isImg = true;
@@ -91,7 +92,11 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
   }
+  creatTime() {
+    return new Date().getTime();
+  }
   onClickText() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -101,7 +106,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           style: {
             'color': '#222',
             'margin': 0,
@@ -116,9 +121,13 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
-    // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickBackgroundText() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -128,7 +137,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           style: {
             'outline-color': 'blue',
             'background': '#e8e8e8',
@@ -144,23 +153,30 @@ export class ToolbarComponent implements OnInit {
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
+
     // this.editingAreaItemService.type = 'txt';
   }
   onClickImg() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
       style: {
         'display': 'flex',
         'justify-content': 'center',
-        // 'text-align': 'center',
         'margin': '5px 0'
       },
       children: [
         {
           type: 'img',
-          id: 'img',
+          id: 'img' + this.creatTime(),
           style: {
+            'display': 'inline-block',
+            'width': '650px',
             'max-width': '100%',
             'outline-color': 'blue',
           },
@@ -170,15 +186,21 @@ export class ToolbarComponent implements OnInit {
           toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
           url: 'http://wx.xrewin.com:8083/ditu_646_400.png',
           href: '',
-          imgSize: '650px * 400px'
+          imgSize: '650px * 400px',
+          width: '650px'
         }
       ]
     };
     // ../../../assets/img/ditu_646_400.png
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'img';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickImgGroup() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -190,8 +212,9 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'img',
-          id: 'img',
+          id: 'img' + this.creatTime(),
           style: {
+            'display': 'inline-block',
             'max-width': '100%',
             'outline-color': 'blue',
           },
@@ -201,13 +224,14 @@ export class ToolbarComponent implements OnInit {
           toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
-          imgSize: '250px * 187px'
-
+          imgSize: '250px * 187px',
+          width: '250px'
         },
         {
           type: 'img',
-          id: 'img',
+          id: 'img' + this.creatTime() + 1,
           style: {
+            'display': 'inline-block',
             'max-width': '100%',
             'outline-color': 'blue',
           },
@@ -217,14 +241,20 @@ export class ToolbarComponent implements OnInit {
           toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
-          imgSize: '250px * 187px'
+          imgSize: '250px * 187px',
+          width: '250px'
         },
       ]
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'img';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickButton() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -235,7 +265,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'button',
-          id: 'button',
+          id: 'button' + this.creatTime(),
           style: {
             // tslint:disable-next-line:object-literal-key-quotes
             'background': '#e8e8e8',
@@ -257,8 +287,13 @@ export class ToolbarComponent implements OnInit {
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickImgText() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -270,8 +305,9 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'img',
-          id: 'img',
+          id: 'img' + this.creatTime(),
           style: {
+            'display': 'inline-block',
             'max-width': '100%',
             'outline-color': 'blue',
           },
@@ -281,12 +317,12 @@ export class ToolbarComponent implements OnInit {
           toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
-          imgSize: '250px * 187px'
-
+          imgSize: '236px * 187px',
+          width: '236px'
         },
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           style: {
             'outline-color': 'blue',
             'color': '#222',
@@ -304,9 +340,14 @@ export class ToolbarComponent implements OnInit {
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
 
   onClickBackgroundImgText() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -319,8 +360,9 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'img',
-          id: 'img',
+          id: 'img' + this.creatTime(),
           style: {
+            'display': 'inline-block',
             'max-width': '100%',
             'outline-color': 'blue',
           },
@@ -330,12 +372,12 @@ export class ToolbarComponent implements OnInit {
           toolConfigure: ['moveUp', 'moveDown', 'crop', 'delete'],
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
-          imgSize: '250px * 187px'
-
+          imgSize: '236px * 187px',
+          width: '236px'
         },
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           isGroup: true,
           style: {
             'outline-color': 'blue',
@@ -354,8 +396,13 @@ export class ToolbarComponent implements OnInit {
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickLine() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -365,7 +412,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'line',
-          id: 'line',
+          id: 'line' + this.creatTime(),
           style: {
             'border-style': 'solid',
             'border-bottom': '1px',
@@ -380,8 +427,13 @@ export class ToolbarComponent implements OnInit {
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickhead() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -391,7 +443,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           style: {
             'margin': 0,
             'line-height': '35px',
@@ -407,8 +459,13 @@ export class ToolbarComponent implements OnInit {
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickfoot() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -418,7 +475,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           style: {
             'margin': 0,
             'line-height': '35px',
@@ -438,8 +495,13 @@ export class ToolbarComponent implements OnInit {
     };
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.type = 'txt';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickCode() {
+    const that = this;
     const data = {
       type: 'div',
       index: null,
@@ -453,7 +515,7 @@ export class ToolbarComponent implements OnInit {
       children: [
         {
           type: 'code',
-          id: 'code',
+          id: 'code' + this.creatTime(),
           style: {
             'max-width': '100%',
             'outline-color': 'blue',
@@ -462,12 +524,12 @@ export class ToolbarComponent implements OnInit {
           isShowEditorTool: false,
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: 'http://wx.xrewin.com:8083/code.jpg',
-          imgSize: '200px * 200px'
-
+          imgSize: '200px * 200px',
+          width: '200px'
         },
         {
           type: 'txt',
-          id: 'txt',
+          id: 'txt' + this.creatTime(),
           style: {
             'outline-color': 'blue',
             'color': '#222',
@@ -485,6 +547,10 @@ export class ToolbarComponent implements OnInit {
     this.editingAreaItemService.insertTemplate(data);
     // this.editingAreaItemService.imgUrl = '../../../assets/img/code.jpg';
     // this.editingAreaItemService.type = 'code';
+    setTimeout(() => {
+      that.editingAreaItemService.setScrollId = data.children[0].id;
+      that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
+    }, 500);
   }
   onClickShare() {
     this.message.create('error', `暂时不支持添加此模块！`);

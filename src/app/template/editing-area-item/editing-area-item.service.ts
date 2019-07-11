@@ -6,6 +6,7 @@ import { EeitingAreaItem } from './eiting-area-item.model';
   providedIn: 'root'
 })
 export class EditingAreaItemService {
+  setScrollId: any;
   isShowBorder = true;
   isClick = true;
   items: EeitingAreaItem[] = [];
@@ -20,6 +21,7 @@ export class EditingAreaItemService {
   imgSize: any;
   imgHref: any;
   elem: any;
+  Y = 0;
   base = 0;
   idBase = 0;
   varBase = 0;
@@ -158,10 +160,10 @@ export class EditingAreaItemService {
             obj[i][key] = that.base;
             that.base++;
           }
-          if (key === 'id') {
-            obj[i][key] = that.idBase;
-            that.idBase++;
-          }
+          // if (key === 'id') {
+          //   obj[i][key] = that.idBase;
+          //   that.idBase++;
+          // }
         }
       }
     }
@@ -177,6 +179,12 @@ export class EditingAreaItemService {
     that.items.splice(index + 1, 0, htmlData);
     that.insertIndex++;
     that.sortIndex(that.items);
+    // setTimeout(() => {
+    //   that.Y = document.getElementById(htmlData.children[0].id).getBoundingClientRect().top;
+    //   if (that.Y > document.body.clientHeight - 100) {
+    //     window.scrollTo(0, that.Y - document.body.clientHeight + document.getElementById(htmlData.children[0].id).offsetHeight + 50);
+    //   }
+    // }, 500);
   }
   // 删除模板
   deleteTemplate() {

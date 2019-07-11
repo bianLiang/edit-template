@@ -5,26 +5,26 @@
     </bl-editing-area-item>
 </div>
 <div class="box" *ngIf="item.type ==='txt'">
-  <h5  [innerHTML]="item.content" [id]='item.id' [ngStyle]="item.style" attr.contenteditable='{{item.isEdit}}' (click)="onItemFocus(item)"></h5>
+  <h5 [innerHTML]="item.content" [id]='item.id' [ngStyle]="item.style" attr.contenteditable='{{item.isEdit}}' (click)="onItemFocus(item, $event)"></h5>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type ==='line'">
-  <hr attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [id]='item.id' (click)="onItemFocus(item)">
+  <hr attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [id]='item.id' (click)="onItemFocus(item, $event)">
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'button'">
-  <button [id]='item.id' attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item)"></button>
+  <button [id]='item.id' attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style" [innerHTML]="item.content" (click)="onItemFocus(item, $event)"></button>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure" ></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'img'">
-  <a  (click)="onItemFocus(item)" attr.contenteditable='{{item.isEdit}}'  [ngStyle]="item.style" [href]="item.href" target="_blank">
-    <img [id]='item.id' [src]="item.url" contenteditable [ngStyle]="item.style"  alt="">
+  <a  (click)="onItemFocus(item, $event)"  [ngStyle]="item.style" [href]="item.href" target="_blank">
+    <img [id]='item.id' [src]="item.url" attr.contenteditable='{{item.isEdit}}' [ngStyle]="item.style"  alt="">
   </a>
   <bl-img-tailoring *ngIf="item.isCrop"></bl-img-tailoring>
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
 <div class="box" *ngIf="item.type === 'code'">
-  <img (click)="onItemFocus(item)" attr.contenteditable='{{item.isEdit}}' [id]='item.id' [src]="item.url" contenteditable [ngStyle]="item.style"  alt="">
+  <img (click)="onItemFocus(item, $event)" attr.contenteditable='{{item.isEdit}}' [id]='item.id' [src]="item.url" contenteditable [ngStyle]="item.style"  alt="">
   <bl-content-editor-tool *ngIf="item.isShowEditorTool" [toolConfigure]="item.toolConfigure"></bl-content-editor-tool>
 </div>
 

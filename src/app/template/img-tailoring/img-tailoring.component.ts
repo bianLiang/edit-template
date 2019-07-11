@@ -209,11 +209,14 @@ export class ImgTailoringComponent implements OnInit {
   }
   downMove(e) {
     let y = e.clientY;
+    // console.log(y);
     if (y > this.getPosition(this.box).top + this.box.offsetHeight) {
       y = this.getPosition(this.box).top + this.box.offsetHeight;
     }
     const heightBefore = this.mainDiv.offsetHeight - 2;
     const mainY = this.getPosition(this.mainDiv).top;
+    // console.log(mainY);
+    // console.log(y);
     const addHeight = y - heightBefore - mainY;
     this.mainDiv.style.height = addHeight + heightBefore + 'px';
   }
@@ -270,11 +273,17 @@ export class ImgTailoringComponent implements OnInit {
         that.editingAreaItemService.imgUrl = url;
         that.editingAreaItemService.itemDom.isCrop = false;
         that.editingAreaItemService.itemDom.isNoUploading = false;
+        document.onselectstart = () => {
+          return true;
+        };
       };
     }
   }
   giveUp() {
     this.editingAreaItemService.itemDom.isCrop = false;
     this.editingAreaItemService.itemDom.isNoUploading = false;
+    document.onselectstart = () => {
+      return true;
+    };
   }
 }

@@ -12,6 +12,8 @@ import { ContentEditorToolItemService } from './content-editor-tool/content-edit
 import { FormsModule } from '@angular/forms';
 import { NzModalModule} from 'ng-zorro-antd';
 import { NzMessageModule } from 'ng-zorro-antd';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImgTailoringComponent } from './img-tailoring/img-tailoring.component';
@@ -26,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     NzModalModule,
     NzMessageModule,
     HttpClientModule,
+    NzInputModule,
+    NzSelectModule
   ],
   declarations: [
     TemplateComponent,

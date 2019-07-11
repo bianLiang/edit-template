@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ImgTailoringService {
 cropUrl: any;
+width: any;
 constructor(private http: HttpClient) { }
 getImg(url: any) {
   return this.http.get(url);

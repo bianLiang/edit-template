@@ -4,15 +4,15 @@
 <div id="box">
   <img [src]="imgTailoringService.cropUrl" id="img1" />
   <img [src]="imgTailoringService.cropUrl" id="img2" />
-  <div id="main">
-    <div class="div minDiv" id="up"></div>
-    <div class="div minDiv2" id="left_up"></div>
-    <div class="div minDiv3" id="right_up"></div>
-    <div class="div minDiv4" id="left"></div>
-    <div class="div minDiv5" id="right"></div>
-    <div class="div minDiv6" id="left_down"></div>
+  <div id="main" [ngStyle]="{'width': imgTailoringService.width}">
+    <div class="div minDiv" id="up" style="width: 0;height: 0;"></div>
+    <div class="div minDiv2" id="left_up" style="width: 0;height: 0;"></div>
+    <div class="div minDiv3" id="right_up" style="width: 0;height: 0;"></div>
+    <div class="div minDiv4" id="left" style="width: 0;height: 0;"></div>
+    <div class="div minDiv5" id="right" style="width: 0;height: 0;"></div>
+    <div class="div minDiv6" id="left_down" style="width: 0;height: 0;"></div>
     <div class="div minDiv7" id="down"></div>
-    <div class="div minDiv8" id="right_down"></div>
+    <div class="div minDiv8" id="right_down" style="width: 0;height: 0;"></div>
   </div>
   <div style="
   position: absolute;
