@@ -374,12 +374,16 @@ export class EditBarComponent implements OnInit {
       this.message.create('error', `文件格式错误，请上传图片文件！`);
       return false;
     } else {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function() {
-        that.editingAreaItemService.imgUrl = this.result;
-        that.editingAreaItemService.itemDom.url = this.result;
-      };
+      if (file.size < 195300) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+          that.editingAreaItemService.imgUrl = this.result;
+          that.editingAreaItemService.itemDom.url = this.result;
+        };
+      } else {
+        this.message.create('error', `文件大于300k，请重新上传！`);
+      }
     }
     const fileDoc = document.getElementById('file') as HTMLInputElement;
     fileDoc.value = '';

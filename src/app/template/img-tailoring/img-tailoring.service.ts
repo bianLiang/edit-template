@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ImgTailoringService {
+scrollTop = 0;
 cropUrl: any;
 width: any;
 constructor(private http: HttpClient) { }

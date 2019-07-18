@@ -121,11 +121,11 @@ export class ImgTailoringComponent implements OnInit {
       that.ifKeyDown = true;
       const oEvent = e;
       that.disX = oEvent.clientX - that.mainDiv.offsetLeft;
-      that.disY = oEvent.clientY - that.mainDiv.offsetTop;
+      that.disY = oEvent.pageY + that.imgTailoringService.scrollTop - that.mainDiv.offsetTop;
       document.onmousemove = (es: any) => {
         const oEvents = es;
         let l = oEvents.clientX - that.disX;
-        let t = oEvents.clientY - that.disY;
+        let t = oEvents.pageY + that.imgTailoringService.scrollTop - that.disY;
         if (l < 0) {
           l = 0;
         } else if (l > that.box.offsetWidth - that.mainDiv.offsetWidth) {
@@ -197,7 +197,7 @@ export class ImgTailoringComponent implements OnInit {
     this.mainDiv.style.width = addWidth + widthBefore + 'px';
   }
   upMove(e) {
-    let y = e.clientY;
+    let y = e.pageY + this.imgTailoringService.scrollTop;
     if (y < this.getPosition(this.box).top) {
       y = this.getPosition(this.box).top;
     }
@@ -208,15 +208,13 @@ export class ImgTailoringComponent implements OnInit {
     this.mainDiv.style.top = this.mainDiv.offsetTop - addHeight + 'px';
   }
   downMove(e) {
-    let y = e.clientY;
-    // console.log(y);
+    let y = e.pageY + this.imgTailoringService.scrollTop;
     if (y > this.getPosition(this.box).top + this.box.offsetHeight) {
       y = this.getPosition(this.box).top + this.box.offsetHeight;
     }
     const heightBefore = this.mainDiv.offsetHeight - 2;
     const mainY = this.getPosition(this.mainDiv).top;
-    // console.log(mainY);
-    // console.log(y);
+
     const addHeight = y - heightBefore - mainY;
     this.mainDiv.style.height = addHeight + heightBefore + 'px';
   }
