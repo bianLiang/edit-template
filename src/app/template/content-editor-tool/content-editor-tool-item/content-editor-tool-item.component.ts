@@ -33,16 +33,19 @@ export class ContentEditorToolItemComponent implements OnInit {
 
   bold() {
     document.execCommand('Bold', true);
+    this.editingAreaItemService.isChange = false;
     // const content = this.getDom(this.editingAreaItemService.itemDom.id);
     // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   italic() {
     document.execCommand('Italic', true);
+    this.editingAreaItemService.isChange = false;
     // const content = this.getDom(this.editingAreaItemService.itemDom.id);
     // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
   }
   slideLine() {
     document.execCommand('Underline', false);
+    this.editingAreaItemService.isChange = false;
     // const content = this.getDom(this.editingAreaItemService.itemDom.id);
     // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
 
@@ -66,6 +69,7 @@ export class ContentEditorToolItemComponent implements OnInit {
           document.execCommand('createLink', true, linkURL);
           sText.anchorNode.parentElement.title = linkURL;
           sText.anchorNode.parentElement['target'] = '_blank';
+          this.editingAreaItemService.isChange = false;
         } else {
           if (linkURL) {
             this.message.create('error', `请输入http或https开头的链接`);
@@ -83,6 +87,7 @@ export class ContentEditorToolItemComponent implements OnInit {
         document.execCommand('createLink', true, linkURL);
         sText.anchorNode.parentElement.title = linkURL;
         sText.anchorNode.parentElement['target'] = '_blank';
+        this.editingAreaItemService.isChange = false;
       } else {
         if (linkURL) {
           this.message.create('error', `请输入http或https开头的链接`);
@@ -97,6 +102,7 @@ export class ContentEditorToolItemComponent implements OnInit {
   removeHyperlinks() {
     if (window.getSelection().toString().length > 0) {
       document.execCommand('Unlink', true);
+      this.editingAreaItemService.isChange = false;
       // const content = this.getDom(this.editingAreaItemService.itemDom.id);
       // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
       // alert('超链接解除成功');
@@ -107,6 +113,7 @@ export class ContentEditorToolItemComponent implements OnInit {
   setfontColor(color: string, event: any) {
     event.stopPropagation();
     document.execCommand('ForeColor', true, color);
+    this.editingAreaItemService.isChange = false;
     // const content = this.getDom(this.editingAreaItemService.itemDom.id);
     // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isFontColorDiv = false;
@@ -114,6 +121,7 @@ export class ContentEditorToolItemComponent implements OnInit {
   setBackgroundColor(color: string, event: any) {
     event.stopPropagation();
     document.execCommand('backColor', true, color);
+    this.editingAreaItemService.isChange = false;
     // const content = this.getDom(this.editingAreaItemService.itemDom.id);
     // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isBackgroundColorDiv = false;
@@ -121,6 +129,7 @@ export class ContentEditorToolItemComponent implements OnInit {
   setFontSize(value: string, event: any) {
     event.stopPropagation();
     document.execCommand('FontSize', false, value);
+    this.editingAreaItemService.isChange = false;
     // const content = this.getDom(this.editingAreaItemService.itemDom.id);
     // this.editingAreaItemService.setContent(this.editingAreaItemService.items, this.editingAreaItemService.itemDom.id, content);
     this.contentEditorToolItemService.isFontSizeDiv = false;
@@ -147,6 +156,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       nzOkType: 'danger',
       nzOnOk: () => {
         this.editingAreaItemService.deleteTemplate();
+        this.editingAreaItemService.isChange = false;
       },
       nzCancelText: '取消',
       nzOnCancel: () => { }
@@ -163,6 +173,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       this.editingAreaItemService.base = 0;
       this.editingAreaItemService.idBase = 0;
       this.editingAreaItemService.sortIndex(this.editingAreaItemService.items);
+      this.editingAreaItemService.isChange = false;
     } else {
       this.message.create('warning', `已经是第一位！`);
     }
@@ -178,6 +189,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       this.editingAreaItemService.base = 0;
       this.editingAreaItemService.idBase = 0;
       this.editingAreaItemService.sortIndex(this.editingAreaItemService.items);
+      this.editingAreaItemService.isChange = false;
     } else {
       this.message.create('warning', `已经是最后一位！`);
     }
@@ -187,6 +199,7 @@ export class ContentEditorToolItemComponent implements OnInit {
     this.editingAreaItemService.itemDom.isCrop = true;
     this.imgTailoringService.cropUrl = this.editingAreaItemService.itemDom.url;
     this.imgTailoringService.width = this.editingAreaItemService.itemDom.width;
+    this.imgTailoringService.height = '64px';
   }
   // 获得光标信息
   // getCursortPosition() {
@@ -234,6 +247,7 @@ export class ContentEditorToolItemComponent implements OnInit {
     span.setAttribute('id', 'my-var-' + result);
     // span.setAttribute('style', 'background: rgb(0,150,136);color:#fff;');
     range.insertNode(span);
+    that.editingAreaItemService.isChange = false;
     if (!range.commonAncestorContainer['isContentEditable']) {
       const self = document.getElementById('my-var-' + result);
       const parent = self.parentElement;

@@ -1,4 +1,5 @@
-<div [ngStyle]="{height: clientHeight + 'px', width: clientWidth + 'px'}" style='position: fixed;top: 0;left: 0;background: rgba(0,0,0,0.2);z-index: 19999;'>
+<div [ngStyle]="{height: clientHeight + 'px', width: clientWidth + 'px'}"
+  style='position: fixed;top: 0;left: 0;background: rgba(0,0,0,0.2);z-index: 19999;'>
 
 </div>
 <div id="box">
@@ -21,23 +22,34 @@
   height: 40px;
   background: #fff;
   width: 100%;
-  min-width: 150px;
+  min-width: 415px;
   z-index: 20000;
   display: flex;
   align-items: center;">
+    <span>
+      <nz-input-group nzAddOnBefore=宽:>
+        <input type="text" [disabled]="true" style="width: 70px;" nz-input [(ngModel)]="imgTailoringService.width" />
+      </nz-input-group>
+    </span>
+    <span>
+      <nz-input-group nzAddOnBefore=高:>
+        <input type="text" style="width: 70px;" nz-input [(ngModel)]="imgTailoringService.height" (ngModelChange)="changeHeight($event)" />
+      </nz-input-group>
+    </span>
     <button style="width: 80px;
     height: 31px;
     background: rgb(0,150,136);
     border: none;
     color: #fff;
     cursor: pointer;
+    margin: 0 10px;
     border-radius: 5px;" (click)="complete()">完成</button>
+
     <button style="width: 80px;
     height: 31px;
     background: #fff;
     border: 1px solid #ccc;
     color: #444;
-    margin: 0 10px;
     cursor: pointer;
     border-radius: 5px;" (click)="giveUp()">放弃</button>
   </div>

@@ -217,6 +217,10 @@ export class ImgTailoringComponent implements OnInit {
 
     const addHeight = y - heightBefore - mainY;
     this.mainDiv.style.height = addHeight + heightBefore + 'px';
+    this.imgTailoringService.height = addHeight + heightBefore + 'px';
+  }
+  changeHeight(value: any) {
+    this.mainDiv.style.height = value;
   }
   leftMove(e) {
     let x = e.clientX;
@@ -271,6 +275,7 @@ export class ImgTailoringComponent implements OnInit {
         that.editingAreaItemService.imgUrl = url;
         that.editingAreaItemService.itemDom.isCrop = false;
         that.editingAreaItemService.itemDom.isNoUploading = false;
+        that.editingAreaItemService.isChange = false;
         document.onselectstart = () => {
           return true;
         };

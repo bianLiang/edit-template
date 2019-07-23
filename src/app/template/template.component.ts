@@ -2,6 +2,7 @@ import { Component, OnInit, SecurityContext, ViewChild } from '@angular/core';
 import { EeitingAreaItem } from './editing-area-item/eiting-area-item.model';
 import { EditingAreaItemService } from './editing-area-item/editing-area-item.service';
 import { EditBarComponent } from './edit-bar/edit-bar.component';
+import { EditingAreaComponent } from './editing-area/editing-area.component';
 
 @Component({
   selector: 'bl-template',
@@ -10,6 +11,7 @@ import { EditBarComponent } from './edit-bar/edit-bar.component';
 })
 export class TemplateComponent implements OnInit {
   @ViewChild('editBar', { static: false }) editBar: EditBarComponent;
+  @ViewChild('editingArea', { static: false }) editingArea: EditingAreaComponent;
   insertDataTmp: any;
   base = 0;
   idBase = 0;
@@ -42,7 +44,7 @@ export class TemplateComponent implements OnInit {
       isShow: true,
       style: {
         'width': '110px',
-       },
+      },
       maximumInterval: 30,
     }
   ];
@@ -54,59 +56,15 @@ export class TemplateComponent implements OnInit {
 
   ngOnInit() {
     const that = this;
-    that.editingAreaItemService.items = [
-      {
-        type: 'div',
-        index: 0,
-        style: {
-          'margin': '5px 0'
-        },
-        children: [
-          {
-            type: 'txt',
-            id: 'txt3',
-            style: {
-              'margin': 0,
-              'line-height': '35px',
-              'outline-color': 'blue',
-              'font-weight': 400,
-              'color': 'red',
-            },
-            content: '小时不识月， 呼作白玉盘。<span id="my-var-0">这是添加好的自定义变量</span>',
-            isEdit: true,
-            isShowEditorTool: false,
-            toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'fontSize', 'moveUp', 'moveDown', 'insert', 'delete']
-          }
-        ]
-      },
-      {
-        type: 'div',
-        index: 1,
-        style: {
-          'margin': '5px 0'
-        },
-        children: [
-          {
-            type: 'txt',
-            id: 'txt',
-            style: {
-              'outline-color': 'blue',
-              'background': 'red',
-              'color': '#fff',
-              'margin': 0,
-              'line-height': '35px',
-            },
-            content: '这是新增加的文本',
-            isEdit: true,
-            isShowEditorTool: false,
-            toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'moveUp', 'moveDown', 'insert', 'delete']
-          }
-        ]
-      }
-    ];
+    that.editingAreaItemService.imgUrl = null;
+    that.editingAreaItemService.type = 'txt';
+    that.editingAreaItemService.items = [];
+    that.editingAreaItemService.isShowBorder = true;
+    that.editingAreaItemService.isClick = true;
     that.editingAreaItemService.initialCyclel(that.editingAreaItemService.items);
     that.editingAreaItemService.base = 0;
     that.editingAreaItemService.idBase = 0;
+    that.editingAreaItemService.isChange = true;
     that.editingAreaItemService.sortIndex(that.editingAreaItemService.items);
 
     // that.fn = (event: any) => {
@@ -144,6 +102,7 @@ export class TemplateComponent implements OnInit {
     this.editBar.clearValue();
   }
   setScroll(value: number) {
+    // this.editingArea.setScroll(value);
   }
 
 }

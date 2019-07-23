@@ -125,6 +125,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickBackgroundText() {
     const that = this;
@@ -157,7 +158,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
-
+    this.editingAreaItemService.isChange = false;
     // this.editingAreaItemService.type = 'txt';
   }
   onClickImg() {
@@ -198,6 +199,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickImgGroup() {
     const that = this;
@@ -252,6 +254,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickButton() {
     const that = this;
@@ -291,6 +294,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickImgText() {
     const that = this;
@@ -344,6 +348,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
 
   onClickBackgroundImgText() {
@@ -400,6 +405,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickLine() {
     const that = this;
@@ -407,7 +413,8 @@ export class ToolbarComponent implements OnInit {
       type: 'div',
       index: null,
       style: {
-        'margin': '10px 0'
+        // 'margin': '10px 0',
+
       },
       children: [
         {
@@ -431,6 +438,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickhead() {
     const that = this;
@@ -463,6 +471,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickfoot() {
     const that = this;
@@ -499,6 +508,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickCode() {
     const that = this;
@@ -551,6 +561,7 @@ export class ToolbarComponent implements OnInit {
       that.editingAreaItemService.setScrollId = data.children[0].id;
       that.setScroll.emit(document.getElementById(data.children[0].id).getBoundingClientRect().top);
     }, 500);
+    this.editingAreaItemService.isChange = false;
   }
   onClickShare() {
     this.message.create('error', `暂时不支持添加此模块！`);

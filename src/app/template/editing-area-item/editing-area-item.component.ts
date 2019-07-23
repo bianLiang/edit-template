@@ -23,16 +23,31 @@ export class EditingAreaItemComponent implements OnInit {
   ngOnInit() {
 
   }
+  onClickLineBox(e: any) {
+    if (e.children[0].type === 'line') {
+      this.editingAreaItemService.type = e.children[0].type;
+      this.editingAreaItemService.boxDom = e;
+      this.editingAreaItemService.itemDom = e.children[0];
+      this.editingAreaItemService.elem = document.getElementById(e.children[0].id);
+      this.editingAreaItemService.hideEditorTool(this.editingAreaItemService.items);
+      if (e.children[0].isEdit) {
+        e.children[0].isShowEditorTool = true;
+      }
+    }
+  }
   // 获得焦点，设置插入标志位
   onBoxFocus(e: any) {
+    this.setEditBar.emit();
     this.editingAreaItemService.boxDom = e;
     this.editingAreaItemService.insertIndex = e.index;
+    // this.editingAreaItemService.type = 'box';
   }
   setEditBars() {
     this.setEditBarValue.emit();
   }
   onItemFocus(e: any, event: any) {
     // 向父级传递一个方法调用清楚文本编辑栏的值
+    // event.stopPropagation();
     this.setEditBar.emit();
     this.editingAreaItemService.elem = document.getElementById(e.id);
     // this.editingAreaItemService.Y = event.clientY;
@@ -57,5 +72,12 @@ export class EditingAreaItemComponent implements OnInit {
     } else {
       return true;
     }
+  }
+  onItemKeyDown() {
+    this.editingAreaItemService.isChange = false;
+  }
+  onItemKeyUp(e: any) {
+    console.log(e);
+    // e.target.innerText = '';
   }
 }

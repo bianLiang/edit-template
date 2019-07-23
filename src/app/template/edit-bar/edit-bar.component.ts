@@ -235,20 +235,24 @@ export class EditBarComponent implements OnInit {
   setTypeface(value: string) {
     this.editingAreaItemService.itemDom.style['font-family'] = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setfontColor(value: string) {
     this.fontBackgroundColor = value;
     this.fontColorStyle['background-color'] = value;
     this.editingAreaItemService.itemDom.style.color = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setBorderStyle(value: string) {
     this.editingAreaItemService.itemDom.style['border-style'] = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setLineBorderStyle(value: string) {
     this.editingAreaItemService.itemDom.style['border-style'] = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setBackgroundColorStyle(value: string) {
     this.backgroundColor = value;
@@ -256,24 +260,28 @@ export class EditBarComponent implements OnInit {
     this.editingAreaItemService.itemDom.style.background = value;
     // this.editingAreaItemService.boxDom.style.background = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setImgTextBackgroundColorStyle(value: string) {
     this.imgTextBackgroundColor = value;
     this.imgTextBackgroundColorStyle['background-color'] = value;
     this.editingAreaItemService.boxDom.style.background = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setborderColorStyle(value: string) {
     this.borderColor = value;
     this.borderColorStyle['background-color'] = value;
     this.editingAreaItemService.itemDom.style['border-color'] = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
   setLineBorderColorStyle(value: string) {
     this.lineBorderColor = value;
     this.lineBorderColorStyle['background-color'] = value;
     this.editingAreaItemService.itemDom.style['border-color'] = value;
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
 
 
@@ -296,6 +304,7 @@ export class EditBarComponent implements OnInit {
       // tslint:disable-next-line:only-arrow-functions
       g.onmousemove = function(es) {
         f.editingAreaItemService.elem.focus();
+        f.editingAreaItemService.isChange = false;
         const thisX = es.clientX;
         const to = m.min(max, m.max(-2, l + (thisX - x)));
         btndom.style.left = to + 'px';
@@ -363,6 +372,7 @@ export class EditBarComponent implements OnInit {
       this.editingAreaItemService.itemDom.style['text-align'] = 'justify';
     }
     this.editingAreaItemService.elem.focus();
+    this.editingAreaItemService.isChange = false;
   }
 
 
@@ -380,6 +390,7 @@ export class EditBarComponent implements OnInit {
         reader.onload = function() {
           that.editingAreaItemService.imgUrl = this.result;
           that.editingAreaItemService.itemDom.url = this.result;
+          that.editingAreaItemService.isChange = false;
         };
       } else {
         this.message.create('error', `文件大于300k，请重新上传！`);
@@ -396,6 +407,7 @@ export class EditBarComponent implements OnInit {
     } else {
       this.editingAreaItemService.isReUrl = true;
     }
+    this.editingAreaItemService.isChange = false;
   }
 
   clearValue() {

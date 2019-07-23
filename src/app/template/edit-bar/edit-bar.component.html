@@ -118,10 +118,7 @@
       <span
         [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': borderColor}"></span>
     </div>
-    <div *ngIf="isImgTextBackgroundColor && this.editingAreaItemService.isGroup" class='currency'>图文：
-      <!-- <select [ngStyle]='imgTextBackgroundColorStyle' (change)="setImgTextBackgroundColorStyle($event.target.value)">
-        <option *ngFor="let item of imgTextBackgroundColorList" [ngStyle]="{'background': item}" [value]="item"></option>
-      </select> -->
+    <div *ngIf="isImgTextBackgroundColor && editingAreaItemService.isGroup" class='currency'>图文：
       <nz-select style="width: 120px;" [ngStyle]='imgTextBackgroundColorStyle' [(ngModel)]="imgTextBackgroundColor"  (ngModelChange)="setImgTextBackgroundColorStyle($event)"  nzPlaceHolder="请选择">
         <nz-option *ngFor="let item of imgTextBackgroundColorList" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
           <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
@@ -228,4 +225,20 @@
       <p>建议尺寸：{{editingAreaItemService.imgSize}}</p>
     </div>
   </div>
+  <!-- <div [ngStyle]="{'display': editingAreaItemService.type === 'box'  ? 'block': 'none'}">
+    <h4 style="text-align: center;
+    color: #888;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-weight: 400;">图文</h4>
+    <div *ngIf="isImgTextBackgroundColor" class='currency'>背景：
+    <nz-select style="width: 120px;" [ngStyle]='imgTextBackgroundColorStyle' [(ngModel)]="imgTextBackgroundColor"  (ngModelChange)="setImgTextBackgroundColorStyle($event)"  nzPlaceHolder="请选择">
+      <nz-option *ngFor="let item of imgTextBackgroundColorList" style="padding: 0;" nzCustomContent  [nzValue]="item" [nzLabel]="item">
+        <span [ngStyle]="{'background': item, 'display': 'inline-block', 'width': '100%'}">{{item}}</span>
+      </nz-option>
+    </nz-select>
+    <span
+      [ngStyle]="{'display': 'inline-block', 'height': '30px', 'width': '30px','border-radius': '5px', 'margin-left': '7px', 'background': imgTextBackgroundColor,'border': '1px solid #ccc'}"></span>
+  </div>
+  </div> -->
 </div>

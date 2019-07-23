@@ -6,6 +6,7 @@ import { EeitingAreaItem } from './eiting-area-item.model';
   providedIn: 'root'
 })
 export class EditingAreaItemService {
+  isChange = true;
   setScrollId: any;
   isShowBorder = true;
   isClick = true;
