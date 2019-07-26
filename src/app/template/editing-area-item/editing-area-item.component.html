@@ -1,6 +1,6 @@
 <div #boxTemplate *ngIf="item.type === 'div'"
      [ngStyle]='item.style' (click)="onClickLineBox(item)" [ngClass]="{'item-box': editingAreaItemService.isShowBorder}">
-    <bl-editing-area-item *ngFor="let childItem of item.children;let _index=index;"
+    <bl-editing-area-item #editAreaItem *ngFor="let childItem of item.children;let _index=index;"
                        [item]="childItem" (click)='onBoxFocus(item)' (setEditBar)="setEditBars()">
     </bl-editing-area-item>
 </div>

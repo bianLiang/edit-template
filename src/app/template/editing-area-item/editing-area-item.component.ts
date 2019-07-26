@@ -1,5 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { EeitingAreaItem } from './eiting-area-item.model';
 import { EditingAreaItemService } from './editing-area-item.service';
 
@@ -9,6 +9,7 @@ import { EditingAreaItemService } from './editing-area-item.service';
   styleUrls: ['./editing-area-item.component.css']
 })
 export class EditingAreaItemComponent implements OnInit {
+  @ViewChild('editAreaItem', { static: false }) editAreaItem: EditingAreaItemComponent;
   @Input() public item: EeitingAreaItem;
   @Output() public setEditBar: EventEmitter<any> = new EventEmitter();
   @Output() public setEditBarValue: EventEmitter<any> = new EventEmitter();
@@ -25,6 +26,7 @@ export class EditingAreaItemComponent implements OnInit {
   }
   onClickLineBox(e: any) {
     if (e.children[0].type === 'line') {
+      this.editAreaItem.setEditBar.emit();
       this.editingAreaItemService.type = e.children[0].type;
       this.editingAreaItemService.boxDom = e;
       this.editingAreaItemService.itemDom = e.children[0];

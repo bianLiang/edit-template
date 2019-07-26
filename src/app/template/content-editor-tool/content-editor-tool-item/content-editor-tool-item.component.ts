@@ -199,7 +199,7 @@ export class ContentEditorToolItemComponent implements OnInit {
     this.editingAreaItemService.itemDom.isCrop = true;
     this.imgTailoringService.cropUrl = this.editingAreaItemService.itemDom.url;
     this.imgTailoringService.width = this.editingAreaItemService.itemDom.width;
-    this.imgTailoringService.height = '64px';
+    this.imgTailoringService.height = 64;
   }
   // 获得光标信息
   // getCursortPosition() {

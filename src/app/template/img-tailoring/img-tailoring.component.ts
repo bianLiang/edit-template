@@ -217,10 +217,14 @@ export class ImgTailoringComponent implements OnInit {
 
     const addHeight = y - heightBefore - mainY;
     this.mainDiv.style.height = addHeight + heightBefore + 'px';
-    this.imgTailoringService.height = addHeight + heightBefore + 'px';
+    this.imgTailoringService.height = addHeight + heightBefore;
   }
   changeHeight(value: any) {
-    this.mainDiv.style.height = value;
+    if (value > this.box.offsetHeight) {
+      this.mainDiv.style.height = this.box.offsetHeight + 'px';
+    } else {
+      this.mainDiv.style.height = value + 'px';
+    }
   }
   leftMove(e) {
     let x = e.clientX;

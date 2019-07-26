@@ -188,7 +188,7 @@ export class ToolbarComponent implements OnInit {
           url: 'http://wx.xrewin.com:8083/ditu_646_400.png',
           href: '',
           imgSize: '650px * 400px',
-          width: '650px'
+          width: 650
         }
       ]
     };
@@ -227,7 +227,7 @@ export class ToolbarComponent implements OnInit {
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '250px * 187px',
-          width: '250px'
+          width: 250
         },
         {
           type: 'img',
@@ -244,7 +244,7 @@ export class ToolbarComponent implements OnInit {
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '250px * 187px',
-          width: '250px'
+          width: 250
         },
       ]
     };
@@ -322,7 +322,7 @@ export class ToolbarComponent implements OnInit {
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '236px * 187px',
-          width: '236px'
+          width: 236
         },
         {
           type: 'txt',
@@ -378,7 +378,7 @@ export class ToolbarComponent implements OnInit {
           url: 'http://wx.xrewin.com:8083/ditu_1.png',
           href: '',
           imgSize: '236px * 187px',
-          width: '236px'
+          width: 236
         },
         {
           type: 'txt',
@@ -535,7 +535,7 @@ export class ToolbarComponent implements OnInit {
           toolConfigure: ['moveUp', 'moveDown', 'delete'],
           url: 'http://wx.xrewin.com:8083/code.jpg',
           imgSize: '200px * 200px',
-          width: '200px'
+          width: 200
         },
         {
           type: 'txt',
