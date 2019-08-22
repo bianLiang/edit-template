@@ -82,4 +82,26 @@ export class EditingAreaItemComponent implements OnInit {
     console.log(e);
     // e.target.innerText = '';
   }
+  textFormat(e: any) {
+    e.preventDefault();
+    let text: any;
+    const clp = (e.originalEvent || e).clipboardData;
+    if (clp === undefined || clp === null) {
+      // text = window.clipboardData.getData('text') || '';
+      // if (text !== '') {
+      //   if (window.getSelection) {
+      //     const newNode = document.createElement('span');
+      //     newNode.innerHTML = text;
+      //     window.getSelection().getRangeAt(0).insertNode(newNode);
+      //   } else {
+      //     document.selection.createRange().pasteHTML(text)
+      //   }
+      // }
+    } else {
+      text = clp.getData('text/plain') || '';
+      if (text !== '') {
+        document.execCommand('insertText', false, text);
+      }
+    }
+  }
 }
