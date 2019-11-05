@@ -1,5 +1,6 @@
 export class EeitingAreaItem {
   public name?: string;
+  public holder?: string;
   public index?: number;
   public type: string;
   public id?: string;
@@ -16,6 +17,7 @@ export class EeitingAreaItem {
   public isCrop?: boolean;
   public showShadow?: boolean;
   public children?: EeitingAreaItem[];
+
 
   public onItemClick?: (event: any) => void;
   public onItemMouseenter?: (event: any) => void;

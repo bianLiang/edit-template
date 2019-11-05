@@ -62,7 +62,7 @@ export class ContentEditorToolItemComponent implements OnInit {
     ) {
       if (confirm('选择文字中已存在超链接!是否继续操作？')) {
         const linkURL = prompt('请选中页面内容填写链接地址:', 'http://');
-        const ipReg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+        const ipReg =  /(http|https):\/\/([\w.]+\/?)\S*/;
         const result = ipReg.test(linkURL);
         if (result) {
           const sText = document.getSelection();
@@ -80,7 +80,7 @@ export class ContentEditorToolItemComponent implements OnInit {
       }
     } else {
       const linkURL = prompt('请选中页面内容填写链接地址:', 'http://');
-      const ipReg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+      const ipReg =  /(http|https):\/\/([\w.]+\/?)\S*/;
       const result = ipReg.test(linkURL);
       if (result) {
         const sText = document.getSelection();
@@ -242,7 +242,7 @@ export class ContentEditorToolItemComponent implements OnInit {
     const that = this;
     const range = window.getSelection().getRangeAt(0);
     const span = document.createElement('span');
-    span.innerHTML = '$$data.自定义变量名称$$';
+    span.innerHTML = '$$data.$$';
     const result = new Date().getTime();
     span.setAttribute('id', 'my-var-' + result);
     // span.setAttribute('style', 'background: rgb(0,150,136);color:#fff;');

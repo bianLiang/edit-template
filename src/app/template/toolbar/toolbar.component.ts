@@ -111,9 +111,11 @@ export class ToolbarComponent implements OnInit {
             'color': '#222',
             'margin': 0,
             'line-height': '35px',
-            'outline-color': 'blue'
+            'outline-color': 'blue',
+            'padding-left': '5px'
           },
-          content: '这是新增加的文本',
+          content: '',
+          holder: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
@@ -144,9 +146,11 @@ export class ToolbarComponent implements OnInit {
             'background': '#e8e8e8',
             'color': '#222',
             'margin': 0,
-            'line-height': '35px'
+            'line-height': '35px',
+            'padding-left': '5px'
           },
-          content: '这是新增加的文本',
+          content: '',
+          holder: '这是新增加的文本',
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
@@ -334,8 +338,10 @@ export class ToolbarComponent implements OnInit {
             'margin-left': '10px',
             'line-height': '35px',
             'width': '400px',
+            'padding-left': '5px'
           },
-          content: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
+          content: '',
+          holder: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']
@@ -390,9 +396,11 @@ export class ToolbarComponent implements OnInit {
             'margin': 0,
             'margin-left': '10px',
             'line-height': '35px',
-            'width': '400px'
+            'width': '400px',
+            'padding-left': '5px'
           },
-          content: '这是新增加的背景文本段落,这是新增加的背景文本段落,这是新增加的背景文本段落,这是新增加的背景文本段落。',
+          content: '',
+          holder: '这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落,这是新增加的文本段落。',
           isEdit: true,
           isShowEditorTool: false,
           toolConfigure: ['bold', 'italic', 'slideLine', 'link', 'unlink', 'fontColor', 'backgroundColor', 'fontSize', 'moveUp', 'moveDown' , 'insert', 'delete']

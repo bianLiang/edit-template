@@ -10,3 +10,7 @@
 .item-box:hover {
   border: 2px solid #ccc;
 }
+.input:empty::before{
+  color:#36b395;
+  content:attr(placeholder);
+}
